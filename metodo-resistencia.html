@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método de Resistência - Veteranos | Nada supera as experiências</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #041209;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Luz */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, rgba(4, 18, 9, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .light-effect-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(4, 18, 9, 0.3) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 20s infinite ease-in-out reverse;
+            top: 30%;
+            left: 60%;
+        }
+
+        .light-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 25s infinite ease-in-out;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(0, 100px);
+            }
+            75% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            position: relative;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        .nav ul li a i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Styles */
+        .menu-dropdown .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(4, 18, 9, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .menu-dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 20px !important;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Estilos específicos para a página do método */
+        .method-hero {
+            padding: 100px 0;
+            position: relative;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+        }
+
+        .method-hero .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .method-hero-content {
+            flex: 1;
+        }
+
+        .method-hero h1 {
+            font-size: 2.8rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .method-hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #CCCCCC;
+        }
+
+        .method-hero-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .method-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .method-section {
+            padding: 80px 0;
+        }
+
+        .method-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #00AAFF;
+            margin-bottom: 50px;
+        }
+
+        .method-card {
+            background: rgba(4, 18, 9, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .method-card h3 {
+            color: #00AAFF;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .method-card h3 i {
+            font-size: 1.5rem;
+        }
+
+        .method-card ul {
+            margin: 20px 0 20px 30px;
+        }
+
+        .method-card li {
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .method-card li:before {
+            content: "⦁";
+            color: #00AAFF;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .bonus-section {
+            background: rgba(0, 74, 111, 0.2);
+            padding: 80px 0;
+        }
+
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .bonus-card {
+            background: rgba(4, 18, 9, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .bonus-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .bonus-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bonus-card h4 {
+            color: #00AAFF;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 74, 111, 0.3);
+            padding: 50px;
+            border-radius: 15px;
+            border: 1px solid #00AAFF;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+        }
+
+        .cta-box p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hotmart-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #0A2020 0%, #4992D9 100%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(247, 246, 246, 0.3);
+        }
+
+        .hotmart-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(248, 248, 247, 0.4);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00AAFF;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00AAFF;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact p {
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #00AAFF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #CCCCCC;
+            background: rgba(0, 170, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            background: #00AAFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 10px;
+            }
+            
+            .nav ul li a {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .method-hero .container {
+                flex-direction: column;
+            }
+            
+            .method-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .method-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .method-card {
+                padding: 30px;
+            }
+            
+            .cta-box {
+                padding: 30px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(4, 18, 9, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav ul.show {
+                display: flex;
+            }
+            
+            .menu-dropdown .submenu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 10px 0 0 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .method-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .method-card {
+                padding: 20px;
+            }
+            
+            .cta-box {
+                padding: 20px;
+            }
+            
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="light-effect"></div>
+    <div class="light-effect light-effect-2"></div>
+    <div class="light-effect light-effect-3"></div>
+
+    <!-- Cabeçalho Atualizado -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo" class="logo">
+                <h1>VETERANOS</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#about-section" class="about-link">QUEM SOMOS</a></li>
+                    
+                    <!-- Fatos e Fotos como item isolado -->
+                    <li><a href="#">FATOS E FOTOS</a></li>
+                    
+                    <!-- Novo submenu com mentoria e reunião -->
+                    <li class="menu-dropdown">
+                        <a href="#">AGENDAMENTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#meeting-scheduler">MARQUE MENTORIA</a></li>
+                            <li><a href="#meeting-scheduler">MARQUE REUNIÃO</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="https://wa.me/553799593941" target="_blank">WHATSAPP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero do Método -->
+    <section class="method-hero">
+        <div class="container">
+            <div class="method-hero-content">
+                <h1>Método de Resistência para Não Quebrar e Sair no Lucro</h1>
+                <p>Um sistema de sobrevivência empresarial criado com base em experiências reais. Elaborado por Dr. Júlio Martins, profissional com mais de 50 anos de vivência prática no mercado.</p>
+                <a href="#cta" class="hotmart-button">Quero me proteger agora <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="method-hero-image">
+                <img src="images/julio.png" alt="Dr. Júlio Martins">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção O que você vai aprender -->
+    <section class="method-section">
+        <div class="container">
+            <h2>O que você vai aprender</h2>
+            
+            <div class="method-card">
+                <h3><i class="fas fa-shield-alt"></i> Como evitar a falência</h3>
+                <ul>
+                    <li>Diagnosticar com clareza a real situação da empresa</li>
+                    <li>Identificar se é desorganização ou colapso iminente</li>
+                    <li>Reorganizar o negócio com base técnica e não emocional</li>
+                    <li>Proteger a marca, os ativos e a reputação no mercado</li>
+                </ul>
+            </div>
+            
+            <div class="method-card">
+                <h3><i class="fas fa-lock"></i> Como proteger seu patrimônio</h3>
+                <ul>
+                    <li>Ações práticas antes de qualquer intimação judicial</li>
+                    <li>Blindagem de bens e contas, dentro da legalidade</li>
+                    <li>Como lidar com execuções e evitar penhora de ativos</li>
+                    <li>Estruturação jurídica preventiva</li>
+                </ul>
+            </div>
+            
+            <div class="method-card">
+                <h3><i class="fas fa-chess"></i> Como quebrar estrategicamente e sair no lucro</h3>
+                <ul>
+                    <li>Reconstruir o negócio ou começar outro com capital preservado</li>
+                    <li>Aproveitar a falência como ponto de reinício calculado</li>
+                    <li>Evitar a exposição, o colapso emocional e o endividamento contínuo</li>
+                    <li>Planejar o retorno sem repetir erros</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Bônus -->
+    <section class="bonus-section">
+        <div class="container">
+            <h2>Bônus exclusivos incluídos gratuitamente</h2>
+            
+            <div class="bonus-grid">
+                <div class="bonus-card">
+                    <img src="images/primeira imgaem.png" alt="Guia Trabalhista">
+                    <h4>Guia Trabalhista de Resistência</h4>
+                    <p>Manual direto e prático para empresários que desejam evitar ações trabalhistas ou reduzir drasticamente os danos caso elas ocorram.</p>
+                </div>
+                
+                <div class="bonus-card">
+                    <img src="images/imagem 2.png" alt="Controle Emocional">
+                    <h4>Método de Controle Emocional para Gestores</h4>
+                    <p>Material estruturado para restaurar a força emocional do empresário sob pressão. Ensina técnicas para lidar com medo e frustração.</p>
+                </div>
+                
+                <div class="bonus-card">
+                    <img src="images/imagem 3.png" alt="Mentoria Individual">
+                    <h4>Mentoria individual com o criador do método</h4>
+                    <p>Oportunidade de participar de sessões pontuais de mentoria com o criador do método para avaliação de sua situação específica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de CTA -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Não espere o colapso para começar a se proteger</h2>
+                <p>Se você ainda não quebrou, este método é sua blindagem. Se já está em queda, este é seu plano de contenção e retomada. Você não precisa de mais esforço. Precisa de direção.</p>
+                <a href="https://hotmart.com/seu-link-aqui" class="hotmart-button">QUERO ME PROTEGER AGORA</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo">
+                    <p>Sua proteção empresarial é nossa prioridade. Métodos testados e comprovados para você enfrentar crises com inteligência.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="/">QUEM SOMOS</a></li>
+                        <li><a href="/metodo-resistencia">MÉTODO DE RESISTÊNCIA</a></li>
+                        <li><a href="#">FATOS E FOTOS</a></li>
+                        <li><a href="#">VÍDEOS</a></li>
+                        <li><a href="#">FALE CONOSCO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> suporte@oveterano.com.br</p>
+                    <p><i class="fas fa-phone"></i> (37) 9959-3941</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VETERANOS - ACADEMAR LTDA (CNPJ: 27.213.468/0001-10). Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
