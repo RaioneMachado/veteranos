@@ -21,30 +21,39 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="#">QUEM SOMOS</a></li>
-                <li class="menu-dropdown">
-                    <a href="#">FATOS E FOTOS <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">MARQUE MENTORIA</a></li>
-                        <li><a href="#">MARQUE REUNIÃO</a></li>
-                    </ul>
-                </li>
-                <li class="menu-dropdown">
-                    <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
-                        
-                    </ul>
-                </li>
-                <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
-                <li class="menu-dropdown">
-                    <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#">EMAIL</a></li>
-                        <li><a href="#">WHATSAPP</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <li><a href="#about-section" class="about-link">QUEM SOMOS</a></li>
+    
+    <!-- Fatos e Fotos como item isolado -->
+    <li><a href="#">FATOS E FOTOS</a></li>
+    
+    <!-- Novo submenu com mentoria e reunião -->
+    <li class="menu-dropdown">
+        <a href="#">AGENDAMENTOS <i class="fas fa-chevron-down"></i></a>
+        <ul class="submenu">
+    <li><a href="#meeting-scheduler">MARQUE MENTORIA</a></li>
+    <li><a href="#meeting-scheduler">MARQUE REUNIÃO</a></li>
+</ul>
+
+    </li>
+
+    <li class="menu-dropdown">
+        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+        <ul class="submenu">
+            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+        </ul>
+    </li>
+
+    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+
+    <li class="menu-dropdown">
+        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+        <ul class="submenu">
+             <li><a href="https://wa.me/553799593941" target="_blank">WHATSAPP</a></li>
+
+        </ul>
+    </li>
+</ul>
+
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -59,7 +68,7 @@
                     <h2>Você não precisa de mais esforço.
 Precisa de direção.</h2>
                     <p>Com quase cinco décadas de atuação em negócios, campanhas políticas, educação e gestão pública, O VETERANO é a mentoria para quem precisa resolver entraves, proteger patrimônio e crescer com estratégia real.</p>
-                    <a href="#" class="cta-button">Comece Agora</a>
+                    <a href="#meeting-scheduler" class="cta-button" id="schedule-button">Agende sua Consulta Agora</a>
                 </div>
 <div class="hero-image">
     <img src="images/capa.png" alt="Marketing Digital">
@@ -67,7 +76,7 @@ Precisa de direção.</h2>
             </div>
         </section>
 
-        <section class="about-section">
+        <section id="about-section" class="about-section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">QUEM SOMOS</h2>
@@ -352,7 +361,7 @@ Precisa de direção.</h2>
     </div>
 </section>
 
-<div class="meeting-scheduler">
+<div class="meeting-scheduler" id="meeting-scheduler">
     <div class="scheduler-container">
         <div class="scheduler-header">
             <h2 class="section-title">Agende sua Reunião</h2>

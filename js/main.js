@@ -497,3 +497,9 @@ confirmBtn.addEventListener('click', () => {
     // Inicializa o calendário
     initCalendar();
 });
+document.getElementById('schedule-button').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('meeting-scheduler').scrollIntoView({
+        behavior: 'smooth'
+    });
+});

@@ -2075,3 +2075,10 @@ body {
 .legal-links a:hover {
     color: #fff;
 }
+html {
+    scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* ajusta esse valor de acordo com a altura do seu header */
+}
