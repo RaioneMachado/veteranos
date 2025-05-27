@@ -352,6 +352,70 @@ Precisa de direção.</h2>
     </div>
 </section>
 
+<div class="meeting-scheduler">
+    <div class="scheduler-container">
+        <div class="scheduler-header">
+            <h2 class="section-title">Agende sua Reunião</h2>
+            <div class="title-divider"></div>
+            <p>Selecione um horário disponível abaixo para agendar sua reunião conosco</p>
+        </div>
+        
+        <div class="scheduler-body">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="nav-button prev-month">&lt;</button>
+                    <h3 class="current-month">Junho 2023</h3>
+                    <button class="nav-button next-month">&gt;</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="day-names">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    <div class="days-grid">
+                        <!-- Dias serão preenchidos via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-slots-container">
+                <h4>Horários disponíveis para <span class="selected-date">20/06/2023</span></h4>
+                <div class="time-slots-grid">
+                    <button class="time-slot">09:00</button>
+                    <button class="time-slot">10:00</button>
+                    <button class="time-slot">11:00</button>
+                    <button class="time-slot">14:00</button>
+                    <button class="time-slot">15:00</button>
+                    <button class="time-slot">16:00</button>
+                </div>
+            </div>
+            
+            <div class="confirmation-section">
+                <h4>Confirmar Agendamento</h4>
+                <p>Você está agendando para:</p>
+                <p class="selected-time">20/06/2023 às 10:00</p>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Seu nome" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Seu e-mail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Seu WhatsApp" class="form-input" required>
+                </div>
+                
+                <button class="confirm-button cta-button">Confirmar Agendamento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="testimonials">
     <div class="container">
         <h2>Depoimentos</h2>

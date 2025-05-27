@@ -279,3 +279,221 @@ document.addEventListener('DOMContentLoaded', function() {
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos do DOM
+    const daysGrid = document.querySelector('.days-grid');
+    const currentMonthEl = document.querySelector('.current-month');
+    const prevMonthBtn = document.querySelector('.prev-month');
+    const nextMonthBtn = document.querySelector('.next-month');
+    const selectedDateEl = document.querySelector('.selected-date');
+    const timeSlotsGrid = document.querySelector('.time-slots-grid');
+    const selectedTimeEl = document.querySelector('.selected-time');
+    const confirmBtn = document.querySelector('.confirm-button');
+    
+    // Data atual
+    let currentDate = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+    
+    // Inicializa o calendário
+    function initCalendar() {
+        renderCalendar();
+        renderTimeSlots();
+        
+        // Define a data inicial selecionada (hoje)
+        const today = new Date();
+        const todayCell = document.querySelector(`.day-cell[data-date="${formatDate(today)}"]`);
+        if (todayCell) {
+            todayCell.classList.add('selected');
+            selectedDate = today;
+            updateSelectedDateDisplay();
+        }
+    }
+    
+    // Renderiza o calendário
+    function renderCalendar() {
+        // Limpa o grid
+        daysGrid.innerHTML = '';
+        
+        // Define o mês/ano atual no header
+        currentMonthEl.textContent = `${getMonthName(currentDate.getMonth())} ${currentDate.getFullYear()}`;
+        
+        // Obtém o primeiro dia do mês
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const startingDay = firstDay.getDay();
+        
+        // Obtém o último dia do mês
+        const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+        const totalDays = lastDay.getDate();
+        
+        // Dias do mês anterior (se necessário)
+        const prevMonthLastDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0);
+        const prevMonthDays = prevMonthLastDay.getDate();
+        
+        // Dias do próximo mês (se necessário)
+        const daysInNextMonth = 42 - (totalDays + startingDay); // 6 semanas (42 dias)
+        
+        // Adiciona dias do mês anterior
+        for (let i = startingDay - 1; i >= 0; i--) {
+            const day = prevMonthDays - i;
+            const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, day);
+            const dayCell = createDayCell(day, date, true);
+            daysGrid.appendChild(dayCell);
+        }
+        
+        // Adiciona dias do mês atual
+        for (let i = 1; i <= totalDays; i++) {
+            const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), i);
+            const dayCell = createDayCell(i, date);
+            daysGrid.appendChild(dayCell);
+        }
+        
+        // Adiciona dias do próximo mês
+        for (let i = 1; i <= daysInNextMonth; i++) {
+            const date = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, i);
+            const dayCell = createDayCell(i, date, true);
+            daysGrid.appendChild(dayCell);
+        }
+    }
+    
+    // Cria uma célula de dia
+    function createDayCell(day, date, isDisabled = false) {
+        const dayCell = document.createElement('div');
+        dayCell.classList.add('day-cell');
+        if (isDisabled) dayCell.classList.add('disabled');
+        dayCell.textContent = day;
+        dayCell.dataset.date = formatDate(date);
+        
+        // Verifica se é um dia passado
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (date < today && !isDisabled) {
+            dayCell.classList.add('disabled');
+        }
+        
+        // Adiciona evento de clique
+        if (!isDisabled && !dayCell.classList.contains('disabled')) {
+            dayCell.addEventListener('click', () => {
+                // Remove a seleção anterior
+                document.querySelectorAll('.day-cell.selected').forEach(cell => {
+                    cell.classList.remove('selected');
+                });
+                
+                // Seleciona o novo dia
+                dayCell.classList.add('selected');
+                selectedDate = date;
+                updateSelectedDateDisplay();
+                renderTimeSlots();
+            });
+        }
+        
+        return dayCell;
+    }
+    
+    // Atualiza a exibição da data selecionada
+    function updateSelectedDateDisplay() {
+        if (selectedDate) {
+            selectedDateEl.textContent = formatDate(selectedDate, true);
+            selectedTimeEl.textContent = `${formatDate(selectedDate, true)} às ${selectedTime || '--:--'}`;
+        }
+    }
+    
+    // Renderiza os horários disponíveis
+    function renderTimeSlots() {
+        // Limpa os horários
+        timeSlotsGrid.innerHTML = '';
+        
+        if (!selectedDate) return;
+        
+        // Horários disponíveis (simulados)
+        const availableTimes = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'];
+        
+        // Cria os botões de horário
+        availableTimes.forEach(time => {
+            const timeSlot = document.createElement('button');
+            timeSlot.classList.add('time-slot');
+            timeSlot.textContent = time;
+            
+            // Verifica se o horário está ocupado (simulação)
+            const isBooked = Math.random() < 0.2; // 20% de chance de estar ocupado
+            
+            if (isBooked) {
+                timeSlot.classList.add('booked');
+                timeSlot.disabled = true;
+            } else {
+                timeSlot.addEventListener('click', () => {
+                    // Remove a seleção anterior
+                    document.querySelectorAll('.time-slot.selected').forEach(slot => {
+                        slot.classList.remove('selected');
+                    });
+                    
+                    // Seleciona o novo horário
+                    timeSlot.classList.add('selected');
+                    selectedTime = time;
+                    updateSelectedDateDisplay();
+                });
+            }
+            
+            timeSlotsGrid.appendChild(timeSlot);
+        });
+    }
+    
+    // Formata a data como string
+    function formatDate(date, withYear = false) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        
+        return withYear ? `${day}/${month}/${year}` : `${day}/${month}`;
+    }
+    
+    // Obtém o nome do mês
+    function getMonthName(monthIndex) {
+        const months = [
+            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+            'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+        ];
+        return months[monthIndex];
+    }
+    
+    // Eventos dos botões de navegação
+    prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+    
+    nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+    
+    // Evento do botão de confirmação
+    confirmBtn.addEventListener('click', () => {
+        const name = document.querySelector('input[type="text"]').value;
+        const email = document.querySelector('input[type="email"]').value;
+        const phone = document.querySelector('input[type="tel"]').value;
+        
+        if (!selectedDate || !selectedTime || !name || !email || !phone) {
+            alert('Por favor, preencha todos os campos e selecione uma data e horário.');
+            return;
+        }
+        
+        // Formata a mensagem para o WhatsApp
+        const message = `Olá! Gostaria de confirmar meu agendamento:\n\n` +
+                       `*Nome:* ${name}\n` +
+                       `*Data:* ${formatDate(selectedDate, true)}\n` +
+                       `*Horário:* ${selectedTime}\n` +
+                       `*E-mail:* ${email}\n` +
+                       `*WhatsApp:* ${phone}\n\n` +
+                       `Por favor, confirme meu agendamento. Obrigado!`;
+        
+        // Codifica a mensagem para URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Abre o WhatsApp com a mensagem
+        window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+    });
+    
+    // Inicializa o calendário
+    initCalendar();
+});
