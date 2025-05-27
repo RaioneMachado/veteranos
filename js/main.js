@@ -467,32 +467,32 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCalendar();
     });
     
-    // Evento do botão de confirmação
-    confirmBtn.addEventListener('click', () => {
-        const name = document.querySelector('input[type="text"]').value;
-        const email = document.querySelector('input[type="email"]').value;
-        const phone = document.querySelector('input[type="tel"]').value;
-        
-        if (!selectedDate || !selectedTime || !name || !email || !phone) {
-            alert('Por favor, preencha todos os campos e selecione uma data e horário.');
-            return;
-        }
-        
-        // Formata a mensagem para o WhatsApp
-        const message = `Olá! Gostaria de confirmar meu agendamento:\n\n` +
-                       `*Nome:* ${name}\n` +
-                       `*Data:* ${formatDate(selectedDate, true)}\n` +
-                       `*Horário:* ${selectedTime}\n` +
-                       `*E-mail:* ${email}\n` +
-                       `*WhatsApp:* ${phone}\n\n` +
-                       `Por favor, confirme meu agendamento. Obrigado!`;
-        
-        // Codifica a mensagem para URL
-        const encodedMessage = encodeURIComponent(message);
-        
-        // Abre o WhatsApp com a mensagem
-        window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
-    });
+// No evento do botão de confirmação, substitua a última parte por:
+confirmBtn.addEventListener('click', () => {
+    const name = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const phone = document.querySelector('input[type="tel"]').value;
+    
+    if (!selectedDate || !selectedTime || !name || !email || !phone) {
+        alert('Por favor, preencha todos os campos e selecione uma data e horário.');
+        return;
+    }
+    
+    // Formata a mensagem para o WhatsApp
+    const message = `Olá! Gostaria de confirmar meu agendamento:\n\n` +
+                   `*Nome:* ${name}\n` +
+                   `*Data:* ${formatDate(selectedDate, true)}\n` +
+                   `*Horário:* ${selectedTime}\n` +
+                   `*E-mail:* ${email}\n` +
+                   `*WhatsApp:* ${phone}\n\n` +
+                   `Por favor, confirme meu agendamento. Obrigado!`;
+    
+    // Codifica a mensagem para URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Abre o WhatsApp com a mensagem direcionada para o número 37 9959-3941
+    window.open(`https://wa.me/553799593941?text=${encodedMessage}`, '_blank');
+});
     
     // Inicializa o calendário
     initCalendar();

@@ -2033,3 +2033,45 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.footer-legal {
+    margin: 0 20px;
+}
+
+.footer-legal h4 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.footer-legal ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-legal ul li {
+    margin-bottom: 8px;
+}
+
+.footer-legal a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+}
+
+.legal-links {
+    margin-top: 10px;
+}
+
+.legal-links a {
+    color: #ccc;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.legal-links a:hover {
+    color: #fff;
+}

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Veteranos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #041209;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Luz */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, rgba(4, 18, 9, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .light-effect-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(4, 18, 9, 0.3) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 20s infinite ease-in-out reverse;
+            top: 30%;
+            left: 60%;
+        }
+
+        .light-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 25s infinite ease-in-out;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(0, 100px);
+            }
+            75% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            position: relative;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        .nav ul li a i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Styles */
+        .menu-dropdown .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(4, 18, 9, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .menu-dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 20px !important;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Container principal */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Estilos específicos para a página de Política de Privacidade */
+        .privacy-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 50%);
+            z-index: -1;
+        }
+
+        .privacy-container {
+            background: rgba(4, 18, 9, 0.7);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .privacy-header h1 {
+            font-size: 2.5rem;
+            color: #00AAFF;
+            margin-bottom: 15px;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.7), 0 0 30px rgba(0, 170, 255, 0.4);
+            }
+        }
+
+        .privacy-header p {
+            color: #CCCCCC;
+            font-size: 1.1rem;
+        }
+
+        .privacy-content {
+            color: #CCCCCC;
+            line-height: 1.8;
+        }
+
+        .privacy-content h2 {
+            color: #00AAFF;
+            margin: 30px 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .privacy-content h3 {
+            color: #FFFFFF;
+            margin: 25px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+
+        .privacy-content ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        .privacy-content li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(90deg, rgba(4, 18, 9, 0.7), rgba(0, 170, 255, 0.2));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 3px solid #00AAFF;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(0, 170, 255, 0.2);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        /* Estilo para o botão de voltar */
+        .back-to-home {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+            background: linear-gradient(135deg, #00BBFF 0%, #0088DD 100%);
+        }
+
+        .back-to-home i {
+            margin-right: 8px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00AAFF;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00AAFF;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact p {
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #00AAFF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #CCCCCC;
+            background: rgba(0, 170, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            background: #00AAFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 10px;
+            }
+            
+            .nav ul li a {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .privacy-container {
+                padding: 25px;
+            }
+            
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(4, 18, 9, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav ul.show {
+                display: flex;
+            }
+            
+            .menu-dropdown .submenu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 10px 0 0 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .privacy-container {
+                padding: 20px;
+            }
+            
+            .privacy-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="light-effect"></div>
+    <div class="light-effect light-effect-2"></div>
+    <div class="light-effect light-effect-3"></div>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo" class="logo">
+                <h1>VETERANOS</h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="/">QUEM SOMOS</a></li>
+                    <li class="menu-dropdown">
+                        <a href="#">FATOS E FOTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">MARQUE MENTORIA</a></li>
+                            <li><a href="#">MARQUE REUNIÃO</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-dropdown">
+                        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+                    <li class="menu-dropdown">
+                        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">EMAIL</a></li>
+                            <li><a href="#">WHATSAPP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção de Política de Privacidade -->
+    <section class="privacy-section">
+        <div class="container">
+            <div class="privacy-container">
+                <div class="privacy-header">
+                    <h1>Política de Privacidade</h1>
+                    <p>Última atualização: 16 de maio de 2025</p>
+                </div>
+                
+                <div class="privacy-content">
+                    <div class="highlight-box">
+                        <p>A ACADEMAR LTDA (CNPJ: 27.213.468/0001-10), operadora da marca O VETERANO, respeita sua privacidade e está comprometida com a proteção de seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+                    </div>
+
+                    <h2>1. Informações Coletadas</h2>
+                    <p>Podemos coletar as seguintes informações quando você utiliza nossos serviços:</p>
+                    <ul>
+                        <li>Dados de identificação: nome completo, CPF, RG, data de nascimento</li>
+                        <li>Dados de contato: e-mail, telefone, endereço</li>
+                        <li>Dados de pagamento: informações de cartão de crédito (armazenadas de forma segura por processadores de pagamento)</li>
+                        <li>Dados de navegação: endereço IP, tipo de navegador, páginas acessadas</li>
+                        <li>Dados de interação: histórico de compras, preferências</li>
+                    </ul>
+
+                    <h2>2. Finalidades do Tratamento</h2>
+                    <p>Utilizamos seus dados pessoais para:</p>
+                    <ul>
+                        <li>Prestação de serviços contratados</li>
+                        <li>Processamento de pagamentos</li>
+                        <li>Comunicação sobre serviços e atualizações</li>
+                        <li>Melhoria contínua de nossos produtos e serviços</li>
+                        <li>Cumprimento de obrigações legais</li>
+                        <li>Prevenção de fraudes e segurança</li>
+                    </ul>
+
+                    <h2>3. Compartilhamento de Dados</h2>
+                    <p>Seus dados poderão ser compartilhados com:</p>
+                    <ul>
+                        <li>Parceiros comerciais para prestação de serviços específicos</li>
+                        <li>Autoridades regulatórias quando exigido por lei</li>
+                        <li>Processadores de pagamento para transações financeiras</li>
+                    </ul>
+                    <p>Não comercializamos seus dados pessoais.</p>
+
+                    <h2>4. Direitos do Titular</h2>
+                    <p>De acordo com a LGPD, você tem direito a:</p>
+                    <ul>
+                        <li>Acesso aos seus dados pessoais</li>
+                        <li>Correção de dados incompletos ou desatualizados</li>
+                        <li>Anonimização, bloqueio ou eliminação de dados desnecessários</li>
+                        <li>Portabilidade dos dados a outro fornecedor de serviço</li>
+                        <li>Revogação do consentimento</li>
+                        <li>Informação sobre compartilhamento com terceiros</li>
+                    </ul>
+
+                    <h2>5. Segurança de Dados</h2>
+                    <p>Implementamos medidas técnicas e organizacionais para proteger seus dados pessoais, incluindo:</p>
+                    <ul>
+                        <li>Criptografia de dados sensíveis</li>
+                        <li>Controle de acesso restrito</li>
+                        <li>Monitoramento contínuo de segurança</li>
+                        <li>Procedimentos para resposta a incidentes</li>
+                    </ul>
+
+                    <h2>6. Retenção de Dados</h2>
+                    <p>Mantemos seus dados pessoais apenas pelo tempo necessário para:</p>
+                    <ul>
+                        <li>Cumprir as finalidades para as quais foram coletados</li>
+                        <li>Atender requisitos legais ou regulatórios</li>
+                        <li>Manter registros comerciais adequados</li>
+                    </ul>
+
+                    <h2>7. Cookies e Tecnologias Similares</h2>
+                    <p>Utilizamos cookies para:</p>
+                    <ul>
+                        <li>Melhorar a experiência de navegação</li>
+                        <li>Analisar o tráfego do site</li>
+                        <li>Personalizar conteúdo e anúncios</li>
+                    </ul>
+                    <p>Você pode gerenciar suas preferências de cookies através das configurações do navegador.</p>
+
+                    <h2>8. Contato</h2>
+                    <p>Para exercer seus direitos ou esclarecer dúvidas sobre esta Política de Privacidade:</p>
+                    <p>Encarregado de Proteção de Dados (DPO):<br>
+                    E-mail: suporte@oveterano.com.br</p>
+
+                    <h2>9. Alterações nesta Política</h2>
+                    <p>Esta Política pode ser atualizada periodicamente. A versão mais recente estará sempre disponível em nosso site com a data de atualização.</p>
+
+                    <div class="highlight-box">
+                        <p>Ao utilizar nossos serviços, você concorda com os termos desta Política de Privacidade. Caso não concorde, por favor, não utilize nossos serviços ou forneça seus dados pessoais.</p>
+                    </div>
+
+                    <!-- Botão de voltar para página inicial -->
+                    <div class="button-container">
+                        <a href="index.html" class="back-to-home">
+    <i class="fas fa-arrow-left"></i> Voltar para Página Inicial
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo">
+                    <p>Sua privacidade e segurança são nossas prioridades. Nós nos comprometemos a proteger seus dados pessoais e garantir sua confiança em nossos serviços.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="/">QUEM SOMOS</a></li>
+                        <li><a href="#">FATOS E FOTOS</a></li>
+                        <li><a href="#">AULAS</a></li>
+                        <li><a href="#">VÍDEOS</a></li>
+                        <li><a href="#">FALE CONOSCO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> suporte@oveterano.com.br</p>
+                    <p><i class="fas fa-phone"></i> (37) 9959-3941</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VETERANOS - ACADEMAR LTDA (CNPJ: 27.213.468/0001-10). Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
