@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FATOS E FOTOS 1 - Veteranos | Nada supera as experiências</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #041209;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Luz */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, rgba(4, 18, 9, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .light-effect-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(4, 18, 9, 0.3) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 20s infinite ease-in-out reverse;
+            top: 30%;
+            left: 60%;
+        }
+
+        .light-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 25s infinite ease-in-out;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(0, 100px);
+            }
+            75% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            position: relative;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        .nav ul li a i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Styles */
+        .menu-dropdown .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(4, 18, 9, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .menu-dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 20px !important;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Estilos da Galeria */
+        .gallery-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.7), 0 0 30px rgba(0, 170, 255, 0.4);
+            }
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: rgba(4, 18, 9, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+
+        .gallery-item h2 {
+            color: #00AAFF;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item p {
+            color: #CCCCCC;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+            background: linear-gradient(135deg, #00BBFF 0%, #0088DD 100%);
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00AAFF;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00AAFF;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact p {
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #00AAFF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #CCCCCC;
+            background: rgba(0, 170, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            background: #00AAFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 10px;
+            }
+            
+            .nav ul li a {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(4, 18, 9, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav ul.show {
+                display: flex;
+            }
+            
+            .menu-dropdown .submenu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 10px 0 0 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="light-effect"></div>
+    <div class="light-effect light-effect-2"></div>
+    <div class="light-effect light-effect-3"></div>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo" class="logo">
+                <h1>VETERANOS</h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">QUEM SOMOS</a></li>
+                    
+                    <!-- FATOS E FOTOS com submenus -->
+                    <li class="menu-dropdown">
+                        <a href="#">FATOS E FOTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                            <li><a href="#">FATOS E FOTOS 2</a></li>
+                            <li><a href="#">FATOS E FOTOS 3</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- AGENDAMENTOS como item simples -->
+                    <li><a href="#meeting-scheduler">AGENDAMENTOS</a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="https://wa.me/553799593941" target="_blank">WHATSAPP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção da Galeria -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header">
+                <h1>GALERIA DE FOTOS FUNDAÇÃO JULIO MARTINS</h1>
+                <p>Registros históricos das conquistas e parcerias do Professor Júlio Martins</p>
+            </div>
+            
+            <div class="gallery-container">
+                <!-- Item 1 - Condecoração FAB -->
+                <div class="gallery-item">
+                    <h2>Condecoração da Força Aérea Brasileira</h2>
+                    <img src="images/fatos e fotos 1/1.png" alt="Condecoração da Força Aérea Brasileira">
+                    <p>No dia 21 de Maio de 2012, o professor Júlio Martins, filho GRUPO ANDRADE MARTINS, foi condecorado pelo Ministério da Defesa Comando da Aeronáutica PAMALS por seu apoio a formação dos aeronautas. O Conselho do Comando Militar Aeronáutico concedeu o honroso diploma devido a serviços prestados àquela organização.</p>
+                    <p>O professor, através de seu Colégio, o Cotemar oferece formação gratuita a 600 cadetes da Força Aérea com seus cursos a distância. O evento aconteceu no Parque de Material Aeronáutico de Lagoa Santa, às 11 horas do dia 21 de maio de 2012, em Solenidade Militar comemorativa ao 58° Aniversário do PAMALS, com a presença de diversas autoridades civis, militares e representantes do governo de Estado.</p>
+                </div>
+                
+                <!-- Item 2 - Deputado José de Alencar -->
+                <div class="gallery-item">
+                    <h2>Parceiro Deputado José de Alencar da Silveira</h2>
+                    <img src="images/fatos e fotos 1/2.png" alt="Com o Deputado José de Alencar">
+                    <p>O Presidente do Cotemar, Professor Júlio Martins (à direita) reúne-se com o distinto Deputado José de Alencar da Silveira, que tem sido um grande parceiro nosso, sempre contribuindo para o crescimento da Educação em Minas Gerais.</p>
+                </div>
+                
+                <!-- Item 3 - Posse Franchising -->
+                <div class="gallery-item">
+                    <h2>Posse do Presidente do Conselho Empresarial de Franchising</h2>
+                    <img src="images/fatos e fotos 1/3.png" alt="Posse do Conselho de Franchising">
+                    <p>Professor Júlio Martins prestigia a posse do Dr. Gerson Oliveira Perpétuo, Presidente do Conselho Empresarial de Franchising que aconteceu em Belo Horizonte no dia 5 de julho de 2012. Este Conselho criado sabiamente pela ACMINAS - (Associação Comercial de Minas Gerais) será responsável por fomentar a instalação e desempenho das franquias mineiras.</p>
+                </div>
+                
+                <!-- Item 4 - Evento ACMINAS -->
+                <div class="gallery-item">
+                    <h2>Evento na Associação Comercial de Minas</h2>
+                    <img src="images/fatos e fotos 1/4.png" alt="Evento na ACMINAS">
+                    <p>Professor Júlio Martins, convidado do Presidente da ACM Roberto Luciano Fagundes, para evento de posse do presidente do Conselho Empresarial de Franchising acontecido na sede da Associação Comercial de Minas Gerais que contou com várias autoridades.</p>
+                </div>
+                
+                <!-- Item 5 - PSD Mulher -->
+                <div class="gallery-item">
+                    <h2>Presidenta do diretório Estadual do PSD</h2>
+                    <img src="images/fatos e fotos 1/5.png" alt="Com a Presidenta do PSD Mulher">
+                    <p>Professor Júlio Martins com a recém-empossada Presidenta do diretório Estadual do PSD Mulher (Partido Social Democrático): Yeda Fernal Cunha que comandará doravante o lado mais sensível do Partido que fora fundado pelo então prefeito do São Paulo Gilberto Kassab - Junho 2012.</p>
+                </div>
+                
+                <!-- Item 6 - Convênio Itaúna -->
+                <div class="gallery-item">
+                    <h2>Prefeitura de Itaúna e Cotemar Fecham Convênio</h2>
+                    <img src="images/fatos e fotos 1/6.png" alt="Convênio com Itaúna">
+                    <p>A prefeitura cedeu no dia 24/11/10 a Escola Maria Augusta de Faria na Rua Dona Neca para os cursos do PEP -155 que serão realizados pelo COTEMAR. A solenidade contou com o Prefeito Eugênio Pinto, O Professor Júlio Martins, o Secretário Heli Maia e a Pedagoga Alessandra Rodrigues.</p>
+                </div>
+                
+                <!-- Item 7 - UNILAS Santa Catarina -->
+                <div class="gallery-item">
+                    <h2>Evento de Fundação do Grupo Andrade Martins em SC</h2>
+                    <img src="images/fatos e fotos 1/7.png" alt="Com James Venturi da UNILAS">
+                    <p>Na foto Professor Júlio Martins com James Venturi, reitor da universidade UNILAS de Santa Catarina. Que veio a se tornar um grande amigo e parceiro e, que doravante será o representante do grupo na região sul compreendida dos estados de Santa Catarina, Rio Grande do Sul e Paraná.</p>
+                </div>
+                
+                <!-- Item 8 - Grão Mestre GOMG -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o Grão Mestre do GOMG</h2>
+                    <img src="images/fatos e fotos 1/8.png" alt="Com Grão Mestre Hedison Damasceno">
+                    <p>Grão Mestre do GOMG Hedison Damasceno um grande sábio que muito ajudou este Estado e este país através de seu trabalho árduo de ensinamentos preciosos.</p>
+                </div>
+                
+                <!-- Item 9 - Amintas de Araújo Xavier -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e Amintas de Araújo Xavier</h2>
+                    <img src="images/fatos e fotos 1/9.png" alt="Com Amintas de Araújo Xavier">
+                    <p>Grão-Mestre Estadual do Grande Oriente do Brasil durante evento de posse em Belo Horizonte em Julho de 2012.</p>
+                </div>
+                
+                <!-- Item 10 - Gustavo Mitre -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o amigo Gustavo Mitre</h2>
+                    <img src="images/fatos e fotos 1/10.png" alt="Com Gustavo Mitre">
+                    <p>Deputado Federal, um homem honrado que faz política com justiça, trabalho e honestidade. Um grande amigo - 2012.</p>
+                </div>
+                
+                <!-- Item 11 - Prefeitura Convênio -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins, Secretária de Educação e Prefeito</h2>
+                    <img src="images/fatos e fotos 1/11.png" alt="Assinatura de convênio">
+                    <p>Durante assinatura de convênio entre Prefeitura Municipal e Cotemar para cursos do P.E.P. realizados naquele município.</p>
+                </div>
+                
+                <!-- Item 12 - Cel. Luzzi -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o Cel Av Mário Augusto de Araújo Luzzi Junior</h2>
+                    <img src="images/fatos e fotos 1/12.png" alt="Com Cel. Luzzi">
+                    <p>Durante assinatura de projeto entre o PAMA LS MG e a Escola Do Brasil, empresa do grupo Andrade Martins que fornece cursos para os cadetes da Força Aerea. Recentemente o Cel. Luzzi foi selecionado pelo alto comando da Força Aérea Brasileira para ocupar um posto no alto escalão.</p>
+                </div>
+                
+                <!-- Item 13 - Comandante BPM -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o Comandante do 36º BPM</h2>
+                    <img src="images/fatos e fotos 1/13.png" alt="Com Comandante do 36º BPM">
+                    <p>Tenente Coronel Marcelo Martins de Rezende, momento em que o mesmo recebeu homenagem da Força Aérea Brasileira. Pama LS.</p>
+                </div>
+                
+                <!-- Item 14 - Novo Grão Mestre GOMG -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins na posse do novo Grão Mestre do GOMG - MG</h2>
+                    <img src="images/fatos e fotos 1/14.png" alt="Posse do Grão Mestre">
+                    <p>Lázaro Emanuel Franco Salles, um grande homem que no decorrer de seu tempo como maçom se mostrou justo e honrando, vindo merecer tal cargo, que visa gerenciar o engrandecimento da sociedade através da lapidação do caráter do homem.</p>
+                </div>
+                
+                <!-- Item 15 - Antônio Hélio -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o novo amigo Antônio Hélio</h2>
+                    <img src="images/fatos e fotos 1/15.png" alt="Com Antônio Hélio">
+                    <p>Coordenador do sebrae do vale itajaí S.C. durante evento na feira do empreendedor de Santa Catarina. Grande professor e coordenador do fazer empresarial deste maravilhoso Estado Brasileiro.</p>
+                </div>
+                
+                <!-- Item 16 - Equipe Grupo Andrade Martins -->
+                <div class="gallery-item">
+                    <h2>A Pedagoga Alessandra Raquel, Professor Júlio Martins, o Gestor de T.I. Junio Araújo</h2>
+                    <img src="images/fatos e fotos 1/16.png" alt="Equipe Grupo Andrade Martins">
+                    <p>Ambos sócios do Grupo Andrade Martins, que juntos ajudam a engradecer este país com o que há de melhor em gestão de negócios, educação e franchising.</p>
+                </div>
+                
+                <!-- Item 17 - Lançamento Marca Cotemar -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins, Esposa Eliana Amaral e Renata Távola</h2>
+                    <img src="images/fatos e fotos 1/17.png" alt="Lançamento da marca Cotemar">
+                    <p>Renata Távola gestora Publicitária do Grupo Andrade Martins durante o lançamento da identidade de Marca do Cotemar em agosto de 2006.</p>
+                </div>
+                
+                <!-- Item 18 - Palestra Gestão Evolutiva -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em Palestra</h2>
+                    <img src="images/fatos e fotos 1/18.png" alt="Palestra de Gestão Evolutiva">
+                    <p>Palestra de Gestão Evolutiva, na região do Vale do Aço, cidade de João Monlevade com apoio da Associação Comercial e Sindicato dos Metalúrgicos. 2000</p>
+                </div>
+                
+                <!-- Item 19 - Equipe Futuratec -->
+                <div class="gallery-item">
+                    <h2>Equipe e alunos da Futuratec</h2>
+                    <img src="images/fatos e fotos 1/19.png" alt="Equipe Futuratec">
+                    <p>Primeira empresa do grupo que trabalhava com cursos de informática e idioma infantil - itaúna 2000. Futuratec fundada em 1997.</p>
+                </div>
+                
+                <!-- Item 20 - Curso Gestão Evolutiva -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em curso de Gestão Evolutiva</h2>
+                    <img src="images/fatos e fotos 1/20.png" alt="Curso de Gestão Evolutiva">
+                    <p>Curso de Gestão Evolutiva na Faculdade Pitágoras que teve como participante: Hering, Grupo Minauto, Oi, Ponto Frio e rede de Super Mercado ABC, dentre outras empresas.</p>
+                </div>
+                
+                <!-- Item 21 - Evento BH -->
+                <div class="gallery-item">
+                    <h2>Evento em Belo Horizonte</h2>
+                    <img src="images/fatos e fotos 1/21.png" alt="Evento em Belo Horizonte">
+                    <p>Professor Júlio Martins, e o Desembargador ANTÔNIO HÉLIO SILVA durante evento em Belo Horizonte. Grande amigo. Julho 2012</p>
+                </div>
+                
+                <!-- Item 22 - Curso E-Commerce -->
+                <div class="gallery-item">
+                    <h2>Curso E-Commerce e Redes Sociais</h2>
+                    <img src="images/fatos e fotos 1/22.png" alt="Curso E-Commerce">
+                    <p>Professor Júlio Martins, durante curso E-COMERCE E REDES SOCIAIS, diga se de passagem excelente. Com dois Grandes professores: Eros de Castro (foto) e Alex Nascimento Prof. da Universidade da Califórnia. Workshoping Simplesmente ótimo!</p>
+                </div>
+                
+                <!-- Item 23 - Equipe Marketing -->
+                <div class="gallery-item">
+                    <h2>EQUIPE DE MARKETING</h2>
+                    <div class="photo-grid">
+                        <img src="images/fatos e fotos 1/23.png" alt="Equipe Marketing 1">
+                        <img src="images/fatos e fotos 1/24.png" alt="Equipe Marketing 2">
+                        <img src="images/fatos e fotos 1/25.png" alt="Equipe Marketing 3">
+                    </div>
+                    <p>Equipe de Marketing digital do Grupo Andrade Martins dando suporte a Equipe de Marketing Político ao deputado Federal Marcelo Alvaro Antônio na sua campanha para prefeito de Belo Horizonte em 2016</p>
+                </div>
+                
+                <!-- Item 24 - Conselho Nacional de Educação -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins no Conselho Nacional de Educação</h2>
+                    <div class="photo-grid">
+                        <img src="images/fatos e fotos 1/26.png" alt="Conselho Educação 1">
+                        <img src="images/fatos e fotos 1/27.png" alt="Conselho Educação 2">
+                        <img src="images/fatos e fotos 1/28.png" alt="Conselho Educação 3">
+                    </div>
+                    <p>Professor Júlio Martins em palestra junto ao Conselho Nacional de Educação Março de 2016</p>
+                </div>
+                
+                <!-- Item 25 - Ministério da Educação -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins no Ministério da Educação</h2>
+                    <div class="photo-grid">
+                        <img src="images/fatos e fotos 1/29.png" alt="MEC 1">
+                        <img src="images/fatos e fotos 1/30.png" alt="MEC 2">
+                        <img src="images/fatos e fotos 1/31.png" alt="MEC 3">
+                        <img src="images/fatos e fotos 1/32.png" alt="MEC 4">
+                    </div>
+                    <p>Professor Júlio Martins despachando diretamente como ministro da educação do Governo Temer - Mendonça Filho - em Brasília 2016.</p>
+                </div>
+                
+                <!-- Item 26 - Doutor Honoris Causa -->
+                <div class="gallery-item">
+                    <h2>Doutor Honoris Causa</h2>
+                    <img src="images/fatos e fotos 1/35.png" alt="Doutor Honoris Causa">
+                    <p>Professor Júlio Martins é condecorado Doutor Honoris Causa – Brasília novembro de 2013. Juntamente com o senador da república Cristóvão Buarque.</p>
+                </div>
+                
+                <!-- Item 27 - Deputado Adjuto Afonso -->
+                <div class="gallery-item">
+                    <h2>Visita ao Deputado Estadual Adjuto Afonso</h2>
+                    <img src="images/fatos e fotos 1/36.png" alt="Com Deputado Adjuto Afonso">
+                    <p>Em visita e despacho junto ao deputado estadual Adjuto Afonso Manaus 2013</p>
+                </div>
+                
+                <!-- Item 28 - Parceria Pitágoras -->
+                <div class="gallery-item">
+                    <h2>Parceria com o Pitágoras</h2>
+                    <img src="images/fatos e fotos 1/37.png" alt="Parceria Pitágoras">
+                    <p>Grupo Andrade Martins fecha parceria com o Pitágoras - 2014</p>
+                </div>
+                
+                <!-- Item 29 - Governador Pimentel -->
+                <div class="gallery-item">
+                    <h2>Despacho com Governador Pimentel</h2>
+                    <img src="images/fatos e fotos 1/38.png" alt="Com Governador Pimentel">
+                    <p>Despacho no Gabinete do Governador de Minas Pimentel – Cidade Administrativa – Bhte MG – 2013</p>
+                </div>
+                
+                <!-- Item 30 - Destaque Diário do Comércio -->
+                <div class="gallery-item">
+                    <h2>Destaque no Diário do Comércio</h2>
+                    <img src="images/fatos e fotos 1/39.png" alt="Destaque Diário do Comércio">
+                    <p>Professor Júlio Martins é destaque no Diário do Comercio – Segunda 10 de outubro de 2016 – Pg.10 – Abertura do novo negócio AVECESAR – Agência de Vendedores de Elite César.</p>
+                </div>
+                
+                <!-- Item 31 - Destaque Estado de Minas -->
+                <div class="gallery-item">
+                    <h2>Destaque no Estado de Minas</h2>
+                    <img src="images/fatos e fotos 1/40.png" alt="Destaque Diário do Comércio">
+                    <p>Professor Júlio Martins é destaque no caderno Negócios & Oportunidades do Estado de Minas. Estado de Minas - Belo Horizonte - 25/9/2016 - Negócios & Oportunidades - Página: 1,4 - (P2) Desvende os mistérios da venda</p>
+                </div>
+            </div>
+            
+            <!-- Botão Voltar -->
+            <div class="back-button-container">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Voltar para Página Inicial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo">
+                    <p>Preservando a história e construindo o futuro através da educação e empreendedorismo.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">QUEM SOMOS</a></li>
+                        <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                        <li><a href="#">FATOS E FOTOS 2</a></li>
+                        <li><a href="#">FATOS E FOTOS 3</a></li>
+                        <li><a href="#">VÍDEOS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> suporte@oveterano.com.br</p>
+                    <p><i class="fas fa-phone"></i> (37) 9959-3941</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VETERANOS - ACADEMAR LTDA (CNPJ: 27.213.468/0001-10). Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

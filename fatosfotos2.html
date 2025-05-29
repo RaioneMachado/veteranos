@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FATOS E FOTOS 2 - Veteranos | Fatos Históricos - Dr. Júlio Martins</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #041209;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Luz */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, rgba(4, 18, 9, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .light-effect-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(4, 18, 9, 0.3) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 20s infinite ease-in-out reverse;
+            top: 30%;
+            left: 60%;
+        }
+
+        .light-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 25s infinite ease-in-out;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(0, 100px);
+            }
+            75% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            position: relative;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        .nav ul li a i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Styles */
+        .menu-dropdown .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(4, 18, 9, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .menu-dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 20px !important;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Estilos da Galeria */
+        .gallery-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.7), 0 0 30px rgba(0, 170, 255, 0.4);
+            }
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: rgba(4, 18, 9, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+
+        .gallery-item h2 {
+            color: #00AAFF;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item p {
+            color: #CCCCCC;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+            background: linear-gradient(135deg, #00BBFF 0%, #0088DD 100%);
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00AAFF;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00AAFF;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact p {
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #00AAFF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #CCCCCC;
+            background: rgba(0, 170, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            background: #00AAFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 10px;
+            }
+            
+            .nav ul li a {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(4, 18, 9, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav ul.show {
+                display: flex;
+            }
+            
+            .menu-dropdown .submenu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 10px 0 0 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="light-effect"></div>
+    <div class="light-effect light-effect-2"></div>
+    <div class="light-effect light-effect-3"></div>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo" class="logo">
+                <h1>VETERANOS</h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">QUEM SOMOS</a></li>
+                    
+                    <!-- FATOS E FOTOS com submenus -->
+                    <li class="menu-dropdown">
+                        <a href="#">FATOS E FOTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                            <li><a href="fatos-fotos-2.html">FATOS E FOTOS 2</a></li>
+                            <li><a href="#">FATOS E FOTOS 3</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- AGENDAMENTOS como item simples -->
+                    <li><a href="#meeting-scheduler">AGENDAMENTOS</a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="https://wa.me/553799593941" target="_blank">WHATSAPP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção da Galeria -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header">
+                <h1>FATOS E FOTOS HISTÓRICOS – DR JÚLIO MARTINS</h1>
+                <p>Registros marcantes da trajetória do Dr. Júlio Martins</p>
+            </div>
+            
+            <div class="gallery-container">
+                <!-- Item 1 - Jantar de Gala ILESP -->
+                <div class="gallery-item">
+                    <h2>Jantar de Gala – ILESP</h2>
+                    <img src="images/fatos e fotos 2/1.png" alt="Jantar de Gala ILESP">
+                    <p>Almoço de Negócios e fidelização de parceiros. Da esquerda para a direita: Dr. Júlio Martins, Carina Pacheco (Portugal) e Lucas (Piu Imóveis). Vila da Serra, Janeiro de 2019.</p>
+                </div>
+                
+                <!-- Item 2 - Parceria SISPESP -->
+                <div class="gallery-item">
+                    <h2>Parceria com o SISPESP</h2>
+                    <img src="images/fatos e fotos 2/2.png" alt="Parceria SISPESP">
+                    <p>Dr. Lineu (Presidente do SISPESP), Dr. Júlio Martins (Faculdade Alfamérica) e equipe de Planejamento estratégico na assinatura do contrato de Parceria entre a Faculdade e o SISPESP – Sindicado dos Servidores Públicos do Estado de São Paulo. São Paulo, Janeiro de 2019.</p>
+                </div>
+                
+                <!-- Item 3 - Parceria CSPB -->
+                <div class="gallery-item">
+                    <h2>Parceria com a CSPB</h2>
+                    <img src="images/fatos e fotos 2/3.png" alt="Parceria CSPB">
+                    <p>Dr. Júlio Martins, João (Presidente da CSPB) e João Filho (representante da PROBEN) assinando contrato de Parceria entre a Faculdade e a Confederação. Brasília, Janeiro de 2019.</p>
+                </div>
+                
+                <!-- Item 4 - Evento CSPB -->
+                <div class="gallery-item">
+                    <h2>Evento de Apresentação CSPB</h2>
+                    <img src="images/fatos e fotos 2/4.png" alt="Evento CSPB">
+                    <p>Dr. Júlio Martins no evento de Apresentação do Plano de Benefícios da CSPB - Confederação dos Servidores Públicos do Brasil. São Paulo, Dezembro de 2019.</p>
+                </div>
+                
+                <!-- Item 5 - Almoço Cantina do Lucas -->
+                <div class="gallery-item">
+                    <h2>Almoço na Cantina do Lucas</h2>
+                    <img src="images/fatos e fotos 2/5.png" alt="Almoço Cantina do Lucas">
+                    <p>Tradicional almoço na "Cantina do Lucas"; sediando o último encontro de 2019, com os memoráveis membros/cavalheiros da Heráldica. Edifício Maleta - Belo Horizonte, Novembro de 2019.</p>
+                </div>
+                
+                <!-- Item 6 - Entrevista Band News -->
+                <div class="gallery-item">
+                    <h2>Entrevista Band News FM</h2>
+                    <img src="images/fatos e fotos 2/6.png" alt="Entrevista Band News">
+                    <p>Entrevista com Dr. Júlio Martins, tema "A Rainha da Noite", realizada pela Jornalista Inácia Soares, para a Rádio Band News FM. Belo Horizonte, 18 de Outubro de 2019.</p>
+                </div>
+                
+                <!-- Item 7 - Feijoada Banho de Amor -->
+                <div class="gallery-item">
+                    <h2>Feijoada Beneficente Banho de Amor</h2>
+                    <img src="images/fatos e fotos 2/7.png" alt="Feijoada Banho de Amor">
+                    <p>Dr. Júlio Martins (Representando a Cerveja Rainha da Noite) patrocina e comparece na 1ª Feijoada Beneficente da ONG Banho de Amor. Belo Horizonte, 13 de Outubro de 2019.</p>
+                </div>
+                
+                <!-- Item 8 - Jantar de Gala ILESP 2 -->
+                <div class="gallery-item">
+                    <h2>Jantar de Gala – ILESP</h2>
+                    <img src="images/fatos e fotos 2/9.png" alt="Jantar de Gala ILESP">
+                    <p>Dr. Júlio Martins e Coronel Telhada no Jantar de Gala "Integração Empresários e Lideranças Maçônicas" oferecido pela ILESP – Instituto de Lideranças Empresariais de São Paulo. São Paulo, 30 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 9 - Jantar de Gala ILESP 3 -->
+                <div class="gallery-item">
+                    <h2>Jantar de Gala – ILESP</h2>
+                    <img src="images/fatos e fotos 2/10.png" alt="Jantar de Gala ILESP">
+                    <p>Dr. Júlio Martins no Jantar de Gala "Integração Empresários e Lideranças Maçônicas" oferecido pela ILESP – Instituto de Lideranças Empresariais de São Paulo. São Paulo, 30 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 10 - Condecoração Paladino da Paz -->
+                <div class="gallery-item">
+                    <h2>Condecoração "Paladino da Paz"</h2>
+                    <img src="images/fatos e fotos 2/11.png" alt="Condecoração Paladino da Paz">
+                    <p>Dr. Júlio Martins é condecorado "Paladino da Paz" no Jantar de Gala "Integração Empresários e Lideranças Maçônicas" oferecido pela ILESP – Instituto de Lideranças Empresariais de São Paulo. São Paulo, 30 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 11 - Condecoração Ministro Marcos Pontes -->
+                <div class="gallery-item">
+                    <h2>Condecoração de Imortalidade ao Ministro Marcos Pontes</h2>
+                    <img src="images/fatos e fotos 2/12.png" alt="Condecoração Ministro Marcos Pontes">
+                    <p>Matéria: "Dr. Júlio Martins e Membros da Academia William Shakespeare comparecem em Audiências extraordinárias em Brasília e condecoram imortalidade ao Sr. Marcos Cesar Pontes – Ministro da Ciência, Tecnologia, Inovação e Comunicação", realizada pelo Jornal Social Luiz Parreiras. Brasília, 16 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 12 - Condecoração Senador Major Olímpio -->
+                <div class="gallery-item">
+                    <h2>Condecoração de Imortalidade ao Senador Major Olímpio</h2>
+                    <img src="images/fatos e fotos 2/13.png" alt="Condecoração Senador Major Olímpio">
+                    <p>Condecoração de Imortalidade ao Senador Major Olímpio, da esquerda para a direita: Dr. Júlio César de Andrade Martins (IJM / Faculdade Alfamérica), Dr. Sérgio de Azevedo Redó (Presidente da Associação Paulista de Imprensa), Sérgio Lista Junior (Vice-presidente da AWS), Major Olímpio Gomes (Senador e homenageado), Dom Antônio Teixeira (Presidente da AWS), Sr. Madeira (membro da AWS) e Dr. Alexandre de Oliveira (Juíz). Brasília, 15 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 13 - Audiência com Senador Major Olímpio -->
+                <div class="gallery-item">
+                    <h2>Audiência com Senador Major Olímpio</h2>
+                    <img src="images/fatos e fotos 2/14.png" alt="Audiência com Senador Major Olímpio">
+                    <p>Dr. Júlio Martins e Senador Major Olímpio (Homenageado) em audiência extraordinária de condecoração de títulos. Brasília, 15 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 14 - Seminário Internacional -->
+                <div class="gallery-item">
+                    <h2>Seminário Internacional</h2>
+                    <img src="images/fatos e fotos 2/15.png" alt="Seminário Internacional">
+                    <p>Dr. Júlio Martins em Seminário Internacional dos Desafios à Defesa Nacional e o Papel das Forças Armadas. Brasília, 14 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 15 - General Mourão -->
+                <div class="gallery-item">
+                    <h2>Seminário Internacional com General Mourão</h2>
+                    <img src="images/fatos e fotos 2/16.png" alt="General Mourão">
+                    <p>Registro do General Mourão (vice-presidente do Brasil) em Seminário Internacional dos Desafios à Defesa Nacional e o Papel das Forças Armadas. Brasília, 14 de Agosto de 2019.</p>
+                </div>
+                
+                <!-- Item 16 - Fechamento de Contrato -->
+                <div class="gallery-item">
+                    <h2>Fechamento de Contrato</h2>
+                    <img src="images/fatos e fotos 2/17.png" alt="Fechamento de Contrato">
+                    <p>Da esquerda para a direita, Dr. Sebastião Neto (Clinica Dentale), Dr. Júlio Martins e Geraldo Pereira dos Santos (Representantes da Faculdade Alfamérica), em assinatura do contrato de parceria na construção do Curso Especial de Odontologia. Belo Horizonte, Julho de 2019.</p>
+                </div>
+                
+                <!-- Item 17 - Encontro no Aeroporto -->
+                <div class="gallery-item">
+                    <h2>Encontro no Aeroporto</h2>
+                    <img src="images/fatos e fotos 2/18.png" alt="Encontro com Deputado Eduardo Bolsonaro">
+                    <p>Em viagem ao Senado Federal para reunião de negócios, Dr. Júlio Martins encontra com o Deputado Federal Eduardo Bolsonaro. Brasília, Julho – 2019.</p>
+                </div>
+                
+                <!-- Item 18 - Loja Maçônica Baden Powell -->
+                <div class="gallery-item">
+                    <h2>Loja Maçônica Baden Powell</h2>
+                    <img src="images/fatos e fotos 2/19.png" alt="Loja Maçônica Baden Powell">
+                    <p>Dr. Júlio Martins e Irmão Natal, na Loja Maçônica Baden Powell. Brasília, Julho – 2019.</p>
+                </div>
+                
+                <!-- Item 19 - Seminário Público 4.0 -->
+                <div class="gallery-item">
+                    <h2>Seminário Público 4.0</h2>
+                    <img src="images/fatos e fotos 2/20.png" alt="Seminário Público 4.0">
+                    <p>Matéria: "Professor Dr. Júlio Martins palestra em Seminário Público no sul de Minas", realizada pelo Jornal Social Luiz Parreiras. Pouso Alegre, Junho – 2019.</p>
+                </div>
+                
+                <!-- Item 20 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Edição Semanal Jornal Social</h2>
+                    <img src="images/fatos e fotos 2/21.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Edição Semanal: "Professor Dr. Júlio Martins palestra em Seminário Público no sul de Minas", realizada pelo Jornal Social Luiz Parreiras. Pouso Alegre, Junho – 2019.</p>
+                </div>
+            
+
+            <!-- Item 21 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/22.png" alt="Jornal Social Luiz Parreiras">
+                    <p>No dia 11 de Junho, a cidade de Pouso Alegre foi sede do Seminário Público 4.0. Abordando relevantes temas, a proposta do Seminário foi a introdução de assuntos voltados para a nova gestão social de governança pública. O Evento foi realizado no centro de convenções do Central Parque Hotel e sua programação contou com a participação de Mestres e Doutores. O Professor e Dr. Júlio Martins ficou responsável pelo encerramento do Seminário, palestrando sobre a evolução Educacional "Educação ontem e hoje".</p>
+                </div>
+
+                <!-- Item 22 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/23.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Leandro Roberto de Paula Reis (Advogado, articulista de Direito e especialista em Direito Constitucional), Dr. Júlio Martins (Professor, Dr. e Comendador da ordem do mérito Cívico e Cultural), Leonardo Lopes (Sócio-fundador da P&B Comunicação), Cláudio Brandão (Chefe de Gabinete do Dep. Inácio Franco) e Geovane (P&B Comunicação). – Pouso Alegre, 11 de Junho de 2019.</p>
+                </div>
+
+                <!-- Item 23 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/24.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins (Professor e Comendador), Cláudio Brandão (Chefe de Gabinete do Dep. Inácio Franco) e Maurício Lara (Diretor do Instituto VER Pesquisa e Estratégia). – Pouso Alegre, 11 de Junho de 2019.</p>
+                </div>
+
+                <!-- Item 25 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/25.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins (Professor e Comendador), Luiz Cruz (Diretor da HIS Tecnologia), Gilson Ferraz (Pesquisador na PLANASP), Ana Maria (HIS Tecnologia) e Cláudio Brandão (Chefe de Gabinete do Dep. Inácio Franco). – Pouso Alegre, 11 de Junho de 2019.</p>
+                </div>
+
+                <!-- Item 26 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/26.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins registrando o encerramento da Palestra “Educação ontem e hoje” – Pouso Alegre, 11 de Junho de 2019.</p>
+                </div>
+
+                <!-- Item 27 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Academia William Shakespeare</h2>
+                    <img src="images/fatos e fotos 2/27.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins recebeu da Academia William Shakespeare, no Palácio Anchieta, o Título de Imortalidade e a concessão do pronome de tratamento “Dom Júlio Martins”.  (São Paulo – 25 de Abril de 2019).</p>
+                </div>
+
+                <!-- Item 28 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    
+                    <img src="images/fatos e fotos 2/28.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Matéria: “Professor Doutor Comendador Júlio César de Andrade Martins é um dos fundadores da Loja Maçônica Baden Powell de Brasília e recebe Condecoração”, realizada pelo Jornal Social Luiz Parreiras.</p>
+                </div>
+
+                <!-- Item 29 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    
+                    <img src="images/fatos e fotos 2/29.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins contribuiu com a Fundação da Loja Maçônica Baden Powell e recebeu condecoração e medalha de honra. (Brasília – 23 de Abril de 2019).</p>
+                </div>
+
+                <!-- Item 30 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>COMENDADOR</h2>
+                    <img src="images/fatos e fotos 2/30.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Matéria: “Professor, Doutor e agora Comendador”, realizada pelo Jornal Social Luiz Parreiras.</p>
+                </div>
+
+                <!-- Item 31 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                 
+                    <img src="images/fatos e fotos 2/31.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins recebe título de Comendador da Ordem do Mérito Cívico e Cultural no Salão Nobre do Palácio Anchieta. (São Paulo – 05 de Abril de 2019).</p>
+                </div>
+
+                <!-- Item 32 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                 
+                    <img src="images/fatos e fotos 2/32.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins trabalhando na criação de novos projetos educacionais e fidelizando novas parcerias para o Instituto Educacional Júlio Martins. (Belo Horizonte – 07 de Fevereiro de 2019).</p>
+                </div>
+
+                <!-- Item 33 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Europa – Portugal </h2>
+                    <img src="images/fatos e fotos 2/33.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins em visitação à Universidade de Coimbra. (Portugal – 04 de dezembro de 2018).
+Em território Português Dr. Júlio Martins viajou para a realização de uma reunião extraordinária no DGES – Direção Geral do Ensino Superior. (Portugal – 29 de Novembro de 2018).</p>
+                </div>
+
+                <!-- Item 34 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Noite 5 Estrelas 2018</h2>
+                    <img src="images/fatos e fotos 2/34.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Na 14ª Edição do Evento: “Noite 5 Estrelas”, Dr. Júlio Martins recebeu a estatueta de Mérito Empresarial e Profissional.</p>
+                </div>
+
+                <!-- Item 35 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Reunião no Consulado de Moçambique</h2>
+                    <img src="images/fatos e fotos 2/35.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins, acompanhado pela comissão de Novos Negócios e pelo Sr. Deusdete Gonçalves – Cônsul de Moçambique no Brasil, em Reunião realizada no Consulado para deferimento de expansão do Projeto Educacional de Distribuição de Bolsas em Moçambique. (Vespasiano – 23 de Agosto de 2018).</p>
+                </div>
+
+                <!-- Item 36 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Homenagem Rede Construir</h2>
+                    <img src="images/fatos e fotos 2/36.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins e familiares, prestigiam o Empreendedor Mateus Lucio Romualdo, que recebeu uma homenagem na Câmara Municipal de Belo Horizonte. (Belo Horizonte – 07 de Julho de 2018).</p>
+                </div>
+
+                <!-- Item 37 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Doação Albergue</h2>
+                    <img src="images/fatos e fotos 2/37.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Dr. Júlio Martins realizando doação de itens de higiene pessoal para o Albergue Fraterno Bezerra de Menezes. (Itaúna – 17 de Dezembro de 2017).</p>
+                </div>
+
+                <!-- Item 38 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Visita à Embaixada de Moçambique em Brasília</h2>
+                    <img src="images/fatos e fotos 2/38.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Dr. Júlio Martins em visita à Embaixada de Moçambique em Brasília, para a realização de reuniões extraordinárias. (Brasília – 12 de Dezembro de 2017).</p>
+                </div>
+
+                <!-- Item 39 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/39.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Dr. Romualdo Johnam – Conselheiro Econômico de Cultura e Turismo, e Dr. Júlio Martins, em Reunião extraordinária para deferimento de expansão do Projeto Educacional de Distribuição de Bolsas em Moçambique. (Brasília – 12 de Dezembro de 2017).</p>
+                </div>
+
+                <!-- Item 40 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Câmara Internacional de Comércio da Índia</h2>
+                    <img src="images/fatos e fotos 2/40.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins no coquetel de confraternização da Câmara Internacional de Comércio da Índia. (Belo Horizonte – 01 de Dezembro de 2017).</p>
+                </div>
+
+                <!-- Item 41 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Estatueta de Mérito Empresarial 2017</h2>
+                    <img src="images/fatos e fotos 2/41.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins no evento: “Noite 5 Estrelas”, recebendo a Estatueta de Mérito Profissional e Empresarial. (Itaúna – 25 de Novembro de 2017).</p>
+                </div>
+
+                <!-- Item 42 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Inauguração do Instituto Educacional Júlio Martins</h2>
+                    <img src="images/fatos e fotos 2/42.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Cobertura exclusiva do Jornal Social Luiz Parreiras, no evento de Inauguração do Projeto ESOTEC – Escola Social Tecnológica do Brasil e Instituto Educacional Júlio Martins.</p>
+                </div>
+
+                <!-- Item 43 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    
+                    <img src="images/fatos e fotos 2/43.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins, Presidente e Fundador do Projeto ESOTEC, no discurso de solenidade na inauguração da Escola Social Tecnológica do Brasil. (Itaúna – 29 de Setembro de 2017).</p>
+                </div>
+
+                <!-- Item 44 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    
+                    <img src="images/fatos e fotos 2/44.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Nosso parceiro na distribuição de Bolsas de Estudo, Sr. Murilo, Chefe de Gabinete do Deputado Domingos Sávio e Dr. Júlio Martins, Presidente e Fundador do IJM - Instituto Educacional Júlio Martins; na inauguração do Projeto Educacional ESOTEC – Escola Social Tecnológica do Brasil. (Itaúna – 29 de Setembro de 2017).</p>
+                </div>
+
+                <!-- Item 45 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>PELEJA DIGITAL</h2>
+                    <img src="images/fatos e fotos 2/45.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins prestigiando o Evento Peleja Digital, no qual foi o idealizador. (Belo Horizonte – 08 de Julho de 2017).</p>
+                </div>
+
+                <!-- Item 46 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                  
+                    <img src="images/fatos e fotos 2/46.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins em ciclo de palestras, ao lado da Publicitária, Escritora e Blogueira: Cris Guerra. (Belo Horizonte – 08 de Julho de 2017).</p>
+                </div>
+
+                <!-- Item 47 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Amizade de Infância</h2>
+                    <img src="images/fatos e fotos 2/47.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins e seu amigo de infância Altamiro Valadares Campos, hoje Secretário de Finanças na Receita Federal. (Itaúna – 15 de Abril de 2017).</p>
+                </div>
+
+                <!-- Item 48 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>VISITA ao Gabinete do Dep. Domingos Sávio</h2>
+                    <img src="images/fatos e fotos 2/48.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins e o Secretário Municipal de Esportes e Lazer: Gustavo Barbosa, em visita ao Gabinete do companheiro e Deputado Domingos Sávio. (Divinópolis – 03 de Abril de 2017).</p>
+                </div>
+
+                <!-- Item 49 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>CASAMENTO Igor Garcia (Policial Federal)</h2>
+                    <img src="images/fatos e fotos 2/49.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins no casamento do companheiro Igor Garcia da Polícia Federal. Muitas Felicidades a este Abaeteense que é um orgulho para nós. (Belo Horizonte – 25 de Março de 2017).</p>
+                </div>
+
+                <!-- Item 50 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>16º FÓRUM EDUCACIONAL.</h2>
+                    <img src="images/fatos e fotos 2/50.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Dr. Júlio Martins, ladeado pelos Diretores executivos e colaboradores responsáveis pela realização do 16º Fórum Educacional. (Itaúna - 04 de Março de 2017).</p>
+                </div>
+
+                <!-- Item 51 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Doação ao CRASI ITAÚNA (Lar de Idosos).</h2>
+                    <img src="images/fatos e fotos 2/51.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Instituto Educacional Júlio Martins, arrecadou alimentos e realizou a doação ao CRASI Itaúna (Lar de Idosos). Itaúna - 09 de Fevereiro de 2017.</p>
+                </div>
+
+                <!-- Item 52 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em visita à 37™ National FETC - Future of Education Technology Conference.</h2>
+                    <img src="images/fatos e fotos 2/52.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Dr. Júlio Martins em visita à 37™ National FETC - Future of Education Technology Conference. (Orlando Flórida, Fevereiro de 2017)</p>
+                </div>
+
+                <!-- Item 53 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Dr. Júlio Martins e o Diretor de Franchising, Leonardo Falcão - Grupo Andrade Martins. Em visita ao estádio do Time Orlando USA.</h2>
+                    <img src="images/fatos e fotos 2/53.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Professor Júlio Martins e o Diretor de Franchising, Leonardo Falcão - Grupo Andrade Martins. Em visita ao estádio do Time Orlando USA. (Orlando – Flórida, Janeiro de 2017).</p>
+                </div>
+
+                <!-- Item 54 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em Evento 5 Estrelas (Mérito Empresarial e Profissional pelo COTEMAR)</h2>
+                    <img src="images/fatos e fotos 2/54.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Dr. Júlio Martins no evento: “Noite 5 estrelas”, recebendo o prêmio de Mérito Empresarial e Profissional pelo COTEMAR. Evento realizado em Novembro de 2016.</p>
+                </div>
+
+                <!-- Item 55 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em Florianópolis (RD SUMMIT) Evento de Marketing Digital</h2>
+                    <img src="images/fatos e fotos 2/55.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Dr. Júlio Martins em evento de Marketing Digital, na Cidade de Florianópolis. O evento aconteceu em Novembro de 2016.</p>
+                </div>
+
+                <!-- Item 56 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em Florianópolis (RD SUMMIT) Evento de Marketing Digital</h2>
+                    <img src="images/fatos e fotos 2/56.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Dr. Júlio Martins ao lado do seu amigo Daniel (parceiro de publicidade), em evento de Marketing Digital, na cidade de Florianópolis. O evento aconteceu em Novembro de 2016.</p>
+                </div>
+
+                <!-- Item 57 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em Palestra no Encontro Nacional de Gestores</h2>
+                    <img src="images/fatos e fotos 2/57.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Dr. Júlio Martins em palestra no Encontro Nacional de Gestores, promovido pelo Grupo Andrade Martins. Evento realizado em Setembro de 2016, no Hotel Confort Suits em Confins – MG.</p>
+                </div>
+
+                <!-- Item 58 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins foi destaque no caderno Negócios & Oportunidades do Estado de Minas. </h2>
+                    <img src="images/fatos e fotos 2/58.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins foi destaque no caderno: “Negócios & Oportunidades” do Jornal Estado de Minas. A matéria foi publicada em setembro de 2016 e teve como título: Desvende os mistérios da venda. 2016 Pg 1,4.</p>
+                </div>
+
+                <!-- Item 59 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em reunião com Ministro da Educação.  </h2>
+                    <img src="images/fatos e fotos 2/59.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Em reunião realizada em Brasília, o Professor Júlio Martins realizou despachos importantes diretamente com o Ministro da Educação, Mendonça Filho do Governo Temer. Brasília, 2016.</p>
+                </div>
+
+                <!-- Item 60 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e Senador José Perrela </h2>
+                    <img src="images/fatos e fotos 2/60.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Encontro realizado em Brasília entre o Professor Júlio Martins e o Senador José Perrela.</p>
+                </div>
+
+                <!-- Item 61 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Encontro entre Equipes de Marketing</h2>
+                    <img src="images/fatos e fotos 2/61.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Encontro em que a equipe de Marketing digital do Grupo Andrade Martins presta apoio a Equipe de Marketing Político do Deputado Federal Marcelo Álvaro Antônio para sua campanha a prefeito de Belo Horizonte em 2016.</p>
+                </div>
+
+                <!-- Item 62 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e Senador Antonio Anastasia</h2>
+                    <img src="images/fatos e fotos 2/62.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Encontro em Brasília realizado entre o Professor Júlio Martins e o Senador Antonio Anastasia.</p>
+                </div>
+
+                <!-- Item 63 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Jornal Estado de Minas realiza entrevista com o Professor Júlio Martins </h2>
+                    <img src="images/fatos e fotos 2/63.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins foi entrevistado pelos jornalistas do Jornal Estado de Minas em um almoço informal.</p>
+                </div>
+
+                <!-- Item 64 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em palestra</h2>
+                    <img src="images/fatos e fotos 2/64.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins ministra palestra ao Conselho Nacional de Educação em Março de 2016.</p>
+                </div>
+
+                <!-- Item 65 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Encontro em Brasília </h2>
+                    <img src="images/fatos e fotos 2/65.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Encontro realizado em Brasília entre o Professor Júlio Martins, Gustavo Mitre, Ministro da Educação Mendonça Filho e o Deputado Marcelo Álvaro Antônio.</p>
+                </div>
+
+                <!-- Item 66 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Encontro em Brasília </h2>
+                    <img src="images/fatos e fotos 2/66.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Encontro realizado em Brasília entre o Professor Júlio Martins e o Senador Aécio Neves.</p>
+                </div>
+
+                <!-- Item 67 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Visita à Brasília-DF</h2>
+                    <img src="images/fatos e fotos 2/67.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O professor Júlio Martins realizou uma visita a Câmara dos Deputados em Brasília. </p>
+                </div>
+
+                <!-- Item 68 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins é condecorado Doutor Honoris Causa</h2>
+                    <img src="images/fatos e fotos 2/68.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins recebeu em novembro de 2013 a condecoração de Doutor Honoris Causa. Na ocasião, o Senador da República Cristovam Buarque recebeu a mesma condecoração</p>
+                </div>
+
+                <!-- Item 69 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Visita ao Deputado Estadual de Manaus </h2>
+                    <img src="images/fatos e fotos 2/69.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins realiza uma visita para fazer uma série de despachos junto ao Deputado Estadual Adjuto Afonso, na cidade de Manaus em 2013.</p>
+                </div>
+
+                <!-- Item 70 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Encontro no Gabinete do Governador de Minas Gerais</h2>
+                    <img src="images/fatos e fotos 2/70.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins realiza importantes despachos no Gabinete do Governador de Minas na Cidade Administrativa –  2013</p>
+                </div>
+
+                <!-- Item 71 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Curso E-commerce e Redes Sociais</h2>
+                    <img src="images/fatos e fotos 2/71.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins, durante curso E-commerce e Redes Sociais. Evento de altíssimo nível que contou com a participação de dois Grandes professores: Eros de Castro (foto) e Alex Nascimento Prof. da Universidade da Califórnia . </p>
+                </div>
+
+                <!-- Item 72 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Condecoração da Força Aérea Brasileira.</h2>
+                    <img src="images/fatos e fotos 2/72.png" alt="Jornal Social Luiz Parreiras">
+                    <p>No dia 21 de Maio de 2012 o professor Júlio Martins do Grupo Andrade Martins, foi condecorado pelo Ministério da Defesa e Comando da Aeronáutica (PAMALS) por seu apoio a formação dos aeronautas. O Conselho do Comando Militar Aeronáutico concedeu o honroso diploma devido a serviços prestados.
+ 
+Ao todo, 600 cadetes da força Aérea realizaram cursos a distância gratuitos oferecidos pelo professor Júlio por meio do Colégio Cotemar. 
+ 
+O evento aconteceu no Parque de Material Aeronáutico de Lagoa Santa, em Solenidade Militar comemorativa ao 58° Aniversário do PAMALS e contou com a presença de diversas autoridades civis, militares e representantes do Governo de Estado.
+ 
+No evento houve também desfile militar, entrega de medalhas, almoço no salão de gala e ainda um show aéreo dos aviões da Esquadrilha da Fumaça. A condecoração de honra foi entregue pelas mãos do Coronel Aviador Adalberto Fontoura Gomes, diretor geral do Comando.
+</p>
+                </div>
+
+                <!-- Item 73 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Entrega de condecoração pela Força Aérea</h2>
+                    <img src="images/fatos e fotos 2/73.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Evento em que soldados da Força Aérea entregam a condecoração ao Professor Júlio Martins. 2012.</p>
+                </div>
+
+                <!-- Item 74 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Encontro com Deputado José de Alencar da Silveira</h2>
+                    <img src="images/fatos e fotos 2/74.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Presidente do Cotemar, Professor Júlio Martins (à direita) reúne-se com o Deputado José de Alencar da Silveira. O encontro reafirmou a grande parceria existe e a contribuição significativa do deputado com o crescimento da Educação em Minas Gerais.</p>
+                </div>
+
+                <!-- Item 75 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Cerimônia de posse do Presidente do Conselho Empresarial de Franchising</h2>
+                    <img src="images/fatos e fotos 2/75.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins prestigia a posse do Dr. Gerson Oliveira Perpétuo, Presidente do Conselho Empresarial de Franchising que aconteceu em Belo Horizonte no dia 5 de julho de 2012. O conselho foi criado pela Associação Comercial de Minas Gerais (ACMINAS) e será responsável por fomentar a instalação e o desempenho das franquias mineiras.</p>
+                </div>
+
+                <!-- Item 76 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Cerimônia de posse do Presidente do Conselho Empresarial de Franchising</h2>
+                    <img src="images/fatos e fotos 2/76.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O evento de posse do presidente do Conselho Empresarial de Franchising, também contou a presença do Presidente da ACM Roberto Luciano Fagundes. A solenidade aconteceu na sede da Associação Comercial de Minas Gerais e teve a presença de várias autoridades.</p>
+                </div>
+
+                <!-- Item 77 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Presidente do diretório Estadual do PSD.</h2>
+                    <img src="images/fatos e fotos 2/77.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao lado da recém-empossada, Yeda Fernal Cunha, Presidente do Diretório Estadual do PSD Mulher (Partido Social Democrático).  A presidente tem a missão de comandar o lado mais sensível do Partido antes fundado pelo então prefeito de São Paulo Gilberto Kassab - Junho 2012.</p>
+                </div>
+
+                <!-- Item 78 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Prefeitura de Itaúna e Cotemar Fecham Convênio</h2>
+                    <img src="images/fatos e fotos 2/78.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Reunião de fechamento de convênio educacional realizado entre a Prefeitura de Itaúna e a COTEMAR. No acordo, a prefeitura cedeu a Escola Maria Augusta de Faria, localizada na Rua Dona Neca, para realização dos cursos do PEP-155 que serão ministrados pelo COTEMAR. Em contrapartida, o COTEMAR concedeu 800 bolsas de cursos profissionalizantes à população do município. A concessão das bolsas prevê critério de seleção específico. A solenidade contou com a presença do Prefeito Eugênio Pinto, do Professor Júlio Martins, do Secretário Heli Maia e da Pedagoga Alessandra Rodrigues. O convênio é mais uma importante ação em prol da construção do profissional Itaunense do futuro.</p>
+                </div>
+
+                <!-- Item 79 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Evento para Assinatura de Fundação do Grupo Andrade Martins em Santa Catarina.</h2>
+                    <img src="images/fatos e fotos 2/79.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao de lado do Reitor da Universidade UNILAS de Santa Catarina, James Venturi. O Reitor deverá assumir a posição de representante do grupo na região Sul, compreendida pelos estados de Santa Catarina, Rio Grande do Sul e Paraná. Além da parceria, o encontro marcou os laços de amizade existente.</p>
+                </div>
+
+                <!-- Item 80 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o grande amigo Grão Mestre do GOMG</h2>
+                    <img src="images/fatos e fotos 2/80.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins, prestigia o grande amigo, Hedison Damasceno, Grão Mestre do GOMG. O professor o considera um sábio, capaz de realizar um trabalho árduo de ensinamentos preciosos para o Brasil.</p>
+                </div>
+
+                <!-- Item 81 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e Amintas de Araújo Xavier</h2>
+                    <img src="images/fatos e fotos 2/81.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao lado do Grão-Mestre Amintas de Araújo Xavier em evento de posse realizado na cidade de Belo Horizonte em 2012.</p>
+                </div>
+
+                <!-- Item 82 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o amigo Gustavo Mitre</h2>
+                    <img src="images/fatos e fotos 2/82.png" alt="Jornal Social Luiz Parreiras">
+                    <p>A foto registra a amizade entre o Professor Júlio Martins e o Deputado Federal Gustavo Mitre, considerado um homem honrado capaz de trabalhar e fazer política com justiça e honestidade - 2012.</p>
+                </div>
+
+                <!-- Item 83 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins ao lado do Coronel Aviador Mário Augusto de  Araujo Luzzi Junior </h2>
+                    <img src="images/fatos e fotos 2/83.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Evento para assinatura de projeto entre o Pama LS MG e a Escola Do Brasil, empresa do grupo Andrade Martins. O grupo fornece cursos para cadetes da Força Aérea.  Recentemente o Coronel foi selecionado pelo alto comando da Força Aérea Brasileira para ocupar um posto no alto escalão.</p>
+                </div>
+
+                <!-- Item 84 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins na posse do Grão Mestre do GOMG – MG</h2>
+                    <img src="images/fatos e fotos 2/84.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao lado do Senhor Lázaro Emanuel Franco Salles, considerado um grande amigo.  No decorrer de seu tempo como maçom se mostrou justo honrando e merecedor do cargo que visa gerenciar o engrandecimento da sociedade através da lapidação do caráter humano.</p>
+                </div>
+
+                <!-- Item 85 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins e o amigo Antônio Hélio</h2>
+                    <img src="images/fatos e fotos 2/85.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao lado do Coordenador do SEBRAE do Vale Itajaí S.C, durante evento realizado na feira do empreendedor de Santa Catarina. Considerado um grande professor e coordenador do fazer empresarial no Estado.</p>
+                </div>
+
+                <!-- Item 86 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em curso de Gestão Evolutiva.</h2>
+                    <img src="images/fatos e fotos 2/86.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Curso de Gestão Evolutiva realizado na Faculdade Pitágoras. Participaram do evento as empresas: Hering, Grupo Minauto, Oi, Ponto Frio, Rede de Supermercado ABC, dentre outras empresas. O Evento foi realizado na cidade de Divinópolis em Junho de 2012.</p>
+                </div>
+
+                <!-- Item 87 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins ao lado do Desembargador Antônio Hélio Silva em evento realizado em Belo Horizonte</h2>
+                    <img src="images/fatos e fotos 2/87.png" alt="Jornal Social Luiz Parreiras">
+                    <p>Professor Júlio Martins ao lado do Desembargador Antônio Hélio Silva, considerado um grande amigo. O registro foi realizado durante o evento sediado em Belo Horizonte em Julho de 2012.</p>
+                </div>
+
+                <!-- Item 88 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Evento de posse do Presidente do Conselho Empresarial de Franchising</h2>
+                    <img src="images/fatos e fotos 2/88.png" alt="Jornal Social Luiz Parreiras">
+                    <p>O Professor Júlio Martins prestigia a posse do Dr. Gerson Oliveira Perpétuo, Presidente do Conselho Empresarial de Franchising que aconteceu em Belo Horizonte em Julho de 2012.O Conselho, criado pela Associação Comercial de Minas Gerais será responsável por fomentar a instalação e o desempenho de franquias em Minas Gerais.</p>
+                </div>
+
+                <!-- Item 89 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Palestra ministrada pelo Professor Júlio Martins</h2>
+                    <img src="images/fatos e fotos 2/89.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Palestra de Vendas e o futuro da educação, ministrada pelo Professor Dr. Júlio Martins; na cidade de Divinópolis em 2012.</p>
+                </div>
+
+                <!-- Item 90 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Pedagoga Alessandra Rodrigues, Professor Júlio Martins e o Gestor de T.I. Junio Araujo</h2>
+                    <img src="images/fatos e fotos 2/90.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Encontro que marca a união entre os sócios do Grupo Andrade Martins. Juntos ajudam a engrandecer o país com o que há de melhor em gestão de negócios, educação e franchising.</p>
+                </div>
+
+                <!-- Item 91 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins em lançamento da identidade da marca visual do COTEMAR.</h2>
+                    <img src="images/fatos e fotos 2/91.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Renata Távola gestora Publicitária do Grupo Andrade Martins durante o lançamento da identidade de Marca do Cotemar em agosto de 2006.</p>
+                </div>
+
+                <!-- Item 92 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins, Secretária de Educação e o Prefeito Rogério César de Matos Avelar.</h2>
+                    <img src="images/fatos e fotos 2/92.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Encontro realizado para assinatura de convênio entre Prefeitura Municipal de Itaúna e Cotemar para ministração de cursos do P.E.P. </p>
+                </div>
+
+                <!-- Item 93 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Professor Júlio Martins realiza palestra.</h2>
+                    <img src="images/fatos e fotos 2/93.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+Palestra de Gestão Evolutiva realizada na região do Vale do Aço na cidade de João Monlevade com apoio da Associação Comercial e Sindicato dos Metalúrgicos no ano de 2000./p>
+                </div>
+
+                <!-- Item 93 - Jornal Social Luiz Parreiras -->
+                <div class="gallery-item">
+                    <h2>Equipe e alunos da Futuratec.</h2>
+                    <img src="images/fatos e fotos 2/94.png" alt="Jornal Social Luiz Parreiras">
+                    <p>
+A Futuratec foi a primeira empresa do Grupo Andrade Martins e trabalhou com cursos de informática e idioma infantil em Itaúna no ano de 2000. A Futuratec foi fundada em 1997.
+                </div>
+
+
+                
+
+
+                
+            </div>
+           
+
+            
+            
+            <!-- Botão Voltar -->
+            <div class="back-button-container">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Voltar para Página Inicial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo">
+                    <p>Preservando a história e construindo o futuro através da educação e empreendedorismo.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">QUEM SOMOS</a></li>
+                        <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                        <li><a href="fatos-fotos-2.html">FATOS E FOTOS 2</a></li>
+                        <li><a href="#">FATOS E FOTOS 3</a></li>
+                        <li><a href="#">VÍDEOS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> suporte@oveterano.com.br</p>
+                    <p><i class="fas fa-phone"></i> (37) 9959-3941</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VETERANOS - ACADEMAR LTDA (CNPJ: 27.213.468/0001-10). Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

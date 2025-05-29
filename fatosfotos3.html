@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FATOS E FOTOS 1 - Veteranos | Nada supera as experiências</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #041209;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Luz */
+        .light-effect {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, rgba(4, 18, 9, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .light-effect-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(4, 18, 9, 0.3) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 20s infinite ease-in-out reverse;
+            top: 30%;
+            left: 60%;
+        }
+
+        .light-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.1) 0%, rgba(4, 18, 9, 0) 70%);
+            animation: float 25s infinite ease-in-out;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 50px);
+            }
+            50% {
+                transform: translate(0, 100px);
+            }
+            75% {
+                transform: translate(-50px, 50px);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-container h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            position: relative;
+        }
+
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav ul li a:hover {
+            color: #00aaff;
+        }
+
+        .nav ul li a i {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+
+        /* Dropdown Styles */
+        .menu-dropdown .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(4, 18, 9, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            padding: 10px 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .menu-dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 8px 20px !important;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Estilos da Galeria */
+        .gallery-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(0, 170, 255, 0.7), 0 0 30px rgba(0, 170, 255, 0.4);
+            }
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            background: rgba(4, 18, 9, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+
+        .gallery-item h2 {
+            color: #00AAFF;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item p {
+            color: #CCCCCC;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+            background: linear-gradient(135deg, #00BBFF 0%, #0088DD 100%);
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgba(4, 18, 9, 0.9);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.2);
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00AAFF;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00AAFF;
+        }
+
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-contact p {
+            color: #CCCCCC;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #00AAFF;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #CCCCCC;
+            background: rgba(0, 170, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+            background: #00AAFF;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 170, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .nav ul {
+                gap: 10px;
+            }
+            
+            .nav ul li a {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(4, 18, 9, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav ul.show {
+                display: flex;
+            }
+            
+            .menu-dropdown .submenu {
+                position: static;
+                box-shadow: none;
+                background: transparent;
+                padding: 10px 0 0 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de luz de fundo -->
+    <div class="light-effect"></div>
+    <div class="light-effect light-effect-2"></div>
+    <div class="light-effect light-effect-3"></div>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo" class="logo">
+                <h1>VETERANOS</h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">QUEM SOMOS</a></li>
+                    
+                    <!-- FATOS E FOTOS com submenus -->
+                    <li class="menu-dropdown">
+                        <a href="#">FATOS E FOTOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                            <li><a href="#">FATOS E FOTOS 2</a></li>
+                            <li><a href="#">FATOS E FOTOS 3</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- AGENDAMENTOS como item simples -->
+                    <li><a href="#meeting-scheduler">AGENDAMENTOS</a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">AULA <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">COMO FATURAR MAIS COM O MESMO</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">VÍDEOS <i class="fab fa-youtube"></i></a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#">FALE CONOSCO <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="https://wa.me/553799593941" target="_blank">WHATSAPP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção da Galeria -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-header">
+                <h1>29/04/2021 – “Ação pela Educação” / Itaúna – MG (Doação de Carteiras e Cadeiras para o CAIC)</h1>
+                
+            </div>
+            
+            <div class="gallery-container">
+                <!-- Item 1 - Condecoração FAB -->
+                <div class="gallery-item">
+                 
+                    <img src="images/fatos e fotos 3/1.png" alt="Condecoração da Força Aérea Brasileira">
+                    <p>Dr. Júlio Martins realiza doação de 140 carteiras, 80 cadeiras, brinquedos, armários e microondas para a Escola Municipal Dona Cota / CAIC – Centro de Atenção Integrada à Criança. 
+ O processo de doação para a Escola Municipal Dona Cota, aconteceu quando o Dr. Júlio César de Andrade Martins (Comendador e idealizador do IJM), procurou o Sr. Gustavo Dornas Barbosa (Vereador Itaunense) para que o ajudasse a localizar um Escola e/ou Instituição que necessitasse de itens de equipagem/montagem de salas de aula.    Empenhado em ajudar, o Sr. Vereador Gustavo Barbosa, rapidamente apresentou a Sra. Jane Resende (Diretora da E. M. Dona Cota / CAIC), que não mediu esforços para preparar a Escola para o recebimento das doações. Nas palavras da diretora, “um lindo auditório ganhou vida com 80 novas cadeiras destinadas para o público”.
+</p>
+                </div>
+                
+                <!-- Item 2 - Deputado José de Alencar -->
+                <div class="gallery-item">
+                    <h2>05/06/2021 – 15 anos da Missão Centenário</h2>
+                    <img src="images/fatos e fotos 3/2.png" alt="Com o Deputado José de Alencar">
+                    <p>No dia 05 de junho de 2021, Dr. Júlio Martins e sua esposa Camila Miranda, foram convidados para o jantar em comemoração aos “15 anos da missão centenário (viagem espacial) do Astronauta e Ministro da Ciência e Tecnologia, Sr. Marcos Pontes”. 
+ No evento, o casal (representando a Academia William Shakespeare) e o primogênito Gabriel Martins realizaram a outorga da medalha e título de “Herói Brasileiro” ao Astronauta Marcos Pontes
+A solenidade aconteceu na cidade de Bauru - terra natal do Sr. Ministro - e contou com presença de importantes representantes e chefes de estado.
+Na foto: Dr. Júlio Martins, Dona Camila Miranda e Gabriel Martins</p>
+                </div>
+                
+                <!-- Item 3 - Posse Franchising -->
+                <div class="gallery-item">
+                    <h2>19/06/2021 – Dr. Júlio Martins recebe título de Honoris Causa / Brasília – DF</h2>
+                    <img src="images/fatos e fotos 3/3.png" alt="Posse do Conselho de Franchising">
+                    <p>Noite de grandes aprendizados e muito orgulho por mais um merecido título concedido ao Dr. Julio Martins. Como muito bem colocado pelo Sr. Reitor da UNISCECAP, Hamilton José Werneck Mouta, na sessão solene de outorga das medalhas e diplomas de “Doutor Honoris Causa”; cada um dos homenageados fez acontecer e traz na bagagem um momento marcante em sua trajetória. </p>
+                </div>
+                
+                <!-- Item 4 - Evento ACMINAS -->
+                <div class="gallery-item">
+                    <h2>24/06/2021 – Almoço dos membros da Sociedade Brasileira de Heráldica e Humanística / Belo Horizonte – MG</h2>
+                    <img src="images/fatos e fotos 3/4.png" alt="Evento na ACMINAS">
+                    <p>No último dia 24 os membros mineiros da Sociedade Brasileira de Heráldica e Humanística Ecológica Medalhística Cultural Beneficente e Educacional, se reuniram para um almoço especial em razão de confraternizar com a expansão da Sociedade. 
+Na foto, da esquerda para a direita: Dr. Sérgio Murilo Braga, Chanceler Giovanni, Dom Evandro Collen, Dr. Wanderley Paiva, Dr. Júlio Martins, Comendador Dilson Machado e Dr. Rodrigo.
+</p>
+                </div>
+                
+                <!-- Item 5 - PSD Mulher -->
+                <div class="gallery-item">
+                    <h2>16/10/2021 – 116ª Assembleia Geral Ordinária da COMAB – Confederação Maçônica do Brasil e do Colégio de GrãoMestres / Belo Horizonte – MG</h2>
+                    <img src="images/fatos e fotos 3/5.png" alt="Com a Presidenta do PSD Mulher">
+                    <p>No sábado 16 de outubro, Dr. Júlio Martins esteve presente na 116ª Assembleia Geral Ordinária da COMAB – Confederação Maçônica do Brasil e do Colégio de Grão Mestres em Belo Horizonte / MG. 
+Na foto: Sereníssimo Irmão Vanderlei Geraldo de Assis (Vice- Presidente da COMAB) e Dr. Júlio César de Andrade Martins.</p>
+                </div>
+                
+                <!-- Item 6 - Convênio Itaúna -->
+                <div class="gallery-item">
+                    <h2>30/10/2021 – Elevação Maçônica do Irmão Mateus Lúcio Romualdo (Presidente da Rede Construir) / Quartel Geral – MG</h2>
+                    <img src="images/fatos e fotos 3/6.png" alt="Convênio com Itaúna">
+                    <p>No último sábado, Dr. Júlio Martins foi convidado para a sessão de elevação maçônica, do irmão maçom e quisto amigo Mateus Lúcio Ferreira Romualdo - Presidente da Rede Construir. A solenidade aconteceu na cidade de Quartel Geral, interior de Minas Gerais. 
+Na foto: Mateus Lucio Ferreira Romualdo e Dr. Júlio Martins.</p>
+                </div>
+                
+                <!-- Item 7 - UNILAS Santa Catarina -->
+                <div class="gallery-item">
+                    <h2>18/11/2021 – Encontro com Gestores dos Municípios / Divinópolis – MG</h2>
+                    <img src="images/fatos e fotos 3/7.png" alt="Com James Venturi da UNILAS">
+                    <p>Na última quinta feira – 18/11, o Prof. e Dr. Júlio César de Andrade Martins, participou da convenção de melhoria na Educação e atendimento aos prefeitos de Minas Gerais. Na foto, da direita para a esquerda está o Prof. Júlio Martins, o Ministro da Educação e Cultura, Sr. Milton Ribeiro e o Deputado Federal Domingos Sávio Campos Resende. O Ministro Milton Ribeiro e equipe técnica do FNDE trouxeram estrutura itinerante para orientação técnica sobre programas educacionais oferecidos pelo Governo Federal.
+Na foto da esquerda para a direita: Deputado Domingos Sávio, Dr. Milton Ribeiro (Ministro da Educação e Cultura – MEC) e Dr. Júlio César de Andrade Martins.
+</p>
+                </div>
+                
+                <!-- Item 8 - Grão Mestre GOMG -->
+                <div class="gallery-item">
+                    <h2>27/11/2021 – Iniciação dos Irmãos Maçons / Brasília - DF</h2>
+                    <img src="images/fatos e fotos 3/8.png" alt="Com Grão Mestre Hedison Damasceno">
+                    <p>Cerimônia de iniciação maçônica da Loja Dom Pedro II – Brasília / DF.</p>
+                </div>
+                
+                <!-- Item 9 - Amintas de Araújo Xavier -->
+                <div class="gallery-item">
+                    <h2>10/12/2021 – Evento em comemoração ao Dia do Marinheiro / São Paulo – SP</h2>
+                    <img src="images/fatos e fotos 3/9.png" alt="Com Amintas de Araújo Xavier">
+                    <p>O Dia do Marinheiro foi festejado em sessão solene nesta sexta feira (10/12), na Assembleia Legislativa do Estado de São Paulo, por iniciativa do deputado Castello Branco (PSL). Na cerimônia, foram entregues aos comandantes da Marinha, como reconhecimento oficial, placas pessoais e institucionais em agradecimento aos serviços prestados para o país. </p>
+                </div>
+                
+                <!-- Item 10 - Gustavo Mitre -->
+                <div class="gallery-item">
+                    <h2>11/12/2021 – Sagração dos Cavalheiros da Academia William Shakespeare / São Paulo – SP</h2>
+                    <img src="images/fatos e fotos 3/10.png" alt="Com Gustavo Mitre">
+                    <p>No sábado – 11/12, Dr. Júlio Martins esteve presente na Missa de Sagração dos Membros da Ordem dos Cavalheiros da Academia William Shakespeare com o Bispo Maronita Dom Edgard Madi. A sagração foi realizada na Catedral Nossa Senhora do Líbano, em São Paulo. </p>
+                </div>
+                
+                <!-- Item 11 - Prefeitura Convênio -->
+                <div class="gallery-item">
+                    <h2>15/12/2021 – “Ação pela Educação” / Itaúna – MG (Doação de Obras Literárias para a Biblioteca da Escola Municipal Dona Cota)</h2>
+                  
+                    <p>Na última terça (15/12), a Diretora do Terceiro Setor e Embaixadora Cultural da Paz, Sra. Camila Faria Miranda, juntamente com o apoio do Vereador Itaunense, Gustavo Dornas Barbosa, realizaram através do Instituto Júlio Martins a Doação de 787 obras literárias, para a fomentação da Biblioteca da Escola Municipal Dona Cota. Na data estiveram presentes, as secretárias da Instituição, a Bibliotecária e a Diretora Sra. Jane Resende.
+Na foto: Dona Camila Miranda, recebendo um abraço de agradecimento da Diretora Jane Resende.
+</p>
+                </div>
+                
+                <!-- Item 12 - Cel. Luzzi -->
+                <div class="gallery-item">
+                    <h2>05/01/2022 – Reabertura inaugural do Automóvel Clube de Minas Gerais / Belo Horizonte – MG</h2>
+                    <img src="images/fatos e fotos 3/12.png" alt="Com Cel. Luzzi">
+                    <p>No dia 05 de janeiro, importantes personalidades se encontraram no saguão do Automóvel Clube de Minas Gerais para a reinauguração das atividades de 2022. 
+Contando um pouco da história desse lindo patrimônio, em dezembro de 1925, nove amigos, conhecidos como o Grupo dos Nove, fundaram a entidade com o nome de “Clube Central”. A primeira sede foi instalada no Palacete Dantas, na praça da liberdade, em 14 de junho de 1926. Um ano depois, o nome foi alterado para “Automóvel Clube de Minas Gerais”, filiado ao Automóvel Clube do Brasil. Em 19 de agosto de 1929, a entidade transferiu-se para o prédio atual, na esquina das avenidas Afonso Pena e Álvares Cabral. Hoje o edifício é referência arquitetônica tombado pelo patrimônio público.
+ Na foto, da esquerda para a direita estavam presentes: Dr, Júlio Martins, o primogênito Gabriel Martins, Dr. Rodrigo, Chanceler Giovanni, Comendador Dilson Machado, Dr. Wanderlley Paiva, Dr, Sérgio Murilo Braga, Dom Evandro Collen, Des. Caldeira Brant </p>
+                </div>
+                
+                
+            </div>
+            
+            <!-- Botão Voltar -->
+            <div class="back-button-container">
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Voltar para Página Inicial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo_veterano_2025-removebg-preview.png" alt="Veteranos Logo">
+                    <p>Preservando a história e construindo o futuro através da educação e empreendedorismo.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">QUEM SOMOS</a></li>
+                        <li><a href="fatos-fotos-1.html">FATOS E FOTOS 1</a></li>
+                        <li><a href="#">FATOS E FOTOS 2</a></li>
+                        <li><a href="#">FATOS E FOTOS 3</a></li>
+                        <li><a href="#">VÍDEOS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> suporte@oveterano.com.br</p>
+                    <p><i class="fas fa-phone"></i> (37) 9959-3941</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VETERANOS - ACADEMAR LTDA (CNPJ: 27.213.468/0001-10). Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu toggle para mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav ul').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
