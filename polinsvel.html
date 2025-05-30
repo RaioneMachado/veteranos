@@ -177,6 +177,25 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .back-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 25px;
+    background: rgba(255,255,255,0.1);
+    color: #00AAFF;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 170, 255, 0.3);
+}
+
+.back-button:hover {
+    background: rgba(0, 170, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 170, 255, 0.2);
+}
     </style>
 </head>
 <body>
@@ -276,6 +295,10 @@
             </div>
         </div>
     </section>
+
+      <div class="container" style="text-align: center; padding-bottom: 60px;">
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
 
     <script>
         document.getElementById('polinsvelForm').addEventListener('submit', function(e) {
