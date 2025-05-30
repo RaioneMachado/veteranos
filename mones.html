@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONÉS - Modelo de Negócio para Micro e Pequena Empresa</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilos para cabeçalho */
+        .mones-header {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+        
+        .mones-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .mones-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .mones-header h1 {
+            font-size: 3rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .mones-header h2 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        /* Estilos para seções de conteúdo */
+        .mones-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+        
+        .mones-section h2 {
+            color: #00AAFF;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .mones-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00AAFF, transparent);
+        }
+        
+        .mones-section p, .mones-section ul {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid #00AAFF;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
+        }
+        
+        .benefit-card h3 {
+            color: #00AAFF;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Estilos para o formulário */
+        .signup-form {
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+        
+        .privacy-check {
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .privacy-check input {
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .privacy-check label {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para o botão */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.1);
+            color: #00AAFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .mones-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .mones-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .signup-form {
+                padding: 30px;
+            }
+            
+            .mones-section {
+                padding: 40px 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="mones-header">
+        <div class="mones-header-content">
+            <h1>MONÉS</h1>
+            <h2>Modelo de Negócio para Micro e Pequena Empresa</h2>
+            <a href="#formulario" class="cta-button">CRIAR MEU MODELO DE NEGÓCIO</a>
+        </div>
+    </header>
+    
+    <section class="mones-section">
+        <div class="container">
+            <h2>O Método MONÉS</h2>
+            <p>O Monés é um modelo de negócio personalizado, pensado para micro e pequenos empreendedores que desejam estruturar, ajustar ou reinventar seu empreendimento com clareza, viabilidade e foco em lucro.</p>
+            
+            <div class="highlight-box">
+                <p>Ele não parte de ideias soltas ou inspirações genéricas — parte da realidade concreta do empreendedor: seus recursos, sua experiência, seu mercado e sua capacidade de execução.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mones-section">
+        <div class="container">
+            <h2>Por que você precisa do MONÉS?</h2>
+            <p>O grande erro de muitos pequenos negócios está em começar a "construir o prédio" sem uma planta segura. O Monés corrige isso:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Planejamento Realista</h3>
+                    <p>Entrega um modelo claro, direto e enxuto, com definição de público, posicionamento e produto viável</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Estrutura Comprovada</h3>
+                    <p>Plano pensado para funcionar de verdade, com o que o empreendedor tem em mãos</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Foco no Lucro</h3>
+                    <p>Precificação adequada, metas realistas e estrutura operacional eficiente</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p>Voltado para quem quer parar de improvisar, evitar prejuízos e sair do modo sobrevivência, o Monés proporciona segurança estratégica e caminho claro para crescimento.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mones-section">
+        <div class="container">
+            <h2>Como Funciona</h2>
+            <p>Com o Monés, o empreendedor sabe o que vender, para quem, como entregar e quanto cobrar, sem desperdício de tempo ou dinheiro.</p>
+            
+            <div class="highlight-box">
+                <p>Negócio que começa certo termina certo. Receba agora seu modelo de negócio personalizado e empreenda com inteligência e resultados.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mones-section" id="formulario">
+        <div class="container">
+            <h2>Crie Seu Modelo de Negócio</h2>
+            <p>Preencha o formulário abaixo para receber seu modelo MONÉS personalizado:</p>
+            
+            <div class="signup-form">
+                <form id="monesForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="privacy-check">
+                        <input type="checkbox" id="privacy" required>
+                        <label for="privacy">Li e aceito os termos de política e privacidade</label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">ENVIAR E RECEBER MEU MODELO</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container" style="text-align: center; padding-bottom: 60px;">
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
+
+    <script>
+        document.getElementById('monesForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação do fluxo descrito
+            alert('Cadastro recebido com sucesso! Você receberá um e-mail com o briefing para preenchimento.');
+            
+            // Aqui você normalmente faria:
+            // 1. Enviar os dados para seu backend
+            // 2. Enviar e-mail de boas-vindas automaticamente
+            // 3. Encaminhar o briefing por e-mail
+            // 4. Após briefing preenchido, enviar o modelo de negócio
+        });
+    </script>
+</body>
+</html>

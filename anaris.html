@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANARIS - Análise de Risco para Tomada de Decisão</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilos para cabeçalho */
+        .anaris-header {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+        
+        .anaris-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .anaris-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .anaris-header h1 {
+            font-size: 3rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .anaris-header h2 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        /* Estilos para seções de conteúdo */
+        .anaris-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+        
+        .anaris-section h2 {
+            color: #00AAFF;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .anaris-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00AAFF, transparent);
+        }
+        
+        .anaris-section p, .anaris-section ul {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid #00AAFF;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
+        }
+        
+        .benefit-card h3 {
+            color: #00AAFF;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Estilos para o formulário */
+        .signup-form {
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+        
+        .privacy-check {
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .privacy-check input {
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .privacy-check label {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para o botão */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.1);
+            color: #00AAFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .anaris-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .anaris-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .signup-form {
+                padding: 30px;
+            }
+            
+            .anaris-section {
+                padding: 40px 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="anaris-header">
+        <div class="anaris-header-content">
+            <h1>ANARIS</h1>
+            <h2>Análise de Risco para Tomada de Decisão</h2>
+            <a href="#formulario" class="cta-button">SOLICITAR DIAGNÓSTICO DE RISCO</a>
+        </div>
+    </header>
+    
+    <section class="anaris-section">
+        <div class="container">
+            <h2>O Método ANARIS</h2>
+            <p>O Anaris é um diagnóstico técnico e estratégico que antecipa cenários críticos e identifica os riscos invisíveis que podem comprometer a estabilidade ou o crescimento de um negócio.</p>
+            
+            <div class="highlight-box">
+                <p>Desenvolvido para empresários e gestores que desejam tomar decisões com base em dados reais e não em intuição, especialmente em momentos de expansão, investimento, reformulação ou crise.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="anaris-section">
+        <div class="container">
+            <h2>Como o ANARIS Protege Seu Negócio</h2>
+            <p>Com o Anaris, são mapeados riscos financeiros, operacionais, mercadológicos, jurídicos, humanos e até reputacionais:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Análise Multidimensional</h3>
+                    <p>Cada risco é analisado em termos de gravidade, probabilidade e impacto</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Plano de Ação</h3>
+                    <p>Construção de estratégias preventivas, corretivas ou adaptativas</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Visão Estratégica</h3>
+                    <p>Transforma o invisível em visível antes que o problema se torne prejuízo</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p>O grande diferencial do Anaris é que ele não evita apenas falhas; ele protege decisões e reduz a margem de erro. Para quem quer crescer com responsabilidade ou investir com segurança.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="anaris-section">
+        <div class="container">
+            <h2>Por que o ANARIS é Indispensável</h2>
+            <p>Mais do que prevenir, o Anaris prepara. Ele oferece ao empresário o que mais importa no mundo real:</p>
+            
+            <div class="highlight-box">
+                <p>Clareza para agir com inteligência e tempo para agir com vantagem. Correr perigo é de mercado, mas risco jamais.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="anaris-section" id="formulario">
+        <div class="container">
+            <h2>Receba Seu Diagnóstico ANARIS</h2>
+            <p>Preencha o formulário abaixo para solicitar sua análise de risco personalizada:</p>
+            
+            <div class="signup-form">
+                <form id="anarisForm">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="privacy-check">
+                        <input type="checkbox" id="privacy" required>
+                        <label for="privacy">Li e aceito os termos de política e privacidade</label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">SOLICITAR DIAGNÓSTICO COMPLETO</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container" style="text-align: center; padding-bottom: 60px;">
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
+
+    <script>
+        document.getElementById('anarisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação do fluxo descrito
+            alert('Solicitação recebida! Você receberá um e-mail com o briefing para preenchimento e acesso ao diagnóstico ANARIS.');
+            
+            // Fluxo completo:
+            // 1. Envio dos dados para o backend
+            // 2. E-mail de boas-vindas com política de privacidade
+            // 3. Recebimento e preenchimento do briefing
+            // 4. Entrega do diagnóstico Anaris
+        });
+    </script>
+</body>
+</html>

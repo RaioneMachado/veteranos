@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTFIL - Captação e Fidelização de Alunos | ACADEMAR</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilos para cabeçalho */
+        .captfil-header {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+        
+        .captfil-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .captfil-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .captfil-header h1 {
+            font-size: 3rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .captfil-header h2 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        /* Estilos para seções de conteúdo */
+        .captfil-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+        
+        .captfil-section h2 {
+            color: #00AAFF;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .captfil-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00AAFF, transparent);
+        }
+        
+        .captfil-section p, .captfil-section ul {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid #00AAFF;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
+        }
+        
+        .benefit-card h3 {
+            color: #00AAFF;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Estilos para o formulário */
+        .signup-form {
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+        
+        .privacy-check {
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .privacy-check input {
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .privacy-check label {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para o botão */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.1);
+            color: #00AAFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .captfil-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .captfil-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .signup-form {
+                padding: 30px;
+            }
+            
+            .captfil-section {
+                padding: 40px 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="captfil-header">
+        <div class="captfil-header-content">
+            <h1>CAPTFIL</h1>
+            <h2>Captação e Fidelização de Alunos</h2>
+            <a href="#formulario" class="cta-button">MARCAR DIAGNÓSTICO GRATUITO</a>
+        </div>
+    </header>
+    
+    <section class="captfil-section">
+        <div class="container">
+            <h2>O Método CAPTFIL</h2>
+            <p>O Captfil é um método estratégico criado a partir da vivência direta do Veterano na formação de mais de 250 mil alunos ao longo de décadas. Não é uma técnica genérica de marketing — é uma fórmula prática e aplicada para atrair, engajar e manter alunos dentro de um modelo de negócio educacional sustentável e lucrativo.</p>
+            
+            <div class="highlight-box">
+                <p>O Captfil trabalha dois pilares fundamentais: captação qualificada (atrair o perfil certo de aluno) e fidelização estruturada (garantindo permanência, satisfação e recorrência de receita com menor custo).</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="captfil-section">
+        <div class="container">
+            <h2>Para quem é o CAPTFIL?</h2>
+            <p>Voltado para escolas, faculdades, academias e qualquer estrutura que dependa de fluxo contínuo de alunos ou clientes, o Captfil:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Reduz a evasão</h3>
+                    <p>Diminui drasticamente a taxa de cancelamentos e desistências</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Melhora previsibilidade</h3>
+                    <p>Proporciona maior controle e previsão do fluxo de caixa</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Fortalece posicionamento</h3>
+                    <p>Consolida sua marca com processos replicáveis e estratégicos</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p>O grande diferencial está no custo-benefício: fidelizar um aluno custa até cinco vezes menos que conquistar um novo. O Captfil resolve isso com clareza, técnica e estratégias já validadas em campo.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="captfil-section">
+        <div class="container">
+            <h2>Resultados Comprovados</h2>
+            <p>Se você quer parar de depender de sorte e boca a boca, o Captfil é a solução para estabilizar e escalar sua base de alunos com inteligência. Afinal, se você aprende a reter alunos, para que captar muitos?</p>
+            
+            <div class="highlight-box">
+                <p>Marque agora seu diagnóstico, estabilize faturamento e aumente 35% de arrecadação reduzindo em até 70% o custo de captação.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="captfil-section" id="formulario">
+        <div class="container">
+            <h2>Agende seu Diagnóstico Gratuito</h2>
+            <p>Preencha o formulário abaixo para agendar uma reunião de diagnóstico e conhecer o método CAPTFIL:</p>
+            
+            <div class="signup-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="privacy-check">
+                        <input type="checkbox" id="privacy" required>
+                        <label for="privacy">Li e aceito os termos de política e privacidade</label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">AGENDAR DIAGNÓSTICO GRATUITO</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container" style="text-align: center; padding-bottom: 60px;">
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
+</body>
+</html>

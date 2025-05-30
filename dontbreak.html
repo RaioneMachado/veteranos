@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't Break - Estratégia para Não Quebrar e Sair no Lucro</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Estilos para cabeçalho */
+        .dontbreak-header {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+        }
+        
+        .dontbreak-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .dontbreak-header-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .dontbreak-header h1 {
+            font-size: 3.5rem;
+            color: #00AAFF;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
+        .dontbreak-header h2 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        /* Estilos para seções de conteúdo */
+        .dontbreak-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+        
+        .dontbreak-section h2 {
+            color: #00AAFF;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .dontbreak-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00AAFF, transparent);
+        }
+        
+        .dontbreak-section p, .dontbreak-section ul {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid #00AAFF;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
+        }
+        
+        .benefit-card h3 {
+            color: #00AAFF;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .bonus-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .bonus-item {
+            text-align: center;
+            margin: 20px;
+            max-width: 300px;
+        }
+        
+        .bonus-item img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+        
+        /* Estilos para o formulário */
+        .signup-form {
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+        
+        .privacy-check {
+            margin: 30px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .privacy-check input {
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .privacy-check label {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para o botão */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background: rgba(255,255,255,0.1);
+            color: #00AAFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .dontbreak-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .dontbreak-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .signup-form {
+                padding: 30px;
+            }
+            
+            .dontbreak-section {
+                padding: 40px 0;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bonus-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dontbreak-header">
+        <div class="dontbreak-header-content">
+            <h1>DON'T BREAK</h1>
+            <h2>Estratégia de Resistência para Não Quebrar e Sair no Lucro</h2>
+            <p>O e-book essencial para empresários em crise criado por quem já quebrou, reergueu e voltou a lucrar</p>
+            <a href="#formulario" class="cta-button">ADQUIRA SEU ESCUDO DE RESISTÊNCIA</a>
+        </div>
+    </header>
+    
+    <section class="dontbreak-section">
+        <div class="container">
+            <h2>O que é o Don't Break?</h2>
+            <p>E-book estratégico essencial para empresários em crise, em processo de falência ou prestes a entrar em colapso financeiro. Conteúdo direto, sem rodeios, baseado em experiência real.</p>
+            
+            <div class="highlight-box">
+                <p>Com taxa de prevenção de falência estimada em 90%, o Don't Break oferece ações práticas para proteger patrimônio, reorganizar finanças e reduzir danos em situações críticas.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dontbreak-section">
+        <div class="container">
+            <h2>O que você vai aprender</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Proteção Patrimonial</h3>
+                    <p>Estratégias para proteger seus bens em situações de crise extrema</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Reorganização Financeira</h3>
+                    <p>Métodos comprovados para reestruturar dívidas e obrigações</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Blindagem Emocional</h3>
+                    <p>Técnicas para manter o foco e evitar decisões impulsivas</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Sair com Lucro</h3>
+                    <p>Como garantir recursos para um possível recomeço</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 40px;">
+                <p>Não é autoajuda. É sobrevivência inteligente, baseada em 40 anos de experiência real e análise estratégica de mercado, jurídica e comportamental.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dontbreak-section">
+        <div class="container">
+            <h2>Bônus Exclusivos</h2>
+            <p>Compre agora e receba esses bônus especiais:</p>
+            
+            <div class="bonus-container">
+                <div class="bonus-item">
+                    <img src="images/primeira imgaem.png" alt="Método de Controle Emocional">
+                    <h3>Cartilha "Método de Controle Emocional para Gestor em Falência"</h3>
+                    <p>Orientações comportamentais para manter o foco em contextos extremos</p>
+                </div>
+                
+                <div class="bonus-item">
+                    <img src="images/RESISTENCIA - AÇÕES - LEI TRABALHISTA - DIAMANTE - CAPA.png" alt="Bônus Exclusivo 2">
+                    <h3>Checklist de Ações Imediatas</h3>
+                    <p>Passo a passo para os primeiros 7 dias críticos</p>
+                </div>
+                
+                <div class="bonus-item">
+                    <img src="images/imagem 3.png" alt="Bônus Exclusivo 3">
+                    <h3>Modelos de Documentos</h3>
+                    <p>Plantas para negociação com credores e fornecedores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="dontbreak-section" id="formulario">
+        <div class="container">
+            <h2>Adquira Agora o Don't Break</h2>
+            <p>Preencha o formulário abaixo para acesso imediato ao e-book e bônus:</p>
+            
+            <div class="signup-form">
+                <form id="dontbreakForm" action="https://pay.hotmart.com/SEUCODIGOAQUI" method="post">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="privacy-check">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">Li e aceito os termos de política e privacidade</label>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">COMPRAR AGORA COM ACESSO IMEDIATO</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container" style="text-align: center; padding-bottom: 60px;">
+        <p style="font-size: 1.5rem; color: #00AAFF; margin-top: 40px;">PROTEGER SIM, QUEBRAR TALVEZ, SEM DINHEIRO JAMAIS!</p>
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
+
+    <script>
+        // Redirecionamento direto para Hotmart pode ser feito pelo action do formulário
+        // Este script é opcional para validações adicionais
+        document.getElementById('dontbreakForm').addEventListener('submit', function(e) {
+            // Validações podem ser adicionadas aqui se necessário
+            // O envio real será tratado pelo Hotmart
+        });
+    </script>
+</body>
+</html>
