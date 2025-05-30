@@ -2157,3 +2157,31 @@ html {
         font-size: 1.8rem;
     }
 }
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.styled-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2D5F85;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-button i {
+    font-size: 18px;
+}
+
+.styled-button:hover {
+    background-color: #244c6b;
+    transform: translateY(-2px);
+}
