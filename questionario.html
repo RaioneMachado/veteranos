@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geoprofissão - Questionário Profissional</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        .container {
+            max-width: 100%;
+            width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        
+        /* Estilos para cabeçalho */
+        .geoprofissao-header {
+            position: relative;
+            min-height: auto;
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.2);
+            padding: 30px 15px;
+        }
+        
+        .geoprofissao-header-content {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        .geoprofissao-header h1 {
+            font-size: 1.8rem;
+            color: #00AAFF;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            word-wrap: break-word;
+        }
+        
+        .geoprofissao-header h2 {
+            font-size: 1rem;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            font-weight: 400;
+            word-wrap: break-word;
+        }
+        
+        /* Estilos para seções de conteúdo */
+        .geoprofissao-section {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .geoprofissao-section h2 {
+            color: #00AAFF;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+            word-wrap: break-word;
+        }
+        
+        .geoprofissao-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #00AAFF, transparent);
+        }
+        
+        .geoprofissao-section p, .geoprofissao-section ul {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 170, 255, 0.1);
+            border-left: 4px solid #00AAFF;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+            word-wrap: break-word;
+        }
+        
+        /* Estilos para o formulário */
+        .questionario-form {
+            background: rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px 15px;
+            margin-top: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            max-width: 100%;
+            padding: 10px 12px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+        
+        .radio-group, .checkbox-group {
+            margin-bottom: 12px;
+            width: 100%;
+        }
+        
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: normal;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            word-wrap: break-word;
+        }
+        
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+            min-width: 16px;
+        }
+        
+        .privacy-check {
+            margin: 25px 0;
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+        }
+        
+        .privacy-check input {
+            margin-right: 10px;
+            margin-top: 3px;
+            min-width: 16px;
+        }
+        
+        .privacy-check label {
+            color: #CCCCCC;
+            font-size: 0.85rem;
+            word-wrap: break-word;
+        }
+        
+        /* Estilos para o botão */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 170, 255, 0.4);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            color: #00AAFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 170, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilo para grupos de perguntas */
+        .question-group {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(0, 170, 255, 0.2);
+            width: 100%;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Melhorias específicas para mobile */
+        @media (max-width: 480px) {
+            .geoprofissao-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .geoprofissao-header h2 {
+                font-size: 0.9rem;
+            }
+            
+            .questionario-form {
+                padding: 15px 10px;
+            }
+            
+            .geoprofissao-section {
+                padding: 20px 0;
+            }
+            
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="tel"],
+            .form-group input[type="number"],
+            .form-group textarea,
+            .form-group select {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="geoprofissao-header">
+        <div class="geoprofissao-header-content">
+            <h1>BRIEFING DE GEOPROFISSÃO</h1>
+            <h2>Profissional Nichado, Faturamento Premium - Versão M 1.0</h2>
+        </div>
+    </header>
+    
+    <section class="geoprofissao-section">
+        <div class="container">
+            <div class="highlight-box">
+                <p><strong>Direitos autorais registrados na Biblioteca Nacional Rio de Janeiro EDA.</strong></p>
+                <p>Nosso objetivo é colocar (ou adequar o currículo, expertise e comportamento bem como falhas e acertos no passado) o homem (profissional) certo no lugar (mercado/nicho) certo no cliente exato (público alvo bem definido/ demanda).</p>
+            </div>
+            
+            <p>Olá, e seja bem-vindo (a) à nossa sessão de diagnóstico estratégico para transformar seu tempo, esforço e conhecimento em um retorno financeiro mais expressivo.</p>
+            <p>Aqui, utilizaremos tecnologia, expertise e a vasta experiência em gestão da nossa equipe para mapear oportunidades concretas que impulsionarão seu crescimento.</p>
+        </div>
+    </section>
+    
+    <section class="geoprofissao-section">
+        <div class="container">
+            <form id="geoprofissaoForm" class="questionario-form">
+                <!-- Bloco 1 - Dados Pessoais -->
+                <div class="question-group">
+  <h2>BLOCO 1 – ENTREVISTA PROFISSIONAL</h2>
+  
+  <h3>1.1 DADOS PESSOAIS</h3>
+  
+  <div class="form-group">
+    <label for="nome_completo">1. Nome completo:</label>
+    <input type="text" id="nome_completo" name="nome_completo" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="idade">2. Idade:</label>
+    <input type="number" id="idade" name="idade" required> anos
+  </div>
+  
+  <div class="form-group">
+    <label>3. Sexo:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="sexo" value="Masculino" required> Masculino</label>
+      <label><input type="radio" name="sexo" value="Feminino"> Feminino</label>
+      <label><input type="radio" name="sexo" value="Outro"> Outro</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="cidade">4. Cidade onde mora:</label>
+    <input type="text" id="cidade" name="cidade" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="estado">5. Estado:</label>
+    <input type="text" id="estado" name="estado" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="pais">6. País onde mora:</label>
+    <input type="text" id="pais" name="pais" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="bairro">7. Bairro:</label>
+    <input type="text" id="bairro" name="bairro">
+  </div>
+  
+  <div class="form-group">
+    <label>8. Estado civil:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="estado_civil" value="Solteiro" required> Solteiro</label>
+      <label><input type="radio" name="estado_civil" value="Casado"> Casado</label>
+      <label><input type="radio" name="estado_civil" value="Divorciado"> Divorciado</label>
+      <label><input type="radio" name="estado_civil" value="Viúvo"> Viúvo</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>9. Tem filhos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="tem_filhos" value="Sim" required> Sim</label>
+      <label><input type="radio" name="tem_filhos" value="Não"> Não</label>
+    </div>
+    <div id="quantos_filhos_container" style="display:none; margin-top:10px;">
+      <label for="quantos_filhos">Se sim, quantos?</label>
+      <input type="number" id="quantos_filhos" name="quantos_filhos" min="1">
+    </div>
+  </div>
+</div>
+
+<div class="question-group">
+  <h3>1.2 FORMAÇÃO E QUALIFICAÇÃO PROFISSIONAL</h3>
+  
+  <div class="form-group">
+    <label>10. Escolaridade:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="escolaridade" value="Ensino Fundamental" required> Ensino Fundamental</label>
+      <label><input type="radio" name="escolaridade" value="Ensino Médio"> Ensino Médio</label>
+      <label><input type="radio" name="escolaridade" value="Superior Incompleto"> Superior Incompleto</label>
+      <label><input type="radio" name="escolaridade" value="Superior Completo"> Superior Completo</label>
+      <label><input type="radio" name="escolaridade" value="Mestrado"> Mestrado</label>
+      <label><input type="radio" name="escolaridade" value="Doutorado"> Doutorado</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>11. Ainda estuda?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="ainda_estuda" value="Sim" required> Sim</label>
+      <label><input type="radio" name="ainda_estuda" value="Não"> Não</label>
+    </div>
+    <div id="qual_curso_container" style="display:none; margin-top:10px;">
+      <label for="qual_curso">Se sim, qual curso?</label>
+      <input type="text" id="qual_curso" name="qual_curso">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="cursos_realizados">12. Quais cursos já realizou?</label>
+    <textarea id="cursos_realizados" name="cursos_realizados" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="ultimo_curso">13. Qual foi o último curso ou palestra que participou ou ministrou na sua área?</label>
+    <input type="text" id="ultimo_curso" name="ultimo_curso">
+  </div>
+</div>
+
+<div class="question-group">
+  <h3>1.3 MARKETING E PRESENÇA DIGITAL</h3>
+  
+  <div class="form-group">
+    <label>14. Você conhece marketing digital?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="marketing_digital" value="Sim" required> Sim</label>
+      <label><input type="radio" name="marketing_digital" value="Não"> Não</label>
+      <label><input type="radio" name="marketing_digital" value="Entendo, mas não sei usar"> Entendo, mas não sei usar</label>
+      <label><input type="radio" name="marketing_digital" value="Alguém faz para mim"> Alguém faz para mim</label>
+      <label><input type="radio" name="marketing_digital" value="Não faço"> Não faço</label>
+      <label><input type="radio" name="marketing_digital" value="Faço mais ou menos"> Faço mais ou menos</label>
+      <label><input type="radio" name="marketing_digital" value="Domino"> Domino</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>15. Você utiliza redes sociais para trabalho?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="redes_sociais_trabalho" value="Sim" required> Sim</label>
+      <label><input type="radio" name="redes_sociais_trabalho" value="Não"> Não</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="seguidores">16. Quantos seguidores possui?</label>
+    <input type="number" id="seguidores" name="seguidores" min="0">
+  </div>
+  
+  <div class="form-group">
+    <label for="seguidores_dia">17. Quantos seguidores consegue por dia?</label>
+    <input type="number" id="seguidores_dia" name="seguidores_dia" min="0">
+  </div>
+  
+  <div class="form-group">
+    <label>18. Você utiliza redes sociais por diversão?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="redes_diversao" value="Pouco" required> Pouco</label>
+      <label><input type="radio" name="redes_diversao" value="Muito"> Muito</label>
+      <label><input type="radio" name="redes_diversao" value="Nada"> Nada</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>19. Consegue reduzir em 80% sua perda de tempo com informações inúteis para o seu objetivo e voltar este tempo para informações de precisão?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="reducao_tempo" value="Sim" required> Sim</label>
+      <label><input type="radio" name="reducao_tempo" value="Não"> Não</label>
+      <label><input type="radio" name="reducao_tempo" value="Talvez"> Talvez</label>
+    </div>
+  </div>
+</div>
+
+<div class="question-group">
+  <h3>1.4 HISTÓRICO PROFISSIONAL</h3>
+  
+  <div class="form-group">
+    <label for="experiencia_profissional">20. Descreva sua experiência profissional:</label>
+    <textarea id="experiencia_profissional" name="experiencia_profissional" rows="4"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="ultimo_emprego">21. Qual foi seu último emprego ou trabalho?</label>
+    <input type="text" id="ultimo_emprego" name="ultimo_emprego">
+  </div>
+  
+  <div class="form-group">
+    <label for="motivo_saida">22. Por que saiu do último emprego ou trabalho?</label>
+    <textarea id="motivo_saida" name="motivo_saida" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="pontos_fortes">23. Se eu perguntasse ao seu último chefe ou cliente sobre seus pontos fortes, o que ele diria?</label>
+    <textarea id="pontos_fortes" name="pontos_fortes" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="pontos_chefe">24. Quais eram os pontos fortes e fracos do seu chefe ou público anterior?</label>
+    <textarea id="pontos_chefe" name="pontos_chefe" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="aumento_faturamento">25. Por que ainda não conseguiu aumentar seu faturamento até agora?</label>
+    <textarea id="aumento_faturamento" name="aumento_faturamento" rows="3"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="reacao_criticas">26. Como você reage a críticas no ambiente de trabalho?</label>
+    <textarea id="reacao_criticas" name="reacao_criticas" rows="3"></textarea>
+  </div>
+</div>
+
+<div class="question-group">
+  <h3>1.5 PREFERÊNCIAS PROFISSIONAIS</h3>
+  
+  <div class="form-group">
+    <label>27. Você se considera um líder ou um seguidor?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="lider_seguidor" value="Líder" required> Líder</label>
+      <label><input type="radio" name="lider_seguidor" value="Seguidor"> Seguidor</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>28. Você prefere salário fixo, comissão ou pró-labore?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="remuneracao" value="Salário fixo" required> Salário fixo</label>
+      <label><input type="radio" name="remuneracao" value="Comissão"> Comissão</label>
+      <label><input type="radio" name="remuneracao" value="Ambos combinados"> Ambos combinados</label>
+      <label><input type="radio" name="remuneracao" value="Retirada de pró-labore"> Retirada de pró-labore</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>29. Possui carteira de motorista?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="carteira_motorista" value="Sim" required> Sim</label>
+      <label><input type="radio" name="carteira_motorista" value="Não"> Não</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>30. Possui veículo próprio?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="veiculo_proprio" value="Sim" required> Sim</label>
+      <label><input type="radio" name="veiculo_proprio" value="Não"> Não</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>31. Tem facilidade para mudar de cidade?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="mudar_cidade" value="Sim" required> Sim</label>
+      <label><input type="radio" name="mudar_cidade" value="Não"> Não</label>
+    </div>
+  </div>
+</div>
+
+<!-- Continuação do Bloco 1.5 -->
+<div class="question-group">
+  <div class="form-group">
+    <label>32. Tem facilidade para mudar de país?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="mudar_pais" value="Sim" required> Sim</label>
+      <label><input type="radio" name="mudar_pais" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>33. Fala inglês?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="fala_ingles" value="Sim" required> Sim</label>
+      <label><input type="radio" name="fala_ingles" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="gosta_ambiente">34. Cite algo que gosta no ambiente de trabalho:</label>
+    <textarea id="gosta_ambiente" name="gosta_ambiente" rows="2"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="nao_gosta_ambiente">35. Cite algo que não gosta no ambiente de trabalho:</label>
+    <textarea id="nao_gosta_ambiente" name="nao_gosta_ambiente" rows="2"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="reciclagem_profissional">36. Você está desatualizado com sua profissão ou tem feito reciclagem constante?</label>
+    <textarea id="reciclagem_profissional" name="reciclagem_profissional" rows="2"></textarea>
+  </div>
+</div>
+
+<!-- Bloco 1.6 CARACTERÍSTICAS PESSOAIS -->
+<div class="question-group">
+  <h3>1.6 CARACTERÍSTICAS PESSOAIS</h3>
+
+  <div class="form-group">
+    <label for="descricao_profissional">36. Como você se descreveria como profissional?</label>
+    <textarea id="descricao_profissional" name="descricao_profissional" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="motivacao_trabalho">37. O que te motiva profissionalmente para sair de casa e ir trabalhar?</label>
+    <textarea id="motivacao_trabalho" name="motivacao_trabalho" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="pressao_trabalho">38. Como lida com pressão no trabalho?</label>
+    <textarea id="pressao_trabalho" name="pressao_trabalho" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="gosta_pessoas">39. Uma coisa que você gosta nas pessoas:</label>
+    <input type="text" id="gosta_pessoas" name="gosta_pessoas">
+  </div>
+
+  <div class="form-group">
+    <label for="detesta_pessoas">40. Uma coisa que você detesta nas pessoas:</label>
+    <input type="text" id="detesta_pessoas" name="detesta_pessoas">
+  </div>
+
+  <div class="form-group">
+    <label for="hobby">41. Qual é o seu hobby?</label>
+    <input type="text" id="hobby" name="hobby">
+  </div>
+
+  <div class="form-group">
+    <label for="ultimo_livro">42. Qual foi o último livro que leu por diversão?</label>
+    <input type="text" id="ultimo_livro" name="ultimo_livro">
+  </div>
+
+  <div class="form-group">
+    <label for="site_favorito">43. Qual o seu site favorito?</label>
+    <input type="text" id="site_favorito" name="site_favorito">
+  </div>
+
+  <div class="form-group">
+    <label>44. Pratica esportes regularmente?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="pratica_esportes" value="Sim" required> Sim</label>
+      <label><input type="radio" name="pratica_esportes" value="Não"> Não</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 1.7 SAÚDE E CAPACIDADE FÍSICA -->
+<div class="question-group">
+  <h3>1.7 SAÚDE E CAPACIDADE FÍSICA</h3>
+
+  <div class="form-group">
+    <label>45. Sua saúde física permite trabalho operacional ou braçal?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="saude_fisica" value="Péssima" required> Péssima</label>
+      <label><input type="radio" name="saude_fisica" value="Ruim"> Ruim</label>
+      <label><input type="radio" name="saude_fisica" value="Reduzida"> Reduzida</label>
+      <label><input type="radio" name="saude_fisica" value="Boa"> Boa</label>
+      <label><input type="radio" name="saude_fisica" value="Ótima"> Ótima</label>
+      <label><input type="radio" name="saude_fisica" value="Excelente"> Excelente</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>46. Possui alguma limitação física?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="limitacao_fisica" value="Sim" required> Sim</label>
+      <label><input type="radio" name="limitacao_fisica" value="Não"> Não</label>
+    </div>
+    <div id="qual_limitacao_container" style="display:none; margin-top:10px;">
+      <label for="qual_limitacao">Se sim, qual?</label>
+      <input type="text" id="qual_limitacao" name="qual_limitacao">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>47. Possui alguma condição de saúde que pode impactar sua vida profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="condicao_saude" value="Sim" required> Sim</label>
+      <label><input type="radio" name="condicao_saude" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>48. Tem alguma modificação que está fazendo ou pretende fazer para melhorar seu faturamento?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="melhoria_faturamento" value="Sim" required> Sim</label>
+      <label><input type="radio" name="melhoria_faturamento" value="Não"> Não</label>
+      <label><input type="radio" name="melhoria_faturamento" value="Estou perdido e/ou protelando"> Estou perdido e/ou protelando</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 1.8 ASPECTOS LEGAIS E FINANCEIROS -->
+<div class="question-group">
+  <h3>1.8 ASPECTOS LEGAIS E FINANCEIROS</h3>
+
+  <div class="form-group">
+    <label>49. Tem algum processo judicial contra você que atrapalha seu crescimento?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="processo_judicial" value="Sim" required> Sim</label>
+      <label><input type="radio" name="processo_judicial" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>50. Está com algum problema de cadastro positivo ou crédito?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="problema_credito" value="Sim" required> Sim</label>
+      <label><input type="radio" name="problema_credito" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>51. Você possui dívida em banco que está comprometendo sua renda?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="divida_banco" value="Sim" required> Sim</label>
+      <label><input type="radio" name="divida_banco" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>52. Possui dívida de refinanciamento de dívida?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="refinanciamento" value="Sim" required> Sim</label>
+      <label><input type="radio" name="refinanciamento" value="Não"> Não</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 1.9 PROJETOS E PLANEJAMENTO FUTURO -->
+<div class="question-group">
+  <h3>1.9 PROJETOS E PLANEJAMENTO FUTURO</h3>
+
+  <div class="form-group">
+    <label for="interesse_mudanca">53. Por que você está interessado em mudar seu faturamento?</label>
+    <textarea id="interesse_mudanca" name="interesse_mudanca" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="projeto_futuro">54. Qual seu projeto de futuro? Explique detalhadamente.</label>
+    <textarea id="projeto_futuro" name="projeto_futuro" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="diferencial_profissional">55. O que você pode oferecer ao mercado como profissional naquilo que faz melhor que os outros?</label>
+    <textarea id="diferencial_profissional" name="diferencial_profissional" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="solucao_marte">56. Como você resolveria um problema se estivesse em Marte?</label>
+    <textarea id="solucao_marte" name="solucao_marte" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="orgulho_pessoal">57. Diga algo que fez na vida pessoal que te orgulha:</label>
+    <textarea id="orgulho_pessoal" name="orgulho_pessoal" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="erro_aprendizado">58. Conte um erro que cometeu e o que aprendeu com ele:</label>
+    <textarea id="erro_aprendizado" name="erro_aprendizado" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="sucesso_exclusivo">59. Conte um sucesso que foi exclusivamente seu:</label>
+    <textarea id="sucesso_exclusivo" name="sucesso_exclusivo" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="sonho_consumo">60. Qual seu sonho de consumo? Descreva.</label>
+    <textarea id="sonho_consumo" name="sonho_consumo" rows="3"></textarea>
+  </div>
+</div>
+
+<!-- BLOCO 1.10 EXPERIÊNCIAS DIVERSAS -->
+<div class="question-group">
+  <h3>1.10 EXPERIÊNCIAS DIVERSAS</h3>
+
+  <div class="form-group">
+    <label>61. Tem habilidades para dirigir em grandes capitais?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="dirigir_capitais" value="Sim" required> Sim</label>
+      <label><input type="radio" name="dirigir_capitais" value="Não"> Não</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="experiencia_paises">62. Conhece outros países? Relate os pontos fortes e fracos que observou:</label>
+    <textarea id="experiencia_paises" name="experiencia_paises" rows="4"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>63. Possui passaporte?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="possui_passaporte" value="Sim" required> Sim</label>
+      <label><input type="radio" name="possui_passaporte" value="Não"> Não</label>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 1.11 PERGUNTAS ABERTAS -->
+<div class="question-group">
+  <h3>1.11 PERGUNTAS ABERTAS</h3>
+
+  <div class="form-group">
+    <label>64. Você possui recursos suficientes para investir em um novo segmento, ou reposicionamento?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="recursos_investimento" value="Sim" required> Sim</label>
+      <label><input type="radio" name="recursos_investimento" value="Não"> Não</label>
+      <label><input type="radio" name="recursos_investimento" value="Possuo mas não vou fazer"> Possuo mas não vou fazer</label>
+      <label><input type="radio" name="recursos_investimento" value="Possuo e vou fazer"> Possuo e vou fazer</label>
+      <label><input type="radio" name="recursos_investimento" value="Depende"> Depende</label>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 1.11 INVESTIMENTO FINANCEIRO -->
+<div class="question-group">
+  <h3>1.11 INVESTIMENTO FINANCEIRO</h3>
+
+  <div class="form-group">
+    <label for="perguntas_faltantes">64. Quais perguntas eu deveria ter feito para você?</label>
+    <textarea id="perguntas_faltantes" name="perguntas_faltantes" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="perguntas_usuario">65. Quais perguntas você gostaria de fazer para mim?</label>
+    <textarea id="perguntas_usuario" name="perguntas_usuario" rows="3"></textarea>
+  </div>
+</div>
+
+<!-- BLOCO 2 - PERFIL PROFISSIONAL M - 2.0 -->
+<div class="question-group">
+  <h2>BLOCO 2 - PERFIL PROFISSIONAL M - 2.0</h2>
+  <p>Escolha a palavra que melhor te define em cada grupo. Para cada grupo, selecione apenas uma opção que mais representa sua personalidade.</p>
+
+  <!-- Grupo 1 -->
+  <div class="form-group">
+    <label>Grupo 1</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo1" value="Animado" required> Animado</label>
+      <label><input type="radio" name="grupo1" value="Aventureiro"> Aventureiro</label>
+      <label><input type="radio" name="grupo1" value="Analítico"> Analítico</label>
+      <label><input type="radio" name="grupo1" value="Adaptável"> Adaptável</label>
+    </div>
+  </div>
+
+  <!-- Grupo 2 -->
+  <div class="form-group">
+    <label>Grupo 2</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo2" value="Brincalhão" required> Brincalhão</label>
+      <label><input type="radio" name="grupo2" value="Persuasivo"> Persuasivo</label>
+      <label><input type="radio" name="grupo2" value="Persistente"> Persistente</label>
+      <label><input type="radio" name="grupo2" value="Sereno"> Sereno</label>
+    </div>
+  </div>
+
+  <!-- Grupo 3 -->
+  <div class="form-group">
+    <label>Grupo 3</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo3" value="Sociável" required> Sociável</label>
+      <label><input type="radio" name="grupo3" value="Energético"> Energético</label>
+      <label><input type="radio" name="grupo3" value="Doador"> Doador</label>
+      <label><input type="radio" name="grupo3" value="Submisso"> Submisso</label>
+    </div>
+  </div>
+
+  <!-- Grupo 4 -->
+  <div class="form-group">
+    <label>Grupo 4</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo4" value="Convincente" required> Convincente</label>
+      <label><input type="radio" name="grupo4" value="Competitivo"> Competitivo</label>
+      <label><input type="radio" name="grupo4" value="Atencioso"> Atencioso</label>
+      <label><input type="radio" name="grupo4" value="Controlado"> Controlado</label>
+    </div>
+  </div>
+
+  <!-- Grupo 5 -->
+  <div class="form-group">
+    <label>Grupo 5</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo5" value="Estimulante" required> Estimulante</label>
+      <label><input type="radio" name="grupo5" value="Habilidoso"> Habilidoso</label>
+      <label><input type="radio" name="grupo5" value="Respeitoso"> Respeitoso</label>
+      <label><input type="radio" name="grupo5" value="Reservado"> Reservado</label>
+    </div>
+  </div>
+
+  <!-- Grupo 6 -->
+  <div class="form-group">
+    <label>Grupo 6</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo6" value="Espirituoso" required> Espirituoso</label>
+      <label><input type="radio" name="grupo6" value="Auto-suficiente"> Auto-suficiente</label>
+      <label><input type="radio" name="grupo6" value="Sensível"> Sensível</label>
+      <label><input type="radio" name="grupo6" value="Satisfeito"> Satisfeito</label>
+    </div>
+  </div>
+
+  <!-- Grupo 7 -->
+  <div class="form-group">
+    <label>Grupo 7</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo7" value="Charmoso" required> Charmoso</label>
+      <label><input type="radio" name="grupo7" value="Positivo"> Positivo</label>
+      <label><input type="radio" name="grupo7" value="Planejador"> Planejador</label>
+      <label><input type="radio" name="grupo7" value="Paciente"> Paciente</label>
+    </div>
+  </div>
+
+  <!-- Grupo 8 -->
+  <div class="form-group">
+    <label>Grupo 8</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo8" value="Espontâneo" required> Espontâneo</label>
+      <label><input type="radio" name="grupo8" value="Seguro"> Seguro</label>
+      <label><input type="radio" name="grupo8" value="Organizado"> Organizado</label>
+      <label><input type="radio" name="grupo8" value="Tímido"> Tímido</label>
+    </div>
+  </div>
+
+  <!-- Grupo 9 -->
+  <div class="form-group">
+    <label>Grupo 9</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo9" value="Engraçado" required> Engraçado</label>
+      <label><input type="radio" name="grupo9" value="Vigoroso"> Vigoroso</label>
+      <label><input type="radio" name="grupo9" value="Fiel"> Fiel</label>
+      <label><input type="radio" name="grupo9" value="Amigável"> Amigável</label>
+    </div>
+  </div>
+
+  <!-- Grupo 10 -->
+  <div class="form-group">
+    <label>Grupo 10</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo10" value="Alegre" required> Alegre</label>
+      <label><input type="radio" name="grupo10" value="Confiante"> Confiante</label>
+      <label><input type="radio" name="grupo10" value="Culto"> Culto</label>
+      <label><input type="radio" name="grupo10" value="Previsível"> Previsível</label>
+    </div>
+  </div>
+
+  <!-- Grupo 11 -->
+  <div class="form-group">
+    <label>Grupo 11</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo11" value="Demonstrativo" required> Demonstrativo</label>
+      <label><input type="radio" name="grupo11" value="Decidido"> Decidido</label>
+      <label><input type="radio" name="grupo11" value="Profundo"> Profundo</label>
+      <label><input type="radio" name="grupo11" value="Irônico"> Irônico</label>
+    </div>
+  </div>
+
+  <!-- Grupo 12 -->
+  <div class="form-group">
+    <label>Grupo 12</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo12" value="Conversador" required> Conversador</label>
+      <label><input type="radio" name="grupo12" value="Firme"> Firme</label>
+      <label><input type="radio" name="grupo12" value="Pensativo"> Pensativo</label>
+      <label><input type="radio" name="grupo12" value="Tolerante"> Tolerante</label>
+    </div>
+  </div>
+
+  <!-- Grupo 13 -->
+  <div class="form-group">
+    <label>Grupo 13</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo13" value="Otimista" required> Otimista</label>
+      <label><input type="radio" name="grupo13" value="Franco"> Franco</label>
+      <label><input type="radio" name="grupo13" value="Ordeiro"> Ordeiro</label>
+      <label><input type="radio" name="grupo13" value="Serviçal"> Serviçal</label>
+    </div>
+  </div>
+
+  <!-- Grupo 14 -->
+  <div class="form-group">
+    <label>Grupo 14</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo14" value="Encantador" required> Encantador</label>
+      <label><input type="radio" name="grupo14" value="Audacioso"> Audacioso</label>
+      <label><input type="radio" name="grupo14" value="Minucioso"> Minucioso</label>
+      <label><input type="radio" name="grupo14" value="Diplomático"> Diplomático</label>
+    </div>
+  </div>
+
+  <!-- Grupo 15 -->
+  <div class="form-group">
+    <label>Grupo 15</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo15" value="Inspirado" required> Inspirado</label>
+      <label><input type="radio" name="grupo15" value="Independente"> Independente</label>
+      <label><input type="radio" name="grupo15" value="Idealista"> Idealista</label>
+      <label><input type="radio" name="grupo15" value="Inofensivo"> Inofensivo</label>
+    </div>
+  </div>
+
+  <!-- Grupo 16 -->
+  <div class="form-group">
+    <label>Grupo 16</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo16" value="Desembaraçado" required> Desembaraçado</label>
+      <label><input type="radio" name="grupo16" value="Ativo"> Ativo</label>
+      <label><input type="radio" name="grupo16" value="Musical"> Musical</label>
+      <label><input type="radio" name="grupo16" value="Mediador"> Mediador</label>
+    </div>
+  </div>
+
+  <!-- Grupo 17 -->
+  <div class="form-group">
+    <label>Grupo 17</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo17" value="Vivo" required> Vivo</label>
+      <label><input type="radio" name="grupo17" value="Líder"> Líder</label>
+      <label><input type="radio" name="grupo17" value="Leal"> Leal</label>
+      <label><input type="radio" name="grupo17" value="Ouvinte"> Ouvinte</label>
+    </div>
+  </div>
+
+  <!-- Grupo 18 -->
+  <div class="form-group">
+    <label>Grupo 18</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo18" value="Popular" required> Popular</label>
+      <label><input type="radio" name="grupo18" value="Produtivo"> Produtivo</label>
+      <label><input type="radio" name="grupo18" value="Perfeccionista"> Perfeccionista</label>
+      <label><input type="radio" name="grupo18" value="Agradável"> Agradável</label>
+    </div>
+  </div>
+
+  <!-- Grupo 19 -->
+  <div class="form-group">
+    <label>Grupo 19</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo19" value="Metido" required> Metido</label>
+      <label><input type="radio" name="grupo19" value="Mandão"> Mandão</label>
+      <label><input type="radio" name="grupo19" value="Acanhado"> Acanhado</label>
+      <label><input type="radio" name="grupo19" value="Vazio"> Vazio</label>
+    </div>
+  </div>
+
+  <!-- Grupo 20 -->
+  <div class="form-group">
+    <label>Grupo 20</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo20" value="Repetitivo" required> Repetitivo</label>
+      <label><input type="radio" name="grupo20" value="Inflexível"> Inflexível</label>
+      <label><input type="radio" name="grupo20" value="Ressentido"> Ressentido</label>
+      <label><input type="radio" name="grupo20" value="Relutante"> Relutante</label>
+    </div>
+  </div>
+</div>
+
+<!-- Continuação do Bloco 2 - Grupos 32 a 40 -->
+<div class="question-group">
+  <!-- Grupo 32 -->
+  <div class="form-group">
+    <label>Grupo 32</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo32" value="Esquecido" required> Esquecido</label>
+      <label><input type="radio" name="grupo32" value="Franco"> Franco</label>
+      <label><input type="radio" name="grupo32" value="Complicado"> Complicado</label>
+      <label><input type="radio" name="grupo32" value="Medroso"> Medroso</label>
+    </div>
+  </div>
+
+  <!-- Grupo 33 -->
+  <div class="form-group">
+    <label>Grupo 33</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo33" value="Imprevisível" required> Imprevisível</label>
+      <label><input type="radio" name="grupo33" value="Frio"> Frio</label>
+      <label><input type="radio" name="grupo33" value="Impopular"> Impopular</label>
+      <label><input type="radio" name="grupo33" value="Desligado"> Desligado</label>
+    </div>
+  </div>
+
+  <!-- Grupo 34 -->
+  <div class="form-group">
+    <label>Grupo 34</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo34" value="Permissivo" required> Permissivo</label>
+      <label><input type="radio" name="grupo34" value="Orgulhoso"> Orgulhoso</label>
+      <label><input type="radio" name="grupo34" value="Cauteloso"> Cauteloso</label>
+      <label><input type="radio" name="grupo34" value="Simples"> Simples</label>
+    </div>
+  </div>
+
+  <!-- Grupo 35 -->
+  <div class="form-group">
+    <label>Grupo 35</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo35" value="Ingênuo" required> Ingênuo</label>
+      <label><input type="radio" name="grupo35" value="Ousado"> Ousado</label>
+      <label><input type="radio" name="grupo35" value="Negativo"> Negativo</label>
+      <label><input type="radio" name="grupo35" value="Indiferente"> Indiferente</label>
+    </div>
+  </div>
+
+  <!-- Grupo 36 -->
+  <div class="form-group">
+    <label>Grupo 36</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo36" value="Tagarela" required> Tagarela</label>
+      <label><input type="radio" name="grupo36" value="Indelicado"> Indelicado</label>
+      <label><input type="radio" name="grupo36" value="Sensível demais"> Sensível demais</label>
+      <label><input type="radio" name="grupo36" value="Tímido"> Tímido</label>
+    </div>
+  </div>
+
+  <!-- Grupo 37 -->
+  <div class="form-group">
+    <label>Grupo 37</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo37" value="Inconstante" required> Inconstante</label>
+      <label><input type="radio" name="grupo37" value="Intolerante"> Intolerante</label>
+      <label><input type="radio" name="grupo37" value="Introvertido"> Introvertido</label>
+      <label><input type="radio" name="grupo37" value="Apático"> Apático</label>
+    </div>
+  </div>
+
+  <!-- Grupo 38 -->
+  <div class="form-group">
+    <label>Grupo 38</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo38" value="Convencido" required> Convencido</label>
+      <label><input type="radio" name="grupo38" value="Obstinado"> Obstinado</label>
+      <label><input type="radio" name="grupo38" value="Cético"> Cético</label>
+      <label><input type="radio" name="grupo38" value="Lento"> Lento</label>
+    </div>
+  </div>
+
+  <!-- Grupo 39 -->
+  <div class="form-group">
+    <label>Grupo 39</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo39" value="Distraído" required> Distraído</label>
+      <label><input type="radio" name="grupo39" value="Irritável"> Irritável</label>
+      <label><input type="radio" name="grupo39" value="Desconfiado"> Desconfiado</label>
+      <label><input type="radio" name="grupo39" value="Vagaroso"> Vagaroso</label>
+    </div>
+  </div>
+
+  <!-- Grupo 40 -->
+  <div class="form-group">
+    <label>Grupo 40</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo40" value="Instável" required> Instável</label>
+      <label><input type="radio" name="grupo40" value="Astuto"> Astuto</label>
+      <label><input type="radio" name="grupo40" value="Crítico"> Crítico</label>
+      <label><input type="radio" name="grupo40" value="Acomodado"> Acomodado</label>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 3 – ESTILO COGNITIVO E COMPORTAMENTAL -->
+<div class="question-group">
+  <h2>BRIEFING DE GEOPROFISSÃO. M - 3.0</h2>
+  <h3>BLOCO 3 – ESTILO COGNITIVO E COMPORTAMENTAL</h3>
+  <p>Instruções: Para cada grupo, selecione apenas uma opção que mais representa seu estilo de pensamento e comportamento profissional.</p>
+
+  <!-- Grupo 1 -->
+  <div class="form-group">
+    <label>Grupo 1 – Como você lida com novas informações?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo1" value="Absorvo rapidamente" required> Absorvo rapidamente e me adapto com facilidade</label>
+      <label><input type="radio" name="grupo_cognitivo1" value="Preciso de tempo"> Preciso de tempo para processar antes de tomar uma decisão</label>
+      <label><input type="radio" name="grupo_cognitivo1" value="Analiso detalhes"> Analiso todos os detalhes antes de agir</label>
+      <label><input type="radio" name="grupo_cognitivo1" value="Método estabelecido"> Prefiro seguir um método ou padrão estabelecido</label>
+      <label><input type="radio" name="grupo_cognitivo1" value="Atualizado"> Estou sempre atualizado com o mercado</label>
+      <label><input type="radio" name="grupo_cognitivo1" value="Desatualizado"> Estou desatualizado com as novidades</label>
+    </div>
+  </div>
+
+  <!-- Grupo 2 -->
+  <div class="form-group">
+    <label>Grupo 2 – Como você toma decisões?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo2" value="Lógica e fatos" required> Baseio-me mais na lógica e nos fatos</label>
+      <label><input type="radio" name="grupo_cognitivo2" value="Sentimentos"> Levo em conta os sentimentos e impacto nas pessoas</label>
+      <label><input type="radio" name="grupo_cognitivo2" value="Equilíbrio"> Equilibro lógica e emoção para decidir</label>
+      <label><input type="radio" name="grupo_cognitivo2" value="Impulsivo"> Costumo ser impulsivo e decidir no momento</label>
+    </div>
+  </div>
+
+  <!-- Grupo 3 -->
+  <div class="form-group">
+    <label>Grupo 3 – Como você prefere trabalhar?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo3" value="Ambientes dinâmicos" required> Gosto de ambientes dinâmicos e imprevisíveis</label>
+      <label><input type="radio" name="grupo_cognitivo3" value="Estrutura"> Prefiro estrutura e organização no dia a dia</label>
+      <label><input type="radio" name="grupo_cognitivo3" value="Flexível"> Sou flexível, mas gosto de ter um plano de ação</label>
+      <label><input type="radio" name="grupo_cognitivo3" value="Liberdade"> Trabalho melhor quando tenho total liberdade</label>
+    </div>
+  </div>
+
+  <!-- Grupo 4 -->
+  <div class="form-group">
+    <label>Grupo 4 – Como você se comunica com os outros?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo4" value="Objetivo" required> De forma objetiva e direta</label>
+      <label><input type="radio" name="grupo_cognitivo4" value="Detalhista"> Explico com detalhes e dou exemplos</label>
+      <label><input type="radio" name="grupo_cognitivo4" value="Conversador"> Gosto de conversar e conectar com as pessoas antes de falar de trabalho</label>
+      <label><input type="radio" name="grupo_cognitivo4" value="Ouvinte"> Prefiro ouvir mais do que falar</label>
+    </div>
+  </div>
+
+  <!-- Grupo 5 -->
+  <div class="form-group">
+    <label>Grupo 5 – Como você reage a desafios?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo5" value="Oportunidades" required> Vejo desafios como oportunidades de crescimento</label>
+      <label><input type="radio" name="grupo_cognitivo5" value="Analisar riscos"> Analiso todos os riscos antes de agir</label>
+      <label><input type="radio" name="grupo_cognitivo5" value="Motivação externa"> Preciso de motivação externa para enfrentar desafios</label>
+      <label><input type="radio" name="grupo_cognitivo5" value="Evitar conflitos"> Tento evitar conflitos ou dificuldades sempre que possível</label>
+    </div>
+  </div>
+
+  <!-- Grupo 6 -->
+  <div class="form-group">
+    <label>Grupo 6 – Como você lida com mudanças no trabalho?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo6" value="Adaptável" required> Me adapto facilmente e gosto de inovação</label>
+      <label><input type="radio" name="grupo_cognitivo6" value="Planejamento"> Preciso de planejamento para mudanças bruscas</label>
+      <label><input type="radio" name="grupo_cognitivo6" value="Rotina"> Tento manter minha rotina e evitar mudanças desnecessárias</label>
+      <label><input type="radio" name="grupo_cognitivo6" value="Estabilidade"> Sinto desconforto com mudanças e prefiro estabilidade</label>
+    </div>
+  </div>
+
+  <!-- Grupo 7 -->
+  <div class="form-group">
+    <label>Grupo 7 – Como você enxerga sua carreira profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo7" value="Crescer rápido" required> Quero crescer rápido e alcançar altos ganhos</label>
+      <label><input type="radio" name="grupo_cognitivo7" value="Estabilidade"> Busco estabilidade e segurança financeira</label>
+      <label><input type="radio" name="grupo_cognitivo7" value="Equilíbrio"> Quero equilíbrio entre vida profissional e pessoal</label>
+      <label><input type="radio" name="grupo_cognitivo7" value="Impactar"> Meu foco é impactar pessoas mais do que ganhar dinheiro</label>
+    </div>
+  </div>
+
+  <!-- Grupo 8 -->
+  <div class="form-group">
+    <label>Grupo 8 – Como você lida com feedbacks (críticas)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo8" value="Aceito bem" required> Aceito bem e utilizo para melhorar</label>
+      <label><input type="radio" name="grupo_cognitivo8" value="Intuição"> Levo em consideração, mas sigo minha intuição</label>
+      <label><input type="radio" name="grupo_cognitivo8" value="Desconfortável"> Fico desconfortável, mas tento absorver o aprendizado</label>
+      <label><input type="radio" name="grupo_cognitivo8" value="Evito"> Não gosto de críticas e evito esse tipo de situação</label>
+    </div>
+  </div>
+
+  <!-- Grupo 9 -->
+  <div class="form-group">
+    <label>Grupo 9 – Qual sua abordagem para resolver problemas?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo9" value="Rápido" required> Resolvo rapidamente sem perder tempo</label>
+      <label><input type="radio" name="grupo_cognitivo9" value="Analisar"> Preciso analisar todas as opções antes de agir</label>
+      <label><input type="radio" name="grupo_cognitivo9" value="Apoio"> Busco apoio de outras pessoas antes de decidir</label>
+      <label><input type="radio" name="grupo_cognitivo9" value="Delegar"> Prefiro que outra pessoa lide com problemas difíceis</label>
+    </div>
+  </div>
+
+  <!-- Grupo 10 -->
+  <div class="form-group">
+    <label>Grupo 10 – Qual seu nível de organização no trabalho?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="grupo_cognitivo10" value="Organizado" required> Extremamente organizado, gosto de planejar tudo</label>
+      <label><input type="radio" name="grupo_cognitivo10" value="Método flexível"> Tenho um método, mas sou flexível</label>
+      <label><input type="radio" name="grupo_cognitivo10" value="Espontâneo"> Trabalho de forma espontânea e sem planejamento fixo</label>
+      <label><input type="radio" name="grupo_cognitivo10" value="Desorganizado"> Sou mais desorganizado, mas sempre dou um jeito</label>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 4 – ESTADO EMOCIONAL, CRENÇAS E CRESCIMENTO PROFISSIONAL -->
+<div class="question-group">
+  <h2>BLOCO 4 – ESTADO EMOCIONAL, CRENÇAS E CRESCIMENTO PROFISSIONAL - Mindset</h2>
+  <p>Instruções: Para cada pergunta, selecione apenas uma opção que melhor representa sua situação atual.</p>
+
+  <h3>4.1 - ESTADO EMOCIONAL E SAÚDE MENTAL</h3>
+
+  <div class="form-group">
+    <label>1. Você se considera uma pessoa feliz?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="felicidade" value="Sim" required> Sim</label>
+      <label><input type="radio" name="felicidade" value="Não"> Não</label>
+      <label><input type="radio" name="felicidade" value="Às vezes"> Às vezes</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>2. Você sente que está no caminho certo profissionalmente?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="caminho_profissional" value="Sim" required> Sim</label>
+      <label><input type="radio" name="caminho_profissional" value="Não"> Não</label>
+      <label><input type="radio" name="caminho_profissional" value="Dúvidas"> Tenho dúvidas</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>3. Você se sente satisfeito com sua rotina profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="satisfacao_profissional" value="Sim" required> Sim</label>
+      <label><input type="radio" name="satisfacao_profissional" value="Não"> Não</label>
+      <label><input type="radio" name="satisfacao_profissional" value="Algumas vezes"> Algumas vezes</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>4. Você sente que sua vida profissional impacta sua saúde mental?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="impacto_saude_mental" value="Negativo" required> Sim, de forma negativa</label>
+      <label><input type="radio" name="impacto_saude_mental" value="Positivo"> Sim, de forma positiva</label>
+      <label><input type="radio" name="impacto_saude_mental" value="Não impacta"> Não impacta</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>5. Com que frequência você sente ansiedade ou estresse relacionado ao trabalho?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="frequencia_estresse" value="Diariamente" required> Diariamente</label>
+      <label><input type="radio" name="frequencia_estresse" value="Algumas vezes"> Algumas vezes por semana</label>
+      <label><input type="radio" name="frequencia_estresse" value="Raramente"> Raramente</label>
+      <label><input type="radio" name="frequencia_estresse" value="Nunca"> Nunca</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>6. Você possui diagnóstico de alguma condição emocional como ansiedade ou depressão?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="diagnostico_emocional" value="Sim" required> Sim</label>
+      <label><input type="radio" name="diagnostico_emocional" value="Não"> Não</label>
+      <label><input type="radio" name="diagnostico_emocional" value="Suspeita"> Suspeito que tenho, mas nunca fui diagnosticado</label>
+    </div>
+  </div>
+
+  <h3>4.2 - CRENÇAS, INFLUÊNCIAS E AUTOIMAGEM</h3>
+
+  <div class="form-group">
+    <label>7. Você acredita que tem crenças que limitam seu crescimento profissional (família, passado, ideologias, religião etc.)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="crencas_limitantes" value="Sim" required> Sim</label>
+      <label><input type="radio" name="crencas_limitantes" value="Não"> Não</label>
+      <label><input type="radio" name="crencas_limitantes" value="Talvez"> Talvez</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>8. Você acredita que sua autoestima impacta seu desempenho profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="autoestima_profissional" value="Sim" required> Sim</label>
+      <label><input type="radio" name="autoestima_profissional" value="Não"> Não</label>
+      <label><input type="radio" name="autoestima_profissional" value="Nunca pensei"> Nunca pensei nisso</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>9. Você se sente confortável em ambientes competitivos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="ambientes_competitivos" value="Sim" required> Sim, gosto de desafios</label>
+      <label><input type="radio" name="ambientes_competitivos" value="Depende"> Depende da situação</label>
+      <label><input type="radio" name="ambientes_competitivos" value="Não"> Não, prefiro ambientes mais cooperativos</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>10. Você acredita que seu círculo social influencia seu crescimento profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="influencia_social" value="Positiva" required> Sim, de forma positiva</label>
+      <label><input type="radio" name="influencia_social" value="Negativa"> Sim, de forma negativa</label>
+      <label><input type="radio" name="influencia_social" value="Não influencia"> Não influencia</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>11. Você tem dificuldades para se comunicar e se apresentar profissionalmente?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="dificuldade_comunicacao" value="Sim" required> Sim</label>
+      <label><input type="radio" name="dificuldade_comunicacao" value="Não"> Não</label>
+      <label><input type="radio" name="dificuldade_comunicacao" value="Às vezes"> Às vezes</label>
+    </div>
+  </div>
+
+  <h3>4.3 - PLANEJAMENTO E DESENVOLVIMENTO PROFISSIONAL</h3>
+
+  <div class="form-group">
+    <label>12. Você sente que poderia estar ganhando mais se estivesse no nicho certo?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="nicho_certo" value="Sim" required> Sim</label>
+      <label><input type="radio" name="nicho_certo" value="Não"> Não</label>
+      <label><input type="radio" name="nicho_certo" value="Nunca pensei"> Nunca pensei nisso</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>13. Você gosta da sua área de formação?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="gosta_area" value="Sim" required> Sim</label>
+      <label><input type="radio" name="gosta_area" value="Não"> Não</label>
+      <label><input type="radio" name="gosta_area" value="Dúvidas"> Tenho dúvidas</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>14. Se pudesse voltar no tempo, escolheria a mesma formação?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="escolheria_formacao" value="Sim" required> Sim</label>
+      <label><input type="radio" name="escolheria_formacao" value="Não"> Não</label>
+      <label><input type="radio" name="escolheria_formacao" value="Talvez"> Talvez</label>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>15. Sua escolha profissional foi baseada em:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="base_escolha" value="Vocação" required> Vocação</label>
+      <label><input type="radio" name="base_escolha" value="Família"> Influência familiar</label>
+      <label><input type="radio" name="base_escolha" value="Oportunidade"> Oportunidade financeira</label>
+      <label><input type="radio" name="base_escolha" value="Falta opção"> Falta de opção</label>
+      <label><input type="radio" name="base_escolha" value="Amo"> Amo o que eu faço</label>
+    </div>
+  </div>
+</div>
+
+<section class="geoprofissao-section">
+    <div class="container">
+        <form id="geoprofissaoForm" class="questionario-form">
+            
+            <!-- PERGUNTAS 16-23 -->
+            <div class="form-group">
+                <label>16. Você trabalha na área para a qual se formou?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="q16" value="Sim" required> a) Sim</label>
+                    <label><input type="radio" name="q16" value="Não, mas quero migrar"> b) Não, mas quero migrar</label>
+                    <label><input type="radio" name="q16" value="Não, e não penso em migrar"> c) Não, e não penso em migrar</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>17. Você sente que está estagnado profissionalmente?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="q17" value="Sim" required> a) Sim</label>
+                    <label><input type="radio" name="q17" value="Não"> b) Não</label>
+                    <label><input type="radio" name="q17" value="Algumas vezes"> c) Algumas vezes</label>
+                </div>
+            </div>
+
+            <!-- CONTINUAÇÃO DAS PERGUNTAS 18-23 -->
+            <div class="form-group">
+                <label>18. Você já pensou em empreender ou mudar de nicho?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="q18" value="Sim, e já tentei" required> a) Sim, e já tentei</label>
+                    <label><input type="radio" name="q18" value="Sim, mas nunca tentei"> b) Sim, mas nunca tentei</label>
+                    <label><input type="radio" name="q18" value="Não tenho interesse"> c) Não tenho interesse</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>19. Você sente que tem habilidades ou talentos subutilizados?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="q19" value="Sim" required> a) Sim</label>
+                    <label><input type="radio" name="q19" value="Não"> b) Não</label>
+                    <label><input type="radio" name="q19" value="Nunca pensei nisso"> c) Nunca pensei nisso</label>
+                </div>
+            </div>
+
+            <!-- SEÇÃO BRIEFING -->
+            <div class="highlight-box">
+                <h2>BRIEFING DE GEOPROFISSÃO. M - 5.0</h2>
+                <p>Instruções: Responda cada pergunta de acordo com sua realidade profissional...</p>
+            </div>
+
+            <!-- SEÇÃO 5.1 - FORÇAS -->
+            <div class="form-group">
+                <label>1. Quais são suas maiores habilidades profissionais?</label>
+                <textarea name="q5_1" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>2. Como você se diferencia dos outros profissionais da sua área?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="q5_2" value="Especialista em nicho" required> a) Sou especialista em uma área de nicho pouco explorado</label>
+                    <label><input type="radio" name="q5_2" value="Comunicação persuasiva"> b) Tenho uma comunicação persuasiva e sou reconhecido por isso</label>
+                    <label><input type="radio" name="q5_2" value="Habilidades técnicas"> c) Minhas habilidades técnicas são diferenciadas</label>
+                    <label><input type="radio" name="q5_2" value="Experiência prática"> d) Minha experiência prática me dá uma visão ampla do mercado</label>
+                    <label>
+                        <input type="radio" name="q5_2" value="Outro"> e) Outro: 
+                        <input type="text" name="q5_2_outro" style="width: 70%; margin-left: 5px;">
+                    </label>
+                </div>
+            </div>
+
+            <!-- SEÇÃO 5.1 - FORÇAS (continuação) -->
+<div class="form-group">
+    <label>3. O que as pessoas mais elogiam em você no ambiente profissional?</label>
+    <textarea name="q5_3" rows="4" required></textarea>
+</div>
+
+<!-- SEÇÃO 5.2 - FRAQUEZAS -->
+<div class="highlight-box">
+    <h3>5.2 - FRAQUEZAS (PONTOS A MELHORAR)</h3>
+</div>
+
+<div class="form-group">
+    <label>4. Quais dificuldades você encontra na sua atuação profissional?</label>
+    <textarea name="q5_4" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>5. O que você acredita que precisa melhorar para crescer profissionalmente?</label>
+    <textarea name="q5_5" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>6. Que atitudes ou hábitos podem estar prejudicando sua imagem profissional?</label>
+    <textarea name="q5_6" rows="4" required></textarea>
+</div>
+
+<!-- SEÇÃO 5.3 - OPORTUNIDADES -->
+<div class="highlight-box">
+    <h3>5.3 - OPORTUNIDADES DE CRESCIMENTO</h3>
+</div>
+
+<div class="form-group">
+    <label>7. Que oportunidades de crescimento profissional você percebe no seu mercado?</label>
+    <textarea name="q5_7" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>8. Você sente que sua imagem profissional está bem posicionada? Por quê?</label>
+    <textarea name="q5_8" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>9. Que tipo de percepção você quer criar no seu público profissional?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_9" value="especialista" required> a) Quero ser visto como um especialista técnico</label>
+        <label><input type="radio" name="q5_9" value="liderança"> b) Quero ser reconhecido pela minha capacidade de liderança</label>
+        <label><input type="radio" name="q5_9" value="criatividade"> c) Quero ser conhecido pela minha criatividade e inovação</label>
+        <label><input type="radio" name="q5_9" value="dinheiro"> d) não me importo como sou visto quero ganhar dinheiro.</label>
+        <label>
+            <input type="radio" name="q5_9" value="outro"> e) Outro: 
+            <input type="text" name="q5_9_outro" style="width: 70%; margin-left: 5px;">
+        </label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>10. Como você fortalece sua marca pessoal?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_10" value="conteudo" required> a) Produzo conteúdo relevante (artigos, vídeos, posts)</label>
+        <label><input type="radio" name="q5_10" value="eventos"> b) Participo de eventos e palestras do setor</label>
+        <label><input type="radio" name="q5_10" value="networking"> c) Invisto em networking e conexões estratégicas</label>
+        <label><input type="radio" name="q5_10" value="redes"> d) Tenho presença ativa em redes sociais profissionais</label>
+        <label>
+            <input type="radio" name="q5_10" value="outro"> e) Outro: 
+            <input type="text" name="q5_10_outro" style="width: 70%; margin-left: 5px;">
+        </label>
+    </div>
+</div>
+
+<!-- SEÇÃO 5.4 - AMEAÇAS -->
+<div class="highlight-box">
+    <h3>5.4 - AMEAÇAS E DESAFIOS PROFISSIONAIS</h3>
+</div>
+
+<div class="form-group">
+    <label>11. Que fator impede seu crescimento profissional atualmente?</label>
+    <textarea name="q5_11" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>12. Qual a maior ameaça externa (mercado) à sua carreira ou ao seu crescimento profissional?</label>
+    <textarea name="q5_12" rows="4" required></textarea>
+</div>
+
+<div class="form-group">
+    <label>13. O que você pode fazer nos próximos meses para evitar ou minimizar as ameaças que você citou?</label>
+    <textarea name="q5_13" rows="4" required></textarea>
+</div>
+
+<!-- SEÇÃO 5.5 - NETWORKING -->
+<div class="highlight-box">
+    <h3>5.5 - NETWORKING E VISIBILIDADE</h3>
+</div>
+
+<div class="form-group">
+    <label>15. Você participa de eventos ou grupos do seu setor para expandir contatos?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_15" value="regularmente" required> a) Sim, regularmente</label>
+        <label><input type="radio" name="q5_15" value="as vezes"> b) Às vezes, mas sem estratégia definida</label>
+        <label><input type="radio" name="q5_15" value="nao mas queria"> c) Não, mas gostaria</label>
+        <label><input type="radio" name="q5_15" value="nao vejo"> d) Não vejo necessidade</label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>16. Você mantém contato frequente com profissionais estratégicos para seu crescimento?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_16" value="sempre" required> a) Sim, sempre busco manter relações profissionais ativas</label>
+        <label><input type="radio" name="q5_16" value="quando preciso"> b) Apenas quando preciso de algo</label>
+        <label><input type="radio" name="q5_16" value="nao costumo"> c) Não costumo fazer isso</label>
+    </div>
+</div>
+
+<!-- SEÇÃO 5.6 - PRESENÇA DIGITAL -->
+<div class="highlight-box">
+    <h3>5.6 - PRESENÇA DIGITAL E POSICIONAMENTO</h3>
+</div>
+
+<div class="form-group">
+    <label>17. Você utiliza redes sociais para reforçar sua imagem profissional?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_17" value="estrategica" required> a) Sim, de forma estratégica e planejada</label>
+        <label><input type="radio" name="q5_17" value="sem estrategia"> b) Sim, mas sem uma estratégia definida</label>
+        <label><input type="radio" name="q5_17" value="nao mas queria"> c) Não, mas gostaria de começar</label>
+        <label><input type="radio" name="q5_17" value="nao vejo"> d) Não vejo necessidade</label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>18. Você já produziu conteúdo (artigos, vídeos, posts) para se destacar na sua área?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_18" value="regularmente" required> a) Sim, regularmente</label>
+        <label><input type="radio" name="q5_18" value="as vezes"> b) Algumas vezes, mas sem frequência definida</label>
+        <label><input type="radio" name="q5_18" value="nunca mas queria"> c) Nunca, mas gostaria de começar</label>
+        <label><input type="radio" name="q5_18" value="nao vejo"> d) Não vejo necessidade</label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>19. Você é reconhecido como referência na sua área?</label>
+    <div class="radio-group">
+        <label><input type="radio" name="q5_19" value="sim" required> a) Sim, frequentemente sou consultado sobre temas do meu setor</label>
+        <label><input type="radio" name="q5_19" value="as vezes"> b) Às vezes, mas gostaria de reforçar essa imagem</label>
+        <label><input type="radio" name="q5_19" value="nao mas queria"> c) Não, mas gostaria de me tornar uma autoridade no meu nicho</label>
+        <label><input type="radio" name="q5_19" value="nao vejo"> d) Não vejo necessidade</label>
+    </div>
+</div>
+
+<!-- Bloco 6 - Futuro Desejável -->
+<div class="question-group">
+  <h2>BLOCO 6 – FUTURO DESEJÁVEL</h2>
+  <p><em>Responda cada pergunta de acordo com sua visão de futuro profissional e seus objetivos financeiros. O bloco está dividido em curto, médio e longo prazo, além de abordar riscos e planos de ação.</em></p>
+  
+  <h3>6.1 - OBJETIVOS DE CURTO PRAZO (1 ANO)</h3>
+  
+  <div class="form-group">
+    <label>1. Dentro da sua área, qual seria a posição ideal para você a curto prazo (1 ano)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_1_1" value="a" required> a) Quero crescer para um cargo de liderança</label>
+      <label><input type="radio" name="q6_1_1" value="b"> b) Quero melhorar minha especialização técnica</label>
+      <label><input type="radio" name="q6_1_1" value="c"> c) Quero iniciar um novo negócio próprio</label>
+      <label><input type="radio" name="q6_1_1" value="d"> d) Ainda estou descobrindo meu caminho</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>2. O que você acredita ser essencial para alcançar essa posição?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_1_2" value="a" required> a) Aprimorar minhas habilidades técnicas</label>
+      <label><input type="radio" name="q6_1_2" value="b"> b) Melhorar meu networking e conexões</label>
+      <label><input type="radio" name="q6_1_2" value="c"> c) Construir autoridade na minha área</label>
+      <label><input type="radio" name="q6_1_2" value="d"> d) Buscar uma nova oportunidade no mercado</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>3. Qual é o aumento de renda que você considera viável no próximo ano?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_1_3" value="a" required> a) Até 20% de aumento</label>
+      <label><input type="radio" name="q6_1_3" value="b"> b) Entre 20% e 50% de aumento</label>
+      <label><input type="radio" name="q6_1_3" value="c"> c) Mais de 50% de aumento</label>
+      <label><input type="radio" name="q6_1_3" value="d"> d) Quero dobrar ou triplicar minha renda</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_1_4">4. Qual a principal ação que você pode tomar nos próximos meses para alcançar essa meta?</label>
+    <textarea id="q6_1_4" name="q6_1_4" required></textarea>
+  </div>
+  
+  <h3>6.2 - OBJETIVOS DE MÉDIO PRAZO (5 ANOS)</h3>
+  
+  <div class="form-group">
+    <label>5. Como você se imagina profissionalmente daqui a 5 anos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_2_5" value="a" required> a) Em um cargo de alta gestão ou liderança</label>
+      <label><input type="radio" name="q6_2_5" value="b"> b) Como referência técnica na minha área</label>
+      <label><input type="radio" name="q6_2_5" value="c"> c) Empreendendo e expandindo meu próprio negócio</label>
+      <label><input type="radio" name="q6_2_5" value="d"> d) Ainda não tenho certeza</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_2_6">6. Existe algum mercado ou área que você gostaria de explorar no futuro?</label>
+    <textarea id="q6_2_6" name="q6_2_6" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>7. Quais são as três principais habilidades que você precisa desenvolver nos próximos 5 anos para atingir seu objetivo?</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="q6_2_7[]" value="a"> a) Comunicação e influência</label>
+      <label><input type="checkbox" name="q6_2_7[]" value="b"> b) Liderança e gestão de equipe</label>
+      <label><input type="checkbox" name="q6_2_7[]" value="c"> c) Conhecimento técnico avançado</label>
+      <label><input type="checkbox" name="q6_2_7[]" value="d"> d) Estratégia e inovação</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>8. Você acredita que pode crescer profissionalmente sem precisar trabalhar mais horas?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_2_8" value="a" required> a) Sim, se eu focar em estratégias inteligentes</label>
+      <label><input type="radio" name="q6_2_8" value="b"> b) Sim, mas preciso aprender a delegar melhor</label>
+      <label><input type="radio" name="q6_2_8" value="c"> c) Não, o mercado exige mais dedicação para crescer</label>
+      <label><input type="radio" name="q6_2_8" value="d"> d) Não sei</label>
+    </div>
+  </div>
+  
+  <h3>6.3 - OBJETIVOS DE LONGO PRAZO (10 ANOS E VISÃO GERAL DE CARREIRA)</h3>
+  
+  <div class="form-group">
+    <label>9. Em qual nível profissional você deseja estar dentro de 10 anos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_3_9" value="a" required> a) Executivo de alto escalão (CEO, Diretor, etc.)</label>
+      <label><input type="radio" name="q6_3_9" value="b"> b) Referência nacional/internacional na minha área</label>
+      <label><input type="radio" name="q6_3_9" value="c"> c) Dono de uma empresa consolidada</label>
+      <label><input type="radio" name="q6_3_9" value="d"> d) Ainda não tenho certeza</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_3_10">10. Você deseja empreender ou prefere crescer dentro de uma empresa? Por quê?</label>
+    <textarea id="q6_3_10" name="q6_3_10" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_3_11">11. O que você nunca gostaria de fazer na sua carreira?</label>
+    <textarea id="q6_3_11" name="q6_3_11" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_3_12">12. Se pudesse escolher qualquer profissão ou ocupação, sem nenhuma limitação, o que escolheria?</label>
+    <textarea id="q6_3_12" name="q6_3_12" required></textarea>
+  </div>
+  
+  <h3>6.4 - RISCOS E DIFICULDADES FUTURAS</h3>
+  
+  <div class="form-group">
+    <label>13. Qual é o maior desafio que pode impedir você de alcançar seus objetivos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_4_13" value="a" required> a) Falta de conhecimento ou qualificação</label>
+      <label><input type="radio" name="q6_4_13" value="b"> b) Falta de oportunidades no mercado</label>
+      <label><input type="radio" name="q6_4_13" value="c"> c) Falta de networking ou conexões estratégicas</label>
+      <label><input type="radio" name="q6_4_13" value="d"> d) Medo ou insegurança em tomar decisões</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q6_4_14">14. O que pode te impedir de alcançar seu objetivo financeiro?</label>
+    <textarea id="q6_4_14" name="q6_4_14" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>15. Você acredita que seu círculo social influencia seu crescimento profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q6_4_15" value="a" required> a) Sim, de forma positiva</label>
+      <label><input type="radio" name="q6_4_15" value="b"> b) Sim, de forma negativa</label>
+      <label><input type="radio" name="q6_4_15" value="c"> c) Não influencia</label>
+    </div>
+  </div>
+  
+  <h3>6.5 - PLANO DE AÇÃO PARA O FUTURO</h3>
+  
+  <div class="form-group">
+    <label>16. O que você já está fazendo para alcançar seus objetivos?</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="q6_5_16[]" value="a"> a) Investindo em cursos e especializações</label>
+      <label><input type="checkbox" name="q6_5_16[]" value="b"> b) Buscando novas oportunidades no mercado</label>
+      <label><input type="checkbox" name="q6_5_16[]" value="c"> c) Construindo minha autoridade profissional</label>
+      <label><input type="checkbox" name="q6_5_16[]" value="d"> d) Ainda não comecei a agir</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 7 - Capacidade Pessoal e Saúde -->
+<div class="question-group">
+  <h2>BLOCO 7 – CAPACIDADE PESSOAL E SAÚDE</h2>
+  <p><em>Responda as questões a seguir de acordo com sua realidade pessoal e profissional. Esse bloco avalia sua capacidade física, bem-estar, hábitos de vida e impacto da saúde no desempenho profissional.</em></p>
+  
+  <h3>7.1 - HABILIDADES DE COMUNICAÇÃO</h3>
+  
+  <div class="form-group">
+    <label>1. Como você avalia sua capacidade de falar em público?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_1_1" value="a" required> a) Boa</label>
+      <label><input type="radio" name="q7_1_1" value="b"> b) Média</label>
+      <label><input type="radio" name="q7_1_1" value="c"> c) Ruim</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>2. Como você avalia sua capacidade de ser gravado em vídeo?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_1_2" value="a" required> a) Boa</label>
+      <label><input type="radio" name="q7_1_2" value="b"> b) Média</label>
+      <label><input type="radio" name="q7_1_2" value="c"> c) Ruim</label>
+    </div>
+  </div>
+  
+  <h3>7.2 - CONDIÇÃO FÍSICA E LOCOMOÇÃO</h3>
+  
+  <div class="form-group">
+    <label>3. Como você avalia sua capacidade de locomoção (andar, movimentar-se)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_2_3" value="a" required> a) Normal</label>
+      <label><input type="radio" name="q7_2_3" value="b"> b) Difícil</label>
+      <label><input type="radio" name="q7_2_3" value="c"> c) Não me locomovo com facilidade</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>4. Você possui alguma incapacidade física? (Marque todas as opções aplicáveis)</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="q7_2_4[]" value="a"> a) Visão</label>
+      <label><input type="checkbox" name="q7_2_4[]" value="b"> b) Tato</label>
+      <label><input type="checkbox" name="q7_2_4[]" value="c"> c) Olfato</label>
+      <label><input type="checkbox" name="q7_2_4[]" value="d"> d) Paladar</label>
+      <label><input type="checkbox" name="q7_2_4[]" value="e"> e) Audição</label>
+      <label><input type="checkbox" name="q7_2_4[]" value="f"> f) Outras: <input type="text" name="q7_2_4_outras" style="width: 150px; display: inline-block;"></label>
+      <label><input type="checkbox" name="q7_2_4[]" value="g"> g) Não, possuo todas as capacidades íntegras.</label>
+    </div>
+  </div>
+  
+  <h3>7.3 - SAÚDE E ACOMPANHAMENTO MÉDICO</h3>
+  
+  <div class="form-group">
+    <label>5. Você realiza exames médicos regularmente (check-up)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_3_5" value="a" required> a) Sim, faço anualmente</label>
+      <label><input type="radio" name="q7_3_5" value="b"> b) Sim, mas sem frequência definida</label>
+      <label><input type="radio" name="q7_3_5" value="c"> c) Não faço, mas gostaria</label>
+      <label><input type="radio" name="q7_3_5" value="d"> d) Não faço e não vejo necessidade</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>6. Você tem acompanhamento médico regular para sua saúde geral?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_3_6" value="a" required> a) Sim, faço consultas médicas periódicas</label>
+      <label><input type="radio" name="q7_3_6" value="b"> b) Apenas quando estou doente</label>
+      <label><input type="radio" name="q7_3_6" value="c"> c) Não costumo ir ao médico</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>7. Você possui algum problema de saúde que afete seu crescimento financeiro?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_3_7" value="a" required> a) Sim</label>
+      <label><input type="radio" name="q7_3_7" value="b"> b) Não</label>
+      <label><input type="radio" name="q7_3_7" value="c"> c) Um pouco</label>
+    </div>
+  </div>
+  
+  <h3>7.4 - ALIMENTAÇÃO E HÁBITOS DE VIDA</h3>
+  
+  <div class="form-group">
+    <label>8. Como você avalia sua alimentação diária?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_4_8" value="a" required> a) Saudável e equilibrada</label>
+      <label><input type="radio" name="q7_4_8" value="b"> b) Poderia melhorar, mas tento me cuidar</label>
+      <label><input type="radio" name="q7_4_8" value="c"> c) Como o que for mais prático, sem me preocupar muito</label>
+      <label><input type="radio" name="q7_4_8" value="d"> d) Minha alimentação é desregrada e não saudável</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>9. Você consome regularmente alimentos ultraprocessados (fast food, refrigerantes, industrializados)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_4_9" value="a" required> a) Raramente ou nunca</label>
+      <label><input type="radio" name="q7_4_9" value="b"> b) Algumas vezes por semana</label>
+      <label><input type="radio" name="q7_4_9" value="c"> c) Frequentemente</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>10. Quantas horas de sono você tem por noite?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_4_10" value="a" required> a) Menos de 5 horas</label>
+      <label><input type="radio" name="q7_4_10" value="b"> b) Entre 5 e 7 horas</label>
+      <label><input type="radio" name="q7_4_10" value="c"> c) Entre 7 e 9 horas</label>
+      <label><input type="radio" name="q7_4_10" value="d"> d) Mais de 9 horas</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>11. Você sente que acorda descansado e com energia para o dia?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_4_11" value="a" required> a) Sim, quase sempre</label>
+      <label><input type="radio" name="q7_4_11" value="b"> b) Às vezes, mas sinto cansaço frequente</label>
+      <label><input type="radio" name="q7_4_11" value="c"> c) Não, estou sempre cansado</label>
+    </div>
+  </div>
+</div>
+
+<!-- 7.5 - CONDICIONAMENTO FÍSICO E EXERCÍCIOS -->
+<div class="question-group">
+  <h3>7.5 - CONDICIONAMENTO FÍSICO E EXERCÍCIOS</h3>
+  
+  <div class="form-group">
+    <label>12. Você pratica atividades físicas regularmente?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_5_12" value="a" required> a) Sim, mais de 3 vezes por semana</label>
+      <label><input type="radio" name="q7_5_12" value="b"> b) Sim, 1 a 2 vezes por semana</label>
+      <label><input type="radio" name="q7_5_12" value="c"> c) Não, mas gostaria</label>
+      <label><input type="radio" name="q7_5_12" value="d"> d) Não, e não vejo necessidade</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>13. Como você avalia seu condicionamento físico?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_5_13" value="a" required> a) Excelente, sem dificuldades para atividades diárias</label>
+      <label><input type="radio" name="q7_5_13" value="b"> b) Bom, mas poderia melhorar</label>
+      <label><input type="radio" name="q7_5_13" value="c"> c) Regular, sinto cansaço em atividades simples</label>
+      <label><input type="radio" name="q7_5_13" value="d"> d) Ruim, evito esforço físico sempre que possível</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>14. Como você avalia sua saúde física (força) para trabalhos braçais ou operacionais?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_5_14" value="a" required> a) Péssima</label>
+      <label><input type="radio" name="q7_5_14" value="b"> b) Ruim</label>
+      <label><input type="radio" name="q7_5_14" value="c"> c) Reduzida</label>
+      <label><input type="radio" name="q7_5_14" value="d"> d) Boa</label>
+      <label><input type="radio" name="q7_5_14" value="e"> e) Ótima</label>
+      <label><input type="radio" name="q7_5_14" value="f"> f) Excelente</label>
+    </div>
+  </div>
+</div>
+
+<!-- 7.6 - USO DE MEDICAMENTOS E IMPACTO NA PRODUTIVIDADE -->
+<div class="question-group">
+  <h3>7.6 - USO DE MEDICAMENTOS E IMPACTO NA PRODUTIVIDADE</h3>
+  
+  <div class="form-group">
+    <label>15. Você faz uso de medicação contínua?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_6_15" value="a" required> a) Sim, para controle de doenças crônicas (pressão alta, diabetes, etc.)</label>
+      <label><input type="radio" name="q7_6_15" value="b"> b) Sim, mas apenas para condições eventuais</label>
+      <label><input type="radio" name="q7_6_15" value="c"> c) Não faço uso de medicação contínua</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>16. Você sente que sua saúde impacta seu desempenho profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q7_6_16" value="a" required> a) Sim, de forma negativa</label>
+      <label><input type="radio" name="q7_6_16" value="b"> b) Sim, mas consigo lidar bem</label>
+      <label><input type="radio" name="q7_6_16" value="c"> c) Não impacta</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 8 - Percepção Social e Interações -->
+<div class="question-group">
+  <h2>BLOCO 8 – PERCEPÇÃO SOCIAL E INTERAÇÕES</h2>
+  <p><em>Este bloco tem como finalidade compreender como você é percebido pelo mundo e como interage com os outros. Afinal, somos aquilo que emitimos. Suas respostas ajudarão a traçar um planejamento mais assertivo para sua carreira e imagem profissional.</em></p>
+  
+  <h3>8.1 - COMO VOCÊ SE ENXERGA?</h3>
+  
+  <div class="form-group">
+    <label>1. Como você acredita que as pessoas ao seu redor o enxergam no ambiente profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_1_1" value="a" required> a) Um líder inspirador</label>
+      <label><input type="radio" name="q8_1_1" value="b"> b) Um profissional competente e discreto</label>
+      <label><input type="radio" name="q8_1_1" value="c"> c) Uma pessoa difícil de lidar</label>
+      <label><input type="radio" name="q8_1_1" value="d"> d) Um trabalhador esforçado, mas pouco reconhecido</label>
+      <label><input type="radio" name="q8_1_1" value="e"> e) Não sei dizer</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q8_1_2">2. Como você gostaria que as pessoas o vissem?</label>
+    <textarea id="q8_1_2" name="q8_1_2" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="q8_1_3">3. Qual característica você acredita ser sua maior qualidade profissional?</label>
+    <textarea id="q8_1_3" name="q8_1_3" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="q8_1_4">4. Qual ponto você acha que precisa melhorar na sua postura profissional?</label>
+    <textarea id="q8_1_4" name="q8_1_4" required></textarea>
+  </div>
+  
+  <h3>8.2 - SUA RELAÇÃO COM OS OUTROS</h3>
+  
+  <div class="form-group">
+    <label>5. Como você trata seus clientes e colegas de trabalho?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_2_5" value="a" required> a) Sou atencioso e paciente</label>
+      <label><input type="radio" name="q8_2_5" value="b"> b) Sou profissional, sem me envolver demais</label>
+      <label><input type="radio" name="q8_2_5" value="c"> c) Sou reservado e falo apenas o necessário</label>
+      <label><input type="radio" name="q8_2_5" value="d"> d) Sou direto e não gosto de enrolação</label>
+      <label><input type="radio" name="q8_2_5" value="e"> e) Sou impulsivo e às vezes acabo sendo rude</label>
+      <label><input type="radio" name="q8_2_5" value="f"> f) Não sei como as pessoas me enxergam nesse aspecto</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>6. Como você lida com críticas no ambiente profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_2_6" value="a" required> a) Aceito bem e busco melhorar</label>
+      <label><input type="radio" name="q8_2_6" value="b"> b) Fico desconfortável, mas tento aprender com elas</label>
+      <label><input type="radio" name="q8_2_6" value="c"> c) Me sinto ofendido quando sou criticado</label>
+      <label><input type="radio" name="q8_2_6" value="d"> d) Evito ao máximo receber críticas</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>7. Você pratica a escuta ativa? Ou seja, realmente presta atenção e valoriza as opiniões dos outros?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_2_7" value="a" required> a) Sim, sou um excelente ouvinte</label>
+      <label><input type="radio" name="q8_2_7" value="b"> b) Tento ouvir, mas às vezes interrompo ou distraio-me</label>
+      <label><input type="radio" name="q8_2_7" value="c"> c) Não sou bom em ouvir, gosto mais de falar</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>8. Você costuma demonstrar interesse genuíno nas pessoas ao seu redor?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_2_8" value="a" required> a) Sim, tento criar conexões verdadeiras</label>
+      <label><input type="radio" name="q8_2_8" value="b"> b) Às vezes, mas foco mais no trabalho</label>
+      <label><input type="radio" name="q8_2_8" value="c"> c) Raramente, me concentro apenas no meu próprio desempenho</label>
+    </div>
+  </div>
+  
+  <h3>8.3 - SUA IMAGEM E POSICIONAMENTO NO MERCADO</h3>
+  
+  <div class="form-group">
+    <label>9. Como você considera sua imagem profissional?</label>
+    <p><em>Lembre-se: "Valor é aquilo que os outros clientes/pessoas pensam sobre você. Preço é o que pagam pelo seu valor."</em></p>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_3_9" value="a" required> a) Minha imagem transmite profissionalismo e credibilidade</label>
+      <label><input type="radio" name="q8_3_9" value="b"> b) Poderia melhorar, mas não dou muita atenção a isso</label>
+      <label><input type="radio" name="q8_3_9" value="c"> c) Não me preocupo com isso, me visto e ajo como acho confortável</label>
+      <label><input type="radio" name="q8_3_9" value="d"> d) Nunca parei para pensar nisso</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>10. Você se veste adequadamente para a imagem que deseja transmitir?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_3_10" value="a" required> a) Sim, minha vestimenta reflete minha imagem profissional</label>
+      <label><input type="radio" name="q8_3_10" value="b"> b) Poderia melhorar, mas me esforço para passar a imagem correta</label>
+      <label><input type="radio" name="q8_3_10" value="c"> c) Não penso nisso, visto o que for mais prático</label>
+      <label><input type="radio" name="q8_3_10" value="d"> d) Nunca me preocupei com isso, mas entendo que faz diferença</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>11. Como você avalia seu networking e conexões profissionais?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_3_11" value="a" required> a) Tenho uma rede de contatos forte e estratégica</label>
+      <label><input type="radio" name="q8_3_11" value="b"> b) Conheço algumas pessoas, mas não cultivo relacionamentos profissionais</label>
+      <label><input type="radio" name="q8_3_11" value="c"> c) Meu networking é fraco, não sei como criar conexões</label>
+      <label><input type="radio" name="q8_3_11" value="d"> d) Não vejo importância no networking</label>
+    </div>
+  </div>
+  
+  <h3>8.4 - SUA POSTURA DIANTE DAS OPORTUNIDADES</h3>
+  
+  <div class="form-group">
+    <label>12. O que você tem feito para alcançar seus objetivos financeiros e profissionais?</label>
+    <p><em>"Se continuar fazendo o que sempre fez, terá os mesmos resultados."</em></p>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_4_12" value="a" required> a) Estou estudando, investindo e buscando novas oportunidades</label>
+      <label><input type="radio" name="q8_4_12" value="b"> b) Trabalho duro, mas sem um plano definido</label>
+      <label><input type="radio" name="q8_4_12" value="c"> c) Ainda não tomei nenhuma atitude concreta</label>
+      <label><input type="radio" name="q8_4_12" value="d"> d) Não acredito que dependa apenas de mim</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>13. Como você reage a novos desafios profissionais?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_4_13" value="a" required> a) Vejo como uma oportunidade de crescimento</label>
+      <label><input type="radio" name="q8_4_13" value="b"> b) Analiso os riscos antes de agir</label>
+      <label><input type="radio" name="q8_4_13" value="c"> c) Evito sair da minha zona de conforto</label>
+    </div>
+  </div>
+  
+  <h3>8.5 - SUA MENTALIDADE PARA O SUCESSO</h3>
+  
+  <div class="form-group">
+    <label>14. Você acredita que merece tudo o que recebe e conquistará ainda mais?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_5_14" value="a" required> a) Sim, tenho clareza do meu valor</label>
+      <label><input type="radio" name="q8_5_14" value="b"> b) Sim, mas ainda tenho inseguranças</label>
+      <label><input type="radio" name="q8_5_14" value="c"> c) Não, às vezes sinto que não sou bom o suficiente</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>15. Você acredita que tem o controle do seu sucesso ou acha que depende de fatores externos?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_5_15" value="a" required> a) O sucesso depende 100% do meu esforço e estratégia</label>
+      <label><input type="radio" name="q8_5_15" value="b"> b) Acredito que esforço e oportunidades externas caminham juntos</label>
+      <label><input type="radio" name="q8_5_15" value="c"> c) Acho que algumas pessoas nascem com mais sorte do que outras</label>
+      <label><input type="radio" name="q8_5_15" value="d"> d) Não sei dizer</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>16. Nos últimos dois anos você acredita que</label>
+    <div class="radio-group">
+      <label><input type="radio" name="q8_5_16" value="a" required> a) fez coisas que mudaram agora no seu presente,</label>
+      <label><input type="radio" name="q8_5_16" value="b"> b) fiz a mesma coisa e obtive o mesmo resultado.</label>
+    </div>
+  </div>
+</div>
+
+<!-- Bloco 9 - Sonho e Meta: Quebrando Paradigmas -->
+<div class="question-group">
+  <h2>BLOCO 9 – SONHO E META: QUEBRANDO PARADIGMAS</h2>
+  <p><em>Diferença entre sonho e meta:<br>
+  • Sonho → É quando você pensa em possuir ou realizar algo.<br>
+  • Meta → É quando você define uma data para tornar esse sonho realidade.</em></p>
+  
+  <h3>9.1 – PEDIDO AO GÊNIO DA LÂMPADA</h3>
+  <p><em>"Você tem em suas mãos o poder de desejar qualquer coisa. Não importa se parece impossível ou inalcançável, porque aqui, os limites não existem. Tudo o que você precisa fazer é pedir. Mas lembre-se: peça não pelo que acha que pode conseguir, mas pelo que realmente deseja. Liberte-se das amarras da dúvida, mande os outros para o além, seja livre, sonhe sem medo e declare ao universo o que é seu por direito. Para ser objetivo use no máximo 6 palavras para respostas."</em></p>
+  
+  <div class="form-group">
+    <label>1. Quanto você quer ganhar anualmente?</label>
+    <div class="form-group">
+      <label for="q9_1_1a">a) Sonho:</label>
+      <input type="text" id="q9_1_1a" name="q9_1_1a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_1b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_1b" name="q9_1_1b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>2. De qual mal você deseja se livrar no seu coração?</label>
+    <div class="form-group">
+      <label for="q9_1_2a">a) Sonho:</label>
+      <input type="text" id="q9_1_2a" name="q9_1_2a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_2b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_2b" name="q9_1_2b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>3. O que você deseja ser como pessoa?</label>
+    <div class="form-group">
+      <label for="q9_1_3a">a) Sonho:</label>
+      <input type="text" id="q9_1_3a" name="q9_1_3a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_3b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_3b" name="q9_1_3b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>4. Qual tipo de vida familiar deseja ter?</label>
+    <div class="form-group">
+      <label for="q9_1_4a">a) Sonho:</label>
+      <input type="text" id="q9_1_4a" name="q9_1_4a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_4b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_4b" name="q9_1_4b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>5. Em que momento você terá a percepção de que não tem culpa e merece tudo o que recebe e receberá?</label>
+    <div class="form-group">
+      <label for="q9_1_5a">a) Sonho:</label>
+      <input type="text" id="q9_1_5a" name="q9_1_5a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_5b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_5b" name="q9_1_5b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>6. Qual o seu maior sonho de consumo?</label>
+    <div class="form-group">
+      <label for="q9_1_6a">a) Sonho:</label>
+      <input type="text" id="q9_1_6a" name="q9_1_6a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_6b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_6b" name="q9_1_6b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>8. Onde você deseja morar?</label>
+    <div class="form-group">
+      <label for="q9_1_8a">a) Sonho:</label>
+      <input type="text" id="q9_1_8a" name="q9_1_8a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_8b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_8b" name="q9_1_8b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>10. Quais os tipos de pessoas deseja conviver?</label>
+    <div class="form-group">
+      <label for="q9_1_10a">a) Sonho:</label>
+      <input type="text" id="q9_1_10a" name="q9_1_10a" maxlength="30" required>
+    </div>
+    <div class="form-group">
+      <label for="q9_1_10b">b) Meta (data de acontecer):</label>
+      <input type="date" id="q9_1_10b" name="q9_1_10b" required>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="q9_1_11">9.1.1 - Agora escreva abaixo um resumo dos seus pedidos com o período aproximado de acontecimentos.</label>
+    <textarea id="q9_1_11" name="q9_1_11" required></textarea>
+  </div>
+</div>
+
+<!-- BLOCO 10 – TUDO QUE DEU CERTO E DEU ERRADO NOS NEGÓCIOS, PROJETOS E CARREIRA -->
+<div class="question-group">
+  <h2>BLOCO 10 – TUDO QUE DEU CERTO E DEU ERRADO NOS NEGÓCIOS, PROJETOS E CARREIRA</h2>
+  
+  <div class="highlight-box">
+    <p><strong>Objetivo:</strong> Este bloco busca entender o histórico do cliente em negócios, projetos e atuação como profissional liberal, identificando erros, acertos, bloqueios e oportunidades. O foco é evitar caminhos que já foram testados e rejeitados, enquanto exploramos novas possibilidades alinhadas ao que realmente deseja para o futuro.</p>
+  </div>
+
+  <h3>Parte 1 – Histórico Profissional e de Negócios</h3>
+  
+  <div class="form-group">
+    <label>1. Você já montou um negócio próprio ou atuou como profissional liberal?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="negocio_proprio" value="Sim, já tive um negócio próprio" required> a) Sim, já tive um negócio próprio</label>
+      <label><input type="radio" name="negocio_proprio" value="Sim, atuo/atuei como profissional liberal"> b) Sim, atuo/atuei como profissional liberal</label>
+      <label><input type="radio" name="negocio_proprio" value="Não, nunca tentei nenhuma dessas opções"> c) Não, nunca tentei nenhuma dessas opções</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>2. Qual foi o resultado da sua experiência?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="resultado_experiencia" value="Deu muito certo" required> a) Deu muito certo</label>
+      <label><input type="radio" name="resultado_experiencia" value="Deu certo, mas teve desafios"> b) Deu certo, mas teve desafios</label>
+      <label><input type="radio" name="resultado_experiencia" value="Foi estável"> c) Foi estável</label>
+      <label><input type="radio" name="resultado_experiencia" value="Deu errado, mas aprendi algo"> d) Deu errado, mas aprendi algo</label>
+      <label><input type="radio" name="resultado_experiencia" value="Deu completamente errado"> e) Deu completamente errado</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="tipo_mercado">3. Qual era o tipo de mercado ou área de atuação? (Se teve mais de um, cite todos)</label>
+    <textarea id="tipo_mercado" name="tipo_mercado" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="maior_desafio_empreender">4. Se você já tentou empreender, qual foi o maior desafio que enfrentou?</label>
+    <textarea id="maior_desafio_empreender" name="maior_desafio_empreender"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="desafios_liberal">5. Se você já atuou como profissional liberal, quais foram os principais desafios da sua carreira?</label>
+    <textarea id="desafios_liberal" name="desafios_liberal"></textarea>
+  </div>
+
+  <h3>Parte 2 – Tentativas e Experiências</h3>
+  
+  <div class="form-group">
+    <label for="nao_tentaria_novamente">6. Cite tudo que já tentou e não tentaria de novo. Por que não tentaria?</label>
+    <textarea id="nao_tentaria_novamente" name="nao_tentaria_novamente" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="tentaria_corrigindo">7. Cite tudo que já tentou e tentaria de novo se corrigisse algumas coisas. O que precisa ser corrigido?</label>
+    <textarea id="tentaria_corrigindo" name="tentaria_corrigindo" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="areas_evitar">8. Cite áreas, negócios ou projetos que você nunca mais quer mexer.</label>
+    <textarea id="areas_evitar" name="areas_evitar" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="boas_perspectivas">9. Cite negócios, áreas ou projetos que você acredita possuir boas perspectivas de crescimento.</label>
+    <textarea id="boas_perspectivas" name="boas_perspectivas" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="voltar_tempo">10. Se pudesse voltar no tempo, o que faria diferente na sua trajetória profissional ou empresarial?</label>
+    <textarea id="voltar_tempo" name="voltar_tempo" required></textarea>
+  </div>
+
+  <h3>Parte 3 – Erros, Aprendizados e Traumas</h3>
+  
+  <div class="form-group">
+    <label for="maiores_erros">11. Quais foram os seus maiores erros em negócios, projetos ou carreira?</label>
+    <textarea id="maiores_erros" name="maiores_erros" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="erros_impedem">12. Você sente que algum desses erros ainda te impede de crescer? Se sim, qual?</label>
+    <textarea id="erros_impedem" name="erros_impedem" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="traumas">13. Existe algo que te deixou traumatizado ou desmotivado em relação a negócios ou trabalho?</label>
+    <textarea id="traumas" name="traumas" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="pior_experiencia">14. Qual foi a pior experiência profissional ou empresarial que você já teve? O que aconteceu?</label>
+    <textarea id="pior_experiencia" name="pior_experiencia" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="lidar_fracasso">15. Como você lida emocionalmente com fracasso e tentativas frustradas?</label>
+    <textarea id="lidar_fracasso" name="lidar_fracasso" required></textarea>
+  </div>
+
+  <h3>Parte 4 – Sucessos, Oportunidades e Novos Caminhos</h3>
+  
+  <div class="form-group">
+    <label for="deu_certo">16. O que deu muito certo na sua vida profissional ou empresarial até hoje?</label>
+    <textarea id="deu_certo" name="deu_certo" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="melhores_momentos">17. Quais foram os melhores momentos que teve em negócios ou projetos?</label>
+    <textarea id="melhores_momentos" name="melhores_momentos" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="fazer_agora">18. O que você pensa em fazer a partir de agora? Quais negócios ou oportunidades considera interessantes para o futuro?</label>
+    <textarea id="fazer_agora" name="fazer_agora" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>19. Quais são suas prioridades de crescimento atualmente?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="prioridades_crescimento" value="Aumentar minha renda como profissional liberal" required> a) Aumentar minha renda como profissional liberal</label>
+      <label><input type="radio" name="prioridades_crescimento" value="Escalar um negócio que já tenho"> b) Escalar um negócio que já tenho</label>
+      <label><input type="radio" name="prioridades_crescimento" value="Começar um novo projeto ou negócio"> c) Começar um novo projeto ou negócio</label>
+      <label><input type="radio" name="prioridades_crescimento" value="Mudar de área ou mercado"> d) Mudar de área ou mercado</label>
+      <label><input type="radio" name="prioridades_crescimento" value="Não sei ainda, quero explorar opções"> e) Não sei ainda, quero explorar opções</label>
+    </div>
+  </div>
+
+  <h3>Parte 5 – O Que Você Realmente Deseja Ser ou Fazer?</h3>
+  
+  <div class="form-group">
+    <label for="sem_dinheiro">20. Se dinheiro não fosse um problema, o que você realmente gostaria de estar fazendo hoje?</label>
+    <textarea id="sem_dinheiro" name="sem_dinheiro" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="profissao_realizada">21. Que profissão ou atividade faria você sentir-se plenamente realizado?</label>
+    <textarea id="profissao_realizada" name="profissao_realizada" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="qualquer_area">22. Se pudesse trabalhar em qualquer área sem restrições, qual escolheria?</label>
+    <textarea id="qualquer_area" name="qualquer_area" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="aprender">23. Existe algo que você gostaria de aprender, mas nunca teve tempo ou oportunidade?</label>
+    <textarea id="aprender" name="aprender" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="futuro_ideal">24. Se pudesse definir seu futuro profissional ideal em uma frase, qual seria?</label>
+    <textarea id="futuro_ideal" name="futuro_ideal" required></textarea>
+  </div>
+</div>
+
+<!-- BLOCO 11 – PRESENÇA DIGITAL: ANÁLISE E COMPARAÇÃO -->
+<div class="question-group">
+  <h2>BLOCO 11 – PRESENÇA DIGITAL: ANÁLISE E COMPARAÇÃO</h2>
+  
+  <div class="highlight-box">
+    <p>Este bloco tem como objetivo coletar os links das suas redes sociais e comparar suas respostas com as informações anteriores fornecidas ao longo do briefing. Isso ajudará na construção de um plano de carreira alinhado à sua realidade digital.</p>
+  </div>
+
+  <h3>12.1 – COLE OS LINKS DAS SUAS REDES SOCIAIS</h3>
+  
+  <div class="form-group">
+    <label for="instagram">1. Instagram:</label>
+    <input type="text" id="instagram" name="instagram" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="linkedin">2. LinkedIn:</label>
+    <input type="text" id="linkedin" name="linkedin" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="tiktok">3. TikTok:</label>
+    <input type="text" id="tiktok" name="tiktok" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="facebook">4. Facebook:</label>
+    <input type="text" id="facebook" name="facebook" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="youtube">5. YouTube (vídeos que produziu):</label>
+    <input type="text" id="youtube" name="youtube" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="twitter">6. Twitter/X:</label>
+    <input type="text" id="twitter" name="twitter" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="site">7. Site pessoal ou portfólio (se houver):</label>
+    <input type="text" id="site" name="site" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="outras_redes">8. Outras plataformas relevantes (Medium, Behance, GitHub, etc.):</label>
+    <input type="text" id="outras_redes" name="outras_redes" placeholder="Cole o link aqui">
+  </div>
+  
+  <div class="form-group">
+    <label for="curriculo">9. Seu currículo copie do word e cole aqui.</label>
+    <textarea id="curriculo" name="curriculo"></textarea>
+  </div>
+
+  <h3>12.2 – COMPARAÇÃO ENTRE SUA PRESENÇA DIGITAL E SEU PERFIL PROFISSIONAL</h3>
+  
+  <div class="form-group">
+    <label>9. Você acredita que sua presença digital está alinhada com a imagem profissional que deseja projetar?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="alinhamento_digital" value="Sim, está completamente alinhada" required> a) Sim, está completamente alinhada</label>
+      <label><input type="radio" name="alinhamento_digital" value="Sim, mas poderia ser melhor"> b) Sim, mas poderia ser melhor</label>
+      <label><input type="radio" name="alinhamento_digital" value="Não, minha imagem digital não reflete meu potencial"> c) Não, minha imagem digital não reflete meu potencial</label>
+      <label><input type="radio" name="alinhamento_digital" value="Não sei avaliar"> d) Não sei avaliar</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="redes_dizem">10. O que suas redes sociais dizem sobre você? Elas reforçam o que você declarou neste questionário sobre suas habilidades e objetivos profissionais?</label>
+    <textarea id="redes_dizem" name="redes_dizem" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>11. Você acredita que usa sua presença digital de forma estratégica para o seu crescimento profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="uso_estrategico" value="Sim, utilizo para networking, divulgação e autoridade" required> a) Sim, utilizo para networking, divulgação e autoridade</label>
+      <label><input type="radio" name="uso_estrategico" value="Sim, mas não com consistência"> b) Sim, mas não com consistência</label>
+      <label><input type="radio" name="uso_estrategico" value="Não, minhas redes são mais voltadas para lazer"> c) Não, minhas redes são mais voltadas para lazer</label>
+      <label><input type="radio" name="uso_estrategico" value="Não sei como usar estrategicamente"> d) Não sei como usar estrategicamente</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>12. Comparando com suas respostas anteriores, sua presença digital condiz com a sua meta profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="comparacao_meta" value="Sim, minha presença digital já fortalece minha trajetória" required> a) Sim, minha presença digital já fortalece minha trajetória</label>
+      <label><input type="radio" name="comparacao_meta" value="Parcialmente, posso melhorar alguns aspectos"> b) Parcialmente, posso melhorar alguns aspectos</label>
+      <label><input type="radio" name="comparacao_meta" value="Não, preciso reposicionar minha imagem nas redes sociais"> c) Não, preciso reposicionar minha imagem nas redes sociais</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="fortalecer_marca">13. Como você acredita que pode fortalecer sua marca pessoal no digital para se alinhar com seus objetivos de carreira?</label>
+    <textarea id="fortalecer_marca" name="fortalecer_marca" required></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label>14. Você está disposto a fazer mudanças na forma como usa suas redes sociais para impulsionar seu crescimento profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="disposicao_mudancas" value="Sim, quero melhorar minha presença digital" required> a) Sim, quero melhorar minha presença digital</label>
+      <label><input type="radio" name="disposicao_mudancas" value="Sim, mas preciso de orientação"> b) Sim, mas preciso de orientação</label>
+      <label><input type="radio" name="disposicao_mudancas" value="Não vejo necessidade"> c) Não vejo necessidade</label>
+    </div>
+  </div>
+</div>
+
+<!-- BLOCO 13 – GESTÃO DO TEMPO E PLANEJAMENTO PESSOAL -->
+<div class="question-group">
+  <h2>BLOCO 13 – GESTÃO DO TEMPO E PLANEJAMENTO PESSOAL</h2>
+  
+  <div class="highlight-box">
+    <p><strong>Objetivo:</strong> Este bloco tem como finalidade avaliar a percepção do cliente sobre seu uso do tempo, sua capacidade de planejamento e sua disposição para trocar atividades de baixa produtividade por ações estratégicas que favoreçam seu crescimento pessoal e profissional.</p>
+  </div>
+
+  <h3>1. Planejamento e Organização</h3>
+  
+  <div class="form-group">
+    <label>1. Você define metas claras para seu dia a dia?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="definir_metas" value="Sempre" required> a) Sempre</label>
+      <label><input type="radio" name="definir_metas" value="Frequentemente"> b) Frequentemente</label>
+      <label><input type="radio" name="definir_metas" value="Às vezes"> c) Às vezes</label>
+      <label><input type="radio" name="definir_metas" value="Raramente"> d) Raramente</label>
+      <label><input type="radio" name="definir_metas" value="Nunca"> e) Nunca</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>2. Você faz uso de ferramentas de planejamento (agendas, aplicativos, planilhas)?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="uso_ferramentas" value="Sim, diariamente" required> a) Sim, diariamente</label>
+      <label><input type="radio" name="uso_ferramentas" value="Sim, algumas vezes por semana"> b) Sim, algumas vezes por semana</label>
+      <label><input type="radio" name="uso_ferramentas" value="Sim, mas raramente utilizo"> c) Sim, mas raramente utilizo</label>
+      <label><input type="radio" name="uso_ferramentas" value="Não utilizo"> d) Não utilizo</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>3. Com que frequência você revisa e ajusta seu planejamento pessoal/profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="revisao_planejamento" value="Diariamente" required> a) Diariamente</label>
+      <label><input type="radio" name="revisao_planejamento" value="Semanalmente"> b) Semanalmente</label>
+      <label><input type="radio" name="revisao_planejamento" value="Mensalmente"> c) Mensalmente</label>
+      <label><input type="radio" name="revisao_planejamento" value="Nunca"> d) Nunca</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>4. Quando precisa planejar algo novo, como você age?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="acao_planejamento" value="Defino metas e prazos imediatamente" required> a) Defino metas e prazos imediatamente</label>
+      <label><input type="radio" name="acao_planejamento" value="Pesquiso bastante antes de iniciar"> b) Pesquiso bastante antes de iniciar</label>
+      <label><input type="radio" name="acao_planejamento" value="Espero surgir motivação ou necessidade urgente"> c) Espero surgir motivação ou necessidade urgente</label>
+      <label><input type="radio" name="acao_planejamento" value="Costumo procrastinar e deixar para depois"> d) Costumo procrastinar e deixar para depois</label>
+    </div>
+  </div>
+
+  <h3>2. Consciência Temporal</h3>
+  
+  <div class="form-group">
+    <label>5. Você sente que tem controle sobre o seu tempo?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="controle_tempo" value="Sim, totalmente" required> a) Sim, totalmente</label>
+      <label><input type="radio" name="controle_tempo" value="Sim, na maior parte do tempo"> b) Sim, na maior parte do tempo</label>
+      <label><input type="radio" name="controle_tempo" value="Não sei dizer"> c) Não sei dizer</label>
+      <label><input type="radio" name="controle_tempo" value="Não, sempre estou atrasado ou sobrecarregado"> d) Não, sempre estou atrasado ou sobrecarregado</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>6. Você sente que falta tempo para realizar atividades estratégicas para seu crescimento?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="falta_tempo" value="Sim, sempre" required> a) Sim, sempre</label>
+      <label><input type="radio" name="falta_tempo" value="Às vezes"> b) Às vezes</label>
+      <label><input type="radio" name="falta_tempo" value="Não, consigo equilibrar minhas tarefas"> c) Não, consigo equilibrar minhas tarefas</label>
+      <label><input type="radio" name="falta_tempo" value="Não me preocupo com isso"> d) Não me preocupo com isso</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>7. Você costuma realizar atividades por hábito sem avaliar se elas realmente agregam valor ao seu objetivo?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="atividades_habito" value="Sim, frequentemente" required> a) Sim, frequentemente</label>
+      <label><input type="radio" name="atividades_habito" value="Às vezes, mas tento evitar"> b) Às vezes, mas tento evitar</label>
+      <label><input type="radio" name="atividades_habito" value="Raramente, sou bastante consciente sobre isso"> c) Raramente, sou bastante consciente sobre isso</label>
+      <label><input type="radio" name="atividades_habito" value="Nunca"> d) Nunca</label>
+    </div>
+  </div>
+
+  <h3>3. Troca de Tempo e Priorização</h3>
+  
+  <div class="form-group">
+    <label>8. Se precisasse dedicar 10 horas semanais para um projeto que pode dobrar sua renda, o que você reduziria ou eliminaria?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="reducao_tempo" value="Redes sociais e entretenimento" required> a) Redes sociais e entretenimento</label>
+      <label><input type="radio" name="reducao_tempo" value="Tempo com amigos e família"> b) Tempo com amigos e família</label>
+      <label><input type="radio" name="reducao_tempo" value="Trabalho atual, realocando prioridades"> c) Trabalho atual, realocando prioridades</label>
+      <label><input type="radio" name="reducao_tempo" value="Nada, pois não tenho tempo disponível"> d) Nada, pois não tenho tempo disponível</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>9. Você já tentou reestruturar sua rotina para investir tempo em algo mais produtivo?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="reestruturar_rotina" value="Sim, e funcionou bem" required> a) Sim, e funcionou bem</label>
+      <label><input type="radio" name="reestruturar_rotina" value="Sim, mas foi difícil manter"> b) Sim, mas foi difícil manter</label>
+      <label><input type="radio" name="reestruturar_rotina" value="Nunca tentei"> c) Nunca tentei</label>
+      <label><input type="radio" name="reestruturar_rotina" value="Já tentei, mas sempre volto aos hábitos antigos"> d) Já tentei, mas sempre volto aos hábitos antigos</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>10. Você sente que desperdiça tempo com atividades de baixa prioridade?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="desperdicio_tempo" value="Sim, frequentemente" required> a) Sim, frequentemente</label>
+      <label><input type="radio" name="desperdicio_tempo" value="Às vezes"> b) Às vezes</label>
+      <label><input type="radio" name="desperdicio_tempo" value="Raramente"> c) Raramente</label>
+      <label><input type="radio" name="desperdicio_tempo" value="Não, sou muito eficiente"> d) Não, sou muito eficiente</label>
+    </div>
+  </div>
+
+  <h3>4. Planejamento de Longo Prazo</h3>
+  
+  <div class="form-group">
+    <label>11. Você tem um plano de médio e longo prazo para sua vida profissional?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="plano_longo_prazo" value="Sim, e sigo um planejamento estruturado" required> a) Sim, e sigo um planejamento estruturado</label>
+      <label><input type="radio" name="plano_longo_prazo" value="Sim, mas não detalhado"> b) Sim, mas não detalhado</label>
+      <label><input type="radio" name="plano_longo_prazo" value="Não tenho certeza do que quero"> c) Não tenho certeza do que quero</label>
+      <label><input type="radio" name="plano_longo_prazo" value="Não, apenas vivo o presente"> d) Não, apenas vivo o presente</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>12. Você revisa regularmente seus objetivos e metas?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="revisao_objetivos" value="Sim, sempre que necessário" required> a) Sim, sempre que necessário</label>
+      <label><input type="radio" name="revisao_objetivos" value="Às vezes, mas não com frequência"> b) Às vezes, mas não com frequência</label>
+      <label><input type="radio" name="revisao_objetivos" value="Raramente"> c) Raramente</label>
+      <label><input type="radio" name="revisao_objetivos" value="Nunca"> d) Nunca</label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>13. Você se sente preparado para abrir mão de conforto imediato para construir um futuro melhor?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="abrir_mao_conforto" value="Sim, estou pronto para isso" required> a) Sim, estou pronto para isso</label>
+      <label><input type="radio" name="abrir_mao_conforto" value="Sim, mas com algumas dificuldades"> b) Sim, mas com algumas dificuldades</label>
+      <label><input type="radio" name="abrir_mao_conforto" value="Tenho dúvidas sobre isso"> c) Tenho dúvidas sobre isso</label>
+      <label><input type="radio" name="abrir_mao_conforto" value="Não, prefiro aproveitar o momento presente"> d) Não, prefiro aproveitar o momento presente</label>
+    </div>
+  </div>
+
+                
+                <div class="privacy-check">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Declaro que todas as informações fornecidas são verdadeiras e estou ciente da Política de Privacidade.</label>
+                </div>
+                
+                <button type="submit" class="cta-button">ENVIAR QUESTIONÁRIO</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="container" style="text-align: center; padding-bottom: 40px;">
+        <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+    </div>
+
+    <script>
+        // Configuração para envio ao Google Sheets
+        const scriptURL = 'https://script.google.com/macros/s/SUA_SCRIPT_DO_APPS_SCRIPT/exec';
+        
+        document.getElementById('geoprofissaoForm').addEventListener('submit', e => {
+            e.preventDefault();
+            
+            const formData = new FormData(document.getElementById('geoprofissaoForm'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                alert('Questionário enviado com sucesso! Entraremos em contato em breve.');
+                document.getElementById('geoprofissaoForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocorreu um erro ao enviar o questionário. Por favor, tente novamente.');
+            });
+        });
+    </script>
+</body>
+</html>
