@@ -332,7 +332,7 @@
   <h3>1.1 DADOS PESSOAIS</h3>
   
   <div class="form-group">
-    <label for="nome_completo">1. 'Nome completo':</label>
+    <label for="nome_completo">1. 'nome_completo':</label>
     <input type="text" id="nome_completo" name="nome_completo" required>
   </div>
   
@@ -2676,79 +2676,65 @@
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('geoprofissao-form');
+    const form = document.getElementById('geoprofissaoForm');
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Coletar todos os dados do formulário
         const formData = new FormData(form);
-        const responses = {};
+        const data = {};
         
-        // Processar campos de texto e radios/checkboxes
+        // Processar todos os campos
         for (const [key, value] of formData.entries()) {
-            if (key.includes('[') && key.includes(']')) {
-                // Tratar grupos de opções (radio/checkbox)
-                const fieldName = key.split('[')[0];
-                if (!responses[fieldName]) {
-                    responses[fieldName] = [];
+            // Se já existe (checkbox/radio), transforma em array
+            if (data[key]) {
+                if (!Array.isArray(data[key])) {
+                    data[key] = [data[key]];
                 }
-                responses[fieldName].push(value);
+                data[key].push(value);
             } else {
-                responses[key] = value;
+                data[key] = value;
             }
         }
         
-        // Processar textareas e selects
-        document.querySelectorAll('textarea, select').forEach(element => {
-            const name = element.name;
-            if (name && !responses[name]) {
-                responses[name] = element.value;
-            }
-        });
-        
-        // Processar radios e checkboxes não selecionados
-        document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
-            if (!responses[input.name] && input.checked) {
-                responses[input.name] = input.value;
-            }
-        });
-        
         // Enviar dados para o Google Apps Script
-        sendDataToGoogleSheet(responses);
+        sendDataToGoogleSheet(data);
     });
     
-function sendDataToGoogleSheet(data) {
-    // Mostrar loading
-    const submitBtn = document.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
+    function sendDataToGoogleSheet(data) {
+        const submitBtn = document.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
 
-    // URL do seu Web App do Google Apps Script
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwHYAR8X0jX8Agl96uRksfOU38IwYW9COHs-mnUXbKaWRYV-DBQzXc4UcxbVotyeDc/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwHYAR8X0jX8Agl96uRksfOU38IwYW9COHs-mnUXbKaWRYV-DBQzXc4UcxbVotyeDc/exec';
 
-    fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.text())
-    .then(result => {
-        console.log(result);
-        alert('Respostas enviadas com sucesso! Obrigado por participar.');
-        form.reset();
-    })
-    .catch(error => {
-        console.error('Erro ao enviar:', error);
-        alert('Ocorreu um erro ao enviar as respostas. Por favor, tente novamente.');
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar';
-    });
-} // <<< FALTAVA FECHAR ESTA FUNÇÃO
+        fetch(scriptUrl, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                alert('Respostas enviadas com sucesso!');
+                form.reset();
+            } else {
+                throw new Error(data.error || 'Erro desconhecido');
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao enviar: ' + error.message);
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ENVIAR QUESTIONÁRIO';
+        });
+    }
+});
 </script>
 </body>
 </html>
