@@ -2703,36 +2703,50 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     function sendDataToGoogleSheet(data) {
-        const submitBtn = document.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando...';
+    const submitBtn = document.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
 
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwHYAR8X0jX8Agl96uRksfOU38IwYW9COHs-mnUXbKaWRYV-DBQzXc4UcxbVotyeDc/exec';
+    // Processar checkboxes para enviar como arrays
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(checkbox => {
+        if (!data[checkbox.name]) {
+            data[checkbox.name] = [];
+        }
+        data[checkbox.name].push(checkbox.value);
+    });
 
-        fetch(scriptUrl, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                alert('Respostas enviadas com sucesso!');
-                form.reset();
-            } else {
-                throw new Error(data.error || 'Erro desconhecido');
-            }
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-            alert('Erro ao enviar: ' + error.message);
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'ENVIAR QUESTIONÁRIO';
-        });
+    const scriptUrl = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
+
+    fetch(scriptUrl, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na rede');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.result === 'success') {
+            alert('Respostas enviadas com sucesso!');
+            form.reset();
+        } else {
+            throw new Error(data.error || 'Erro desconhecido');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao enviar: ' + error.message);
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'ENVIAR QUESTIONÁRIO';
+    });
     }
 });
 </script>
