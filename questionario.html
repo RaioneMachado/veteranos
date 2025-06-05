@@ -2674,81 +2674,41 @@
         <a href="index.html" class="back-button">Voltar para Página Inicial</a>
     </div>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('geoprofissaoForm');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Coletar todos os dados do formulário
-        const formData = new FormData(form);
-        const data = {};
-        
-        // Processar todos os campos
-        for (const [key, value] of formData.entries()) {
-            // Se já existe (checkbox/radio), transforma em array
-            if (data[key]) {
-                if (!Array.isArray(data[key])) {
-                    data[key] = [data[key]];
-                }
-                data[key].push(value);
-            } else {
-                data[key] = value;
-            }
-        }
-        
-        // Enviar dados para o Google Apps Script
-        sendDataToGoogleSheet(data);
-    });
-    
-    function sendDataToGoogleSheet(data) {
-    const submitBtn = document.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
+<script>
+const form = document.querySelector('form'); // pega o primeiro form da página
 
-    // Processar checkboxes para enviar como arrays
-    const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
-    checkboxes.forEach(checkbox => {
-        if (!data[checkbox.name]) {
-            data[checkbox.name] = [];
-        }
-        data[checkbox.name].push(checkbox.value);
-    });
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    const scriptUrl = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
+  const faltaTempo = document.querySelector('input[name="falta_tempo"]:checked')?.value || '';
 
-    fetch(scriptUrl, {
+  const dados = {
+    falta_tempo: faltaTempo
+  };
+
+  try {
+    const response = await fetch(
+      'https://webhook.site/a11f775b-fbe6-4c3b-aeff-ba12dd8f197d',
+      {
         method: 'POST',
-        body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na rede');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.result === 'success') {
-            alert('Respostas enviadas com sucesso!');
-            form.reset();
-        } else {
-            throw new Error(data.error || 'Erro desconhecido');
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao enviar: ' + error.message);
-    })
-    .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'ENVIAR QUESTIONÁRIO';
-    });
-    }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dados)
+      }
+    );
+
+    // Se o modo cors permitir, pega o JSON da resposta
+    const resultado = await response.json();
+    console.log('Resposta do servidor:', resultado);
+    alert('Formulário enviado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao enviar:', error);
+    alert('Erro ao enviar o formulário.');
+  }
 });
+
 </script>
+
 </body>
 </html>

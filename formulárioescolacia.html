@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Integrado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #041209;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .captfil-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .signup-form {
+            background: linear-gradient(135deg, rgba(4,18,9,0.9) 0%, rgba(0,74,111,0.7) 100%);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00AAFF;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 170, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00AAFF;
+            background-color: rgba(0, 170, 255, 0.1);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00AAFF 0%, #0077CC 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            color: #00FFAA;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="captfil-section container">
+        <h2>Preencha o formulário</h2>
+
+        <form id="leadForm" class="signup-form" action="https://docs.google.com/forms/d/e/1FAIpQLSesext6Wqho7-sQyKDSHjTbBhToliNJRjMXkXxwBWYgf1zQiw/formResponse" method="POST" target="hidden_iframe" onsubmit="showSuccessMessage()">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="entry.1465145084" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="entry.649589301" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="entry.1137003441" required>
+            </div>
+
+            <button type="submit" class="cta-button">Enviar</button>
+        </form>
+
+        <div class="success-message" id="successMsg">
+            Obrigado! Seus dados foram enviados com sucesso.
+        </div>
+
+        <!-- Iframe oculto para envio sem redirecionar -->
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+    </section>
+
+    <script>
+        function showSuccessMessage() {
+            setTimeout(() => {
+                document.getElementById('leadForm').reset();
+                document.getElementById('successMsg').style.display = 'block';
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
