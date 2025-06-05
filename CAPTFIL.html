@@ -306,38 +306,82 @@
         </div>
     </section>
     
-    <section class="captfil-section" id="formulario">
-        <div class="container">
-            <h2>Agende seu Diagnóstico Gratuito</h2>
-            <p>Preencha o formulário abaixo para agendar uma reunião de diagnóstico e conhecer o método CAPTFIL:</p>
-            
-            <div class="signup-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Telefone</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    
-                    <div class="privacy-check">
-    <input type="checkbox" id="privacy" required>
-    <label for="privacy">Li e aceito os <a href="politica-de-privacidade.html" style="color: #00AAFF; text-decoration: underline;">termos de política e privacidade</a></label>
-</div>
-                    
-                    <button type="submit" class="cta-button">AGENDAR DIAGNÓSTICO GRATUITO</button>
-                </form>
-            </div>
+<section class="captfil-section" id="formulario">
+  <div class="container">
+    <h2>Agende seu Diagnóstico Gratuito</h2>
+    <p>
+      Preencha o formulário abaixo para agendar uma reunião de diagnóstico e
+      conhecer o método CAPTFIL:
+    </p>
+
+    <div class="signup-form">
+      <form id="captfil-form">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" name="entry.34039208" required />
         </div>
-    </section>
+
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input type="tel" id="phone" name="entry.538620779" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="entry.1303753200" required />
+        </div>
+
+        <div class="privacy-check">
+          <input type="checkbox" id="privacy" required />
+          <label for="privacy">
+            Li e aceito os
+            <a
+              href="politica-de-privacidade.html"
+              style="color: #00aaff; text-decoration: underline"
+              >termos de política e privacidade</a
+            >
+          </label>
+        </div>
+
+        <button type="submit" class="cta-button">
+          AGENDAR DIAGNÓSTICO GRATUITO
+        </button>
+      </form>
+
+      <div id="success-message" style="display: none; margin-top: 20px; color: #d4af37; font-weight: bold;">
+        Enviado com sucesso! Entraremos em contato em breve.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("captfil-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch(
+      "https://docs.google.com/forms/d/e/1FAIpQLSdg5FQBELqDvyqrd5CSxclcc_BYP8e00eOS_c1kOtufVFINyw/formResponse",
+      {
+        method: "POST",
+        mode: "no-cors", // importante para evitar bloqueios de CORS
+        body: formData,
+      }
+    )
+      .then(() => {
+        form.style.display = "none";
+        document.getElementById("success-message").style.display = "block";
+      })
+      .catch((error) => {
+        alert("Ocorreu um erro ao enviar o formulário. Tente novamente.");
+        console.error("Erro ao enviar:", error);
+      });
+  });
+</script>
+
+
     
     <div class="container" style="text-align: center; padding-bottom: 60px;">
         <a href="index.html" class="back-button">Voltar para Página Inicial</a>
